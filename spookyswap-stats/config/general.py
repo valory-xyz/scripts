@@ -17,7 +17,7 @@
 #
 #   ------------------------------------------------------------------------------
 
-"""Project configurations."""
+"""General configurations."""
 
 _subgraph_base_url = 'https://api.thegraph.com/subgraphs/name/'
 SPOOKY_SUBGRAPH_URL = _subgraph_base_url + 'eerieeight/spookyswap'

@@ -22,7 +22,7 @@
 import time
 from typing import Optional, Iterator
 
-from config import DAY_IN_UNIX, HOUR_IN_UNIX, MINUTE_IN_UNIX
+from config.general import DAY_IN_UNIX, HOUR_IN_UNIX, MINUTE_IN_UNIX
 
 
 def gen_unix_timestamps(start: int, interval: str, end: Optional[int] = None) -> Iterator[int]:
