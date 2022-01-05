@@ -17,7 +17,7 @@
 #
 #   ------------------------------------------------------------------------------
 
-"""Module for ETL functionality."""
+"""Package for ETL functionality."""
 
 from typing import List, Dict
 
