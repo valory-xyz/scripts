@@ -18,3 +18,7 @@
 #   ------------------------------------------------------------------------------
 
 """Module for ETL functionality."""
+
+from typing import List, Dict
+
+ResponseItemType = List[Dict[str, str]]
