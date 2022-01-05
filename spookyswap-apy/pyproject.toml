@@ -5,7 +5,7 @@ description = "A short demo that calculates APY for a single pair"
 authors = ["Adamantios Zaras"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.7"
 requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
