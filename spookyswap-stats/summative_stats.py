@@ -20,12 +20,13 @@
 """CLI tool that provides summative statistics for SpookySwap."""
 
 from cli import create_parser
+from etl.etl import export_transform_store
 
 
 def start() -> None:
     """Runs the script."""
     args = create_parser().parse_args()
-    # fetch(args)
+    export_transform_store(**vars(args))
 
 
 if __name__ == '__main__':

@@ -17,9 +17,21 @@
 #
 #   ------------------------------------------------------------------------------
 
-"""Package for ETL functionality."""
+"""ETL operations."""
+import time
 
-from typing import List, Dict
+from etl.fetch import get_pairs_hist
+from etl.tools import interval_to_unix
+from etl.transform import transform_hist_data
 
-ResponseItemType = List[Dict[str, str]]
-SubgraphResponseType = Dict[str, ResponseItemType]
+
+def export_transform_store(**kwargs) -> None:
+    """Fetch the historical data, transform and store them."""
+    interval_in_unix = interval_to_unix(kwargs["interval"])
+    end = kwargs["end_date"]
+    if end is None:
+        end = int(time.time())
+
+    pairs_hist = get_pairs_hist(kwargs["pool_ids"], kwargs["start_date"], interval_in_unix, kwargs["interval"], end)
+    pairs_hist = transform_hist_data(pairs_hist)
+    pairs_hist.to_csv('hist_data.csv', index=False)

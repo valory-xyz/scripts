@@ -28,8 +28,7 @@ def create_parser() -> ArgumentParser:
     parser.add_argument('start_date', type=int, help="The start date in Unix format.")
     parser.add_argument('-e', '--end_date', type=int, default=None,
                         help="The end date in Unix format. Defaults to now.")
-    # parser.add_argument('token0', type=str, help="The pool pair's token0 id.")
-    # parser.add_argument('token1', type=str, help="The pool pair's token1 id.")
+    parser.add_argument('pool_ids', nargs="+", type=str, help="The pool ids for which the statistics will be fetched.")
     parser.add_argument('interval', type=str, choices=['day', 'hour', 'minute'],
                         help="The interval to use to fetch the historical data.")
 
