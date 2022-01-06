@@ -29,7 +29,6 @@ def create_parser() -> ArgumentParser:
     parser.add_argument('-e', '--end_date', type=int, default=None,
                         help="The end date in Unix format. Defaults to now.")
     parser.add_argument('pool_ids', nargs="+", type=str, help="The pool ids for which the statistics will be fetched.")
-    parser.add_argument('interval', type=str, choices=['day', 'hour', 'minute'],
-                        help="The interval to use to fetch the historical data.")
+    parser.add_argument('interval', type=int, help="The interval to use to fetch the historical data in Unix.")
 
     return parser

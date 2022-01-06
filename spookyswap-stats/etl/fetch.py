@@ -28,7 +28,7 @@ from tqdm import tqdm
 from config.general import SPOOKY_SUBGRAPH_URL, FANTOM_BLOCKS_SUBGRAPH_URL, BUNDLE_ID
 from etl import ResponseItemType, SubgraphResponseType
 from etl.queries import block_from_timestamp_q, pairs_q, eth_price_usd_q
-from etl.tools import gen_unix_timestamps
+from etl.tools import gen_unix_timestamps, sec_to_unit
 
 
 class RetriesExceeded(Exception):
@@ -108,20 +108,19 @@ def make_request(url: str, query_fn: Callable[..., str], *query_args) -> Subgrap
     return res['data']
 
 
-def get_pairs_hist(pair_ids: List[str], start: int, interval_in_unix: int, interval_unit: str,
-                   end: int) -> ResponseItemType:
+def get_pairs_hist(pair_ids: List[str], start: int, interval_in_unix: int, end: int) -> ResponseItemType:
     """Get historical data for the given pools.
 
     :param pair_ids: the ids of the pairs to fetch.
     :param start: the start date in Unix timestamp.
     :param interval_in_unix: the interval in Unix to use for the fetched data.
-    :param interval_unit: the unit of the interval.
     :param end: the end date in Unix timestamp.
     :return: a list with the historical data of the pairs, retrieved from SpookySwap's subgraph.
     """
     pairs_hist = []
     timestamps_generator = gen_unix_timestamps(start, interval_in_unix, end)
     n_iter = int((end - start) / interval_in_unix)
+    interval_unit = sec_to_unit(interval_in_unix)
 
     for timestamp in tqdm(timestamps_generator, total=n_iter, desc='Fetching historical data', unit=interval_unit):
         # Fetch block.

@@ -36,22 +36,19 @@ def gen_unix_timestamps(start: int, interval_in_unix: int, end: Optional[int] = 
         yield timestamp
 
 
-def interval_to_unix(interval: str) -> int:
-    """Calculate the interval in Unix.
+def sec_to_unit(sec: int) -> str:
+    """Calculate the unin from given seconds.
 
-    :param interval: the interval to use in order to generate the timestamps.
-        Can be one of:
-           * day
-           * hour
-           * minute
-    :return: the interval in Unix.
+    :param sec: the seconds to convert in a unit.
+    :return: the unit.
     """
-    if interval == "day":
-        return DAY_IN_UNIX
-    elif interval == "hour":
-        return HOUR_IN_UNIX
-    elif interval == "minute":
-        return MINUTE_IN_UNIX
+    if sec == DAY_IN_UNIX:
+        return "day"
+    elif sec == HOUR_IN_UNIX:
+        return "hour"
+    elif sec == MINUTE_IN_UNIX:
+        return "minute"
+    elif sec == 1:
+        return "second"
     else:
-        raise ValueError(f"Unrecognized interval `{interval}` given. "
-                         "Interval can be one of: {`day`, `hour`, `minute`}.")
+        return "iteration"

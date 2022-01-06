@@ -21,18 +21,16 @@
 import time
 
 from etl.fetch import get_pairs_hist
-from etl.tools import interval_to_unix
 from etl.transform import transform_hist_data
 
 
 def export_transform_store(**kwargs) -> None:
     """Fetch the historical data, transform and store them."""
-    interval_in_unix = interval_to_unix(kwargs["interval"])
     end = kwargs["end_date"]
     if end is None:
         end = int(time.time())
 
-    pairs_hist = get_pairs_hist(kwargs["pool_ids"], kwargs["start_date"], interval_in_unix, kwargs["interval"], end)
+    pairs_hist = get_pairs_hist(kwargs["pool_ids"], kwargs["start_date"], kwargs["interval"], end)
     pairs_hist = transform_hist_data(pairs_hist)
 
     if len(kwargs['pool_ids']) > 1:
