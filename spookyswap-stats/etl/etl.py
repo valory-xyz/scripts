@@ -34,4 +34,10 @@ def export_transform_store(**kwargs) -> None:
 
     pairs_hist = get_pairs_hist(kwargs["pool_ids"], kwargs["start_date"], interval_in_unix, kwargs["interval"], end)
     pairs_hist = transform_hist_data(pairs_hist)
-    pairs_hist.to_csv('hist_data.csv', index=False)
+
+    if len(kwargs['pool_ids']) > 1:
+        pool_from_to = f"{kwargs['pool_ids'][0]} - {kwargs['pool_ids'][-1]}"
+    else:
+        pool_from_to = kwargs['pool_ids'][0]
+
+    pairs_hist.to_csv(f'hist_data_{pool_from_to}_{kwargs["start_date"]}_{end}_{kwargs["interval"]}.csv', index=False)
