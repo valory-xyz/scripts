@@ -1,8 +1,10 @@
 Description
 ===========
-The `apy.py` script accepts two positional arguments, the token ids of a SpookySwap pool's pairs, and outputs the pool's
-APY.
-> 📝 The token ids must be given in the correct order.
+The `summative_stats.py` script accepts three positional arguments, 
+the start date, the pool ids, and the interval to use.
+It also accepts one optional argument, the end date.
+It outputs the pools' statistics, including the APY.
+> 📝 You may run `python summative_stats.py --help` for usage information.
 
 Run
 ===
@@ -11,15 +13,7 @@ This demo uses [poetry](https://python-poetry.org/) for python packaging and dep
 Example
 -------
 
-1. Example run for USDC-WFTM:
-    ```shell
-    python summative_stats.py 0x04068da6c83afcfa0e13ba15a6696662335d5b75 0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83
-    ```
-   outputs:
-   ```APY for USDC-WFTM is 37.36900950074754```
-2. Example run for WFTM-BOO:
-    ```shell
-    python summative_stats.py 0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83 0x841fad6eae12c286d1fd18d1d525dffa75c7effe
-    ```
-   outputs:
-   ```APY for WFTM-BOO is 2.4817559467878385```
+Example run:
+```shell
+python summative_stats.py 1633442859 0x2b4c76d0dc16be1c31d4c1dc53bf9b45987fc75c 0xe120ffbda0d14f3bb6d6053e90e63c572a66a428 86400
+```
