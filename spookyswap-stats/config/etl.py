@@ -17,6 +17,8 @@
 #
 #   ------------------------------------------------------------------------------
 
+"""ETL configurations."""
+
 # Define a dictionary with the data types for each column of the historical data.
 HIST_DTYPES = {
     "createdAtBlockNumber": int,
