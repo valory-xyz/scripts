@@ -17,15 +17,21 @@
 #
 #   ------------------------------------------------------------------------------
 
+import functools
+import warnings
 from string import Template
-from typing import Optional, Generator
+from typing import Optional, Generator, Callable
 
 import pandas as pd
 import requests
 from tqdm import tqdm
 
-from etl import SubgraphResponseType, ResponseItemType
-from etl.fetch import hacky_retry
+from typing import List, Dict
+
+
+ResponseItemType = List[Dict[str, str]]
+SubgraphResponseType = Dict[str, ResponseItemType]
+
 
 CREATOR = "0x89c5cc945dd550BcFfb72Fe42BfF002429F46Fec"
 BATCH_SIZE = 1000
@@ -65,6 +71,52 @@ FPMMS_QUERY = Template(
     }
     """
 )
+
+
+class RetriesExceeded(Exception):
+    """Exception to raise when retries are exceeded during data-fetching."""
+
+    def __init__(
+        self, msg="Maximum retries were exceeded while trying to fetch the data!"
+    ):
+        super().__init__(msg)
+
+
+def hacky_retry(func: Callable, n_retries: int = 3) -> Callable:
+    """Create a hacky retry strategy.
+        Unfortunately, we cannot use `requests.packages.urllib3.util.retry.Retry`,
+        because the subgraph does not return the appropriate status codes in case of failure.
+        Instead, it always returns code 200. Thus, we raise exceptions manually inside `make_request`,
+        catch those exceptions in the hacky retry decorator and try again.
+        Finally, if the allowed number of retries is exceeded, we raise a custom `RetriesExceeded` exception.
+
+    :param func: the input request function.
+    :param n_retries: the maximum allowed number of retries.
+    :return: The request method with the hacky retry strategy applied.
+    """
+
+    @functools.wraps(func)
+    def wrapper_hacky_retry(*args, **kwargs) -> SubgraphResponseType:
+        """The wrapper for the hacky retry.
+
+        :return: a response dictionary.
+        """
+        retried = 0
+
+        while retried <= n_retries:
+            try:
+                if retried > 0:
+                    warnings.warn(f"Retrying {retried}/{n_retries}...")
+
+                return func(*args, **kwargs)
+            except (ValueError, ConnectionError) as e:
+                warnings.warn(e.args[0])
+            finally:
+                retried += 1
+
+        raise RetriesExceeded()
+
+    return wrapper_hacky_retry
 
 
 @hacky_retry
