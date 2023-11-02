@@ -54,12 +54,11 @@ FPMMS_QUERY = Template(
       ${fpmms_field}(
         where: {
           creator: "${creator}",
+          id_gt: "${fpmm_id}",
           isPendingArbitration: false
         },
-        orderBy: creationTimestamp
-        orderDirection: desc
+        orderBy: ${id_field}
         first: ${first}
-        skip: ${skip}
       ){
         ${id_field}
         ${answer_field}
@@ -158,12 +157,12 @@ def query_subgraph(url: str, query: str, key: str) -> SubgraphResponseType:
 def fpmms_fetcher() -> Generator[ResponseItemType, int, None]:
     """An indefinite fetcher for the FPMMs."""
     while True:
-        total_fetched = yield
+        fpmm_id = yield
         fpmms_query = FPMMS_QUERY.substitute(
             creator=CREATOR,
+            fpmm_id=fpmm_id,
             fpmms_field=FPMMS_FIELD,
             first=BATCH_SIZE,
-            skip=total_fetched,
             id_field=ID_FIELD,
             answer_field=ANSWER_FIELD,
             question_field=QUESTION_FIELD,
@@ -175,12 +174,18 @@ def fpmms_fetcher() -> Generator[ResponseItemType, int, None]:
 
 def fetch_fpmms() -> pd.DataFrame:
     """Fetch all the fpmms of the creator."""
+    latest_id = ""
     fpmms = []
     fetcher = fpmms_fetcher()
     for _ in tqdm(fetcher, unit="fpmms", unit_scale=BATCH_SIZE):
-        batch = fetcher.send(len(fpmms))
+        batch = fetcher.send(latest_id)
         if len(batch) == 0:
             break
+
+        latest_id = batch[-1].get(ID_FIELD, "")
+        if latest_id == "":
+            raise ValueError(f"Unexpected data format retrieved: {batch}")
+
         fpmms.extend(batch)
 
     return pd.DataFrame(fpmms)
