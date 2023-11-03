@@ -52,6 +52,7 @@ IPFS_LINKS_SERIES_NAME = "ipfs_links"
 N_RETRIES = 3
 BACKOFF_FACTOR = 1
 STATUS_FORCELIST = [500, 502, 503, 504]
+PROMPT_FIELD = "prompt"
 
 
 def parse_args() -> str:
