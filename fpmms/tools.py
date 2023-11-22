@@ -17,15 +17,14 @@
 #
 #   ------------------------------------------------------------------------------
 
-import csv
+import json
 import sys
-
+import time
+from dataclasses import dataclass
+from enum import Enum
+from typing import Optional, List, Dict, Any
 
 import pandas as pd
-import json
-from dataclasses import dataclass
-from typing import Optional, List, Dict
-
 import requests
 from eth_utils import to_checksum_address
 from requests.adapters import HTTPAdapter
@@ -41,16 +40,15 @@ MECH_ABI_PATH = "./contracts/mech_abi.json"
 # this is when the creator had its first tx ever
 EARLIEST_BLOCK = 28911547
 # optionally set the latest block to stop searching for the delivered events
-LATEST_BLOCK: Optional[int] = 28991547
+LATEST_BLOCK: Optional[int] = None
 LATEST_BLOCK_NAME: BlockParams = "latest"
 BLOCK_DATA_NUMBER = "number"
-BLOCKS_CHUNK_SIZE = 5_000
+BLOCKS_CHUNK_SIZE = 20_000
 EVENT_ARGUMENTS = "args"
-DELIVER_REQUEST_ID = "requestId"
-DELIVER_DATA = "data"
-REQUEST_REQUEST_ID = "requestId"
-REQUEST_DATA = "data"
+DATA = "data"
+REQUEST_ID = "requestId"
 REQUEST_SENDER = "sender"
+PROMPT_FIELD = "prompt"
 CID_PREFIX = "f01701220"
 HTTP = "http://"
 HTTPS = HTTP[:4] + "s" + HTTP[4:]
@@ -59,6 +57,137 @@ IPFS_LINKS_SERIES_NAME = "ipfs_links"
 N_RETRIES = 3
 BACKOFF_FACTOR = 1
 STATUS_FORCELIST = [500, 502, 503, 504]
+DEFAULT_FILENAME = "tools.csv"
+SLEEP = 0.5
+N_RPC_RETRIES = 100
+RPC_POLL_INTERVAL = 0.05
+IPFS_POLL_INTERVAL = 0.1
+
+
+class MechEventName(Enum):
+    """The mech's event names."""
+
+    REQUEST = "Request"
+    DELIVER = "Deliver"
+
+
+@dataclass
+class MechEvent:
+    """A mech's on-chain event representation."""
+
+    requestId: int
+    data: bytes
+    sender: str
+
+    def _ipfs_link(self) -> Optional[str]:
+        """Get the ipfs link for the data."""
+        return f"{IPFS_ADDRESS}{CID_PREFIX}{self.data.hex()}"
+
+    @property
+    def ipfs_request_link(self) -> Optional[str]:
+        """Get the IPFS link for the request."""
+        return self._ipfs_link()
+
+    @property
+    def ipfs_deliver_link(self) -> Optional[str]:
+        """Get the IPFS link for the deliver."""
+        if self.requestId is None:
+            return None
+        return f"{self._ipfs_link()}/{self.requestId}"
+
+    def ipfs_link(self, event_name: MechEventName) -> Optional[str]:
+        """Get the ipfs link based on the event."""
+        if event_name == MechEventName.REQUEST:
+            return self.ipfs_request_link
+        if event_name == MechEventName.DELIVER:
+            return self.ipfs_deliver_link
+        return None
+
+
+@dataclass(init=False)
+class MechRequest:
+    """A structure for a request to a mech."""
+
+    requestId: Optional[int]
+    prompt: Optional[str]
+    tool: Optional[str]
+    nonce: Optional[str]
+
+    def __init__(self, **kwargs: Any) -> None:
+        """Initialize the request ignoring extra keys."""
+        self.requestId = int(kwargs.pop(REQUEST_ID, 0))
+        self.prompt = kwargs.pop(PROMPT_FIELD, None)
+        self.tool = kwargs.pop("tool", None)
+        self.nonce = kwargs.pop("nonce", None)
+
+
+@dataclass(init=False)
+class PredictionResponse:
+    """A response of a prediction."""
+
+    p_yes: float
+    p_no: float
+    confidence: float
+    info_utility: float
+    vote: Optional[str]
+    win_probability: Optional[float]
+
+    def __init__(self, **kwargs: Any) -> None:
+        """Initialize the mech's prediction ignoring extra keys."""
+        self.p_yes = float(kwargs.pop("p_yes"))
+        self.p_no = float(kwargs.pop("p_no"))
+        self.confidence = float(kwargs.pop("confidence"))
+        self.info_utility = float(kwargs.pop("info_utility"))
+        self.win_probability = 0
+
+        # all the fields are probabilities; run checks on whether the current prediction response is valid or not.
+        probabilities = (
+            getattr(self, field) for field in set(self.__annotations__) - {"vote"}
+        )
+        if (
+            any(not (0 <= prob <= 1) for prob in probabilities)
+            or self.p_yes + self.p_no != 1
+        ):
+            raise ValueError("Invalid prediction response initialization.")
+
+        self.vote = self.get_vote()
+        self.win_probability = self.get_win_probability()
+
+    def get_vote(self) -> Optional[str]:
+        """Return the vote."""
+        if self.p_no == self.p_yes:
+            return None
+        if self.p_no > self.p_yes:
+            return "No"
+        return "Yes"
+
+    def get_win_probability(self) -> Optional[float]:
+        """Return the probability estimation for winning with vote."""
+        return max(self.p_no, self.p_yes)
+
+
+@dataclass(init=False)
+class MechResponse:
+    """A structure for the response of a mech."""
+
+    requestId: int
+    result: Optional[PredictionResponse]
+    error: str
+
+    def __init__(self, **kwargs: Any) -> None:
+        """Initialize the mech's response ignoring extra keys."""
+        self.requestId = int(kwargs.pop(REQUEST_ID, 0))
+        self.error = kwargs.pop("error", "Unknown")
+        self.result = kwargs.pop("result", None)
+
+        if isinstance(self.result, str):
+            self.result = PredictionResponse(**json.loads(self.result))
+
+
+EVENT_TO_MECH_STRUCT = {
+    MechEventName.REQUEST: MechRequest,
+    MechEventName.DELIVER: MechResponse,
+}
 
 
 def parse_args() -> str:
@@ -74,39 +203,7 @@ def read_abi() -> str:
         return abi_file.read()
 
 
-@dataclass
-class MechBaseEvent:
-    """Base class for mech's on-chain event representation."""
-    request_id: int
-    data: bytes
-
-    @property
-    def ipfs_link(self) -> Optional[str]:
-        """Get the ipfs link."""
-        if self.request_id is None:
-            return None
-        return f"{IPFS_ADDRESS}{CID_PREFIX}{self.data.hex()}/{self.request_id}"
-
-@dataclass
-class MechDeliver(MechBaseEvent):
-    """A mech's on-chain response representation."""
-    event_name: str = "Deliver"
-
-@dataclass
-class MechRequest(MechBaseEvent):
-    """A mech's on-chain response representation."""
-    sender: str
-    event_name: str = "Request"
-
-    @property
-    def ipfs_link(self) -> Optional[str]:
-        """Get the ipfs link."""
-        if self.request_id is None:
-            return None
-        return f"{IPFS_ADDRESS}{CID_PREFIX}{self.data.hex()}"
-
-
-def get_events(w3: Web3, event_name:str) -> List:
+def get_events(w3: Web3, event: str) -> List:
     """Get the delivered events."""
     abi = read_abi()
     contract_instance = w3.eth.contract(address=MECH_CONTRACT_ADDRESS, abi=abi)
@@ -118,44 +215,55 @@ def get_events(w3: Web3, event_name:str) -> List:
     events = []
     for from_block in tqdm(
         range(EARLIEST_BLOCK, latest_block, BLOCKS_CHUNK_SIZE),
-        desc=f"Searching events in block chunks of size {BLOCKS_CHUNK_SIZE}",
+        desc=f"Searching {event} events in block chunks of size {BLOCKS_CHUNK_SIZE}",
         unit="block chunks",
     ):
-        deliver_filter = contract_instance.events[event_name].build_filter()
-        deliver_filter.fromBlock = EARLIEST_BLOCK
-        deliver_filter.toBlock = min(from_block + BLOCKS_CHUNK_SIZE, latest_block)
-        chunk = list(deliver_filter.deploy(w3).get_all_entries())
+        events_filter = contract_instance.events[event].build_filter()
+        events_filter.fromBlock = from_block
+        events_filter.toBlock = min(from_block + BLOCKS_CHUNK_SIZE, latest_block)
+
+        entries = None
+        retries = 0
+        while entries is None:
+            try:
+                entries = events_filter.deploy(w3).get_all_entries()
+                retries = 0
+            except Exception as exc:
+                retries += 1
+                if retries == N_RPC_RETRIES:
+                    tqdm.write(
+                        f"Skipping events for blocks {events_filter.fromBlock} - {events_filter.toBlock} "
+                        f"as the retries have been exceeded."
+                    )
+                    break
+                sleep = SLEEP * retries
+                tqdm.write(
+                    f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
+                )
+                time.sleep(sleep)
+
+        if entries is None:
+            continue
+
+        chunk = list(entries)
         events.extend(chunk)
+        time.sleep(RPC_POLL_INTERVAL)
 
     return events
 
 
-def parse_deliver_events(events: List) -> List[MechDeliver]:
-    """Get all the mech delivers from the delivered events."""
-    delivers = []
-    for delivered_event in events:
-        args = delivered_event.get(EVENT_ARGUMENTS, {})
-        request_id = args.get(DELIVER_REQUEST_ID, None)
-        data = args.get(DELIVER_DATA, b"")
-        deliver = MechDeliver(request_id=request_id, data=data)
-        delivers.append(deliver)
-
-    return delivers
-
-
-def parse_request_events(events: List) -> List[MechRequest]:
-    """Get all the mech requests from the delivered events."""
-    requests = []
-    for request_event in events:
-        args = request_event.get(EVENT_ARGUMENTS, {})
-        request_id = args.get(REQUEST_REQUEST_ID, None)
-        data = args.get(REQUEST_DATA, b"")
+def parse_events(raw_events: List) -> List[MechEvent]:
+    """Parse all the specified MechEvents."""
+    parsed_events = []
+    for event in raw_events:
+        args = event.get(EVENT_ARGUMENTS, {})
+        request_id = args.get(REQUEST_ID, 0)
+        data = args.get(DATA, b"")
         sender = args.get(REQUEST_SENDER, "")
-        request = MechRequest(sender=sender, request_id=request_id, data=data)
-        requests.append(request)
+        parsed_event = MechEvent(request_id, data, sender)
+        parsed_events.append(parsed_event)
 
-    return requests
-
+    return parsed_events
 
 
 def create_session() -> requests.Session:
@@ -186,121 +294,72 @@ def request(session: requests.Session, url: str) -> Dict[str, str]:
         return response.json()
 
 
-def request_id_to_deliver_contents(events: List[MechDeliver]):
+def limit_text(text: str, limit: int = 200) -> str:
+    """Limit the given text"""
+    if len(text) > limit:
+        return f"{text[:limit]}..."
+    return text
+
+
+def get_contents(
+    session: requests.Session, events: List[MechEvent], event_name: MechEventName
+) -> pd.DataFrame:
     """Fetch the tools' responses."""
-    session = create_session()
+    contents = []
+    for event in tqdm(events, desc=f"Tools' results", unit="results"):
+        raw_content = request(session, event.ipfs_link(event_name))
+        struct = EVENT_TO_MECH_STRUCT.get(event_name)
 
-    output = {}
-    for event in tqdm(events, desc=f"Processing Deliver events", unit="results"):
-        response_json = request(session, event.ipfs_link)
-        if all(key in response_json.get("result", {}) for key in ['p_yes', 'p_no', 'confidence', 'info_utility']):
-            output[event.request_id] = response_json
+        try:
+            raw_content[REQUEST_ID] = str(event.requestId)
+            mech_response = struct(**raw_content)
+        except (ValueError, TypeError, KeyError):
+            tqdm.write(f"Could not parse {limit_text(str(raw_content))}")
+            continue
+        contents.append(mech_response)
+        time.sleep(IPFS_POLL_INTERVAL)
 
-    return output
-
-
-def request_id_to_request_contents(events: List[MechRequest]):
-    """Fetch the tools' responses."""
-    session = create_session()
-
-    output = {}
-    for event in tqdm(events, desc=f"Processing Request events", unit="results"):
-        response_json = request(session, event.ipfs_link)
-        if response_json.get("tool", "") in ["prediction-online", "prediction-offline"]:
-            output[event.request_id] = response_json
-
-    return output
+    return pd.DataFrame(contents)
 
 
-def create_dataframe(request_contents: Dict[str, Dict[str, str]],
-                     deliver_contents: Dict[str, Dict[str, str]]) -> pd.DataFrame:
-    data: List[Dict[str, Optional[float]]] = []
-    
-    for request_id, request_info in request_contents.items():
-        if request_id in deliver_contents:
-            deliver_info = deliver_contents[request_id]
-            result_json = json.loads(deliver_info["result"])
-            p_yes = result_json.get("p_yes", None)
-            p_no = result_json.get("p_no", None)
-            confidence = result_json.get("confidence", None)
-            info_utility = result_json.get("info_utility", None)
-            prompt = request_info.get("prompt", None)
-            tool = request_info.get("tool", None)
-            nonce = request_info.get("nonce", None)
-            
-            print(request_info)
-            print(prompt)
-
-            data.append({
-                "request_id": request_id,
-                "prompt": prompt.strip(),
-                "tool": tool,
-                "nonce": nonce,
-                "p_yes": p_yes,
-                "p_no": p_no,
-                "confidence": confidence,
-                "info_utility": info_utility
-            })
-        else:
-            print(f"Warning: Request id {request_id} does not have a Deliver.")
-    
-    df = pd.DataFrame(data)
-    return df
+def clean(df: pd.DataFrame) -> pd.DataFrame:
+    """Clean up a dataframe, i.e., drop na and duplicates."""
+    return df.dropna().drop_duplicates()
 
 
-def etl() -> None:
+def transform_request(contents: pd.DataFrame) -> pd.DataFrame:
+    """Transform the requests dataframe."""
+    return clean(contents)
+
+
+def transform_deliver(contents: pd.DataFrame) -> pd.DataFrame:
+    """Transform the delivers dataframe."""
+    unpacked_result = pd.json_normalize(contents.result)
+    contents = pd.concat((contents, unpacked_result), axis=1)
+    return clean(contents.drop(columns=["result", "error"]))
+
+
+def etl(filename: Optional[str] = None) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
     rpc = parse_args()
     w3 = Web3(HTTPProvider(rpc))
+    session = create_session()
+    event_to_transformer = {
+        MechEventName.REQUEST: transform_request,
+        MechEventName.DELIVER: transform_deliver,
+    }
+    event_to_contents = {}
+    for event_name, transformer in event_to_transformer.items():
+        events = get_events(w3, event_name.value)
+        parsed = parse_events(events)
+        contents = get_contents(session, parsed, event_name)
+        event_to_contents[event_name] = transformer(contents)
 
-    # TODO get request events
-    # TODO get delivered events using the request ids of the fetched request events
-    request_events = get_events(w3, MechRequest.event_name)
-    deliver_events = get_events(w3, MechDeliver.event_name)
-    mech_requests = parse_request_events(request_events)
-    mech_delivers = parse_deliver_events(deliver_events)
-    deliver_contents = request_id_to_deliver_contents(mech_delivers)
-    request_contents = request_id_to_request_contents(mech_requests)
-
-
-    from icecream import ic 
-
-    ic(request_contents)
-    ic(deliver_contents)
-    #deliver_contents = event_to_contents(mech_delivers)
-
-    for key in deliver_contents.keys():
-        if key in request_contents:
-            print("true")
-        else:
-            print("false")
-    
-    df = create_dataframe(request_contents, deliver_contents)
-    print(df)
-    df.to_csv('output.csv', index=False)
-
-    exit(1)
-    delivers_df = delivers_to_df(mech_delivers)
-
-    deliver_contents = delivers_to_df
-
-    # store progress so far.
-    filename = f"{IPFS_LINKS_SERIES_NAME}.csv"
-    with open(filename, "w") as csv_file:
-        write = csv.writer(csv_file)
-        write.writerow(ipfs_links)
-
-
-    print(prediction_delivers)
-    filename = f"{IPFS_LINKS_SERIES_NAME}.csv"
-    with open(filename, "w") as csv_file:
-        write = csv.writer(csv_file)
-        write.writerows(prediction_delivers)
-
-
-    # TODO store results
-    # TODO on a separate file, map the questions from the request events and the response's outcome from the delivered events with the fpmms dataset obtained from `markets.py`
+    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID)
+    if filename:
+        tools.to_csv(filename, index=False)
+    return tools
 
 
 if __name__ == "__main__":
-    etl()
+    etl(DEFAULT_FILENAME)
