@@ -18,6 +18,7 @@
 #   ------------------------------------------------------------------------------
 
 import json
+import re
 import sys
 import time
 from dataclasses import dataclass
@@ -57,6 +58,7 @@ IPFS_LINKS_SERIES_NAME = "ipfs_links"
 BACKOFF_FACTOR = 1
 STATUS_FORCELIST = [404, 500, 502, 503, 504]
 DEFAULT_FILENAME = "tools.csv"
+RE_RPC_FILTER_ERROR = r"Filter with id: '\d+' does not exist."
 SLEEP = 0.5
 N_IPFS_RETRIES = 5
 N_RPC_RETRIES = 100
@@ -244,9 +246,10 @@ def get_events(w3: Web3, event: str) -> List:
                     )
                     break
                 sleep = SLEEP * retries
-                tqdm.write(
-                    f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
-                )
+                if not isinstance(exc, ValueError) and not re.match(RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")) is None:
+                    tqdm.write(
+                        f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
+                    )
                 time.sleep(sleep)
 
         if entries is None:
