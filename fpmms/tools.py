@@ -331,7 +331,8 @@ def get_contents(
         except (ValueError, TypeError, KeyError):
             tqdm.write(f"Could not parse {limit_text(str(raw_content))}")
             continue
-        contents.append(mech_response)
+        if mech_response.tool not in IRRELEVANT_TOOLS:
+            contents.append(mech_response)
         time.sleep(IPFS_POLL_INTERVAL)
 
     return pd.DataFrame(contents)
