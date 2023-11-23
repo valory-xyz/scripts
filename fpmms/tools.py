@@ -61,7 +61,11 @@ SLEEP = 0.5
 N_IPFS_RETRIES = 5
 N_RPC_RETRIES = 100
 RPC_POLL_INTERVAL = 0.05
-IPFS_POLL_INTERVAL = 0.1
+IPFS_POLL_INTERVAL = 0.05
+FORMAT_UPDATE_BLOCK_NUMBER = 29411638
+IRRELEVANT_TOOLS = [
+    "openai-text-davinci-002", "openai-text-davinci-003", "openai-gpt-3.5-turbo", "openai-gpt-4", "stabilityai-stable-diffusion-v1-5", "stabilityai-stable-diffusion-xl-beta-v2-2-2", "stabilityai-stable-diffusion-512-v2-1", "stabilityai-stable-diffusion-768-v2-1", "deepmind-optimization-strong", "deepmind-optimization"
+]
 
 
 class MechEventName(Enum):
@@ -75,6 +79,7 @@ class MechEventName(Enum):
 class MechEvent:
     """A mech's on-chain event representation."""
 
+    for_block: int
     requestId: int
     data: bytes
     sender: str
@@ -86,7 +91,7 @@ class MechEvent:
     @property
     def ipfs_request_link(self) -> Optional[str]:
         """Get the IPFS link for the request."""
-        return self._ipfs_link()
+        return f"{self._ipfs_link()}/metadata.json"
 
     @property
     def ipfs_deliver_link(self) -> Optional[str]:
@@ -98,6 +103,8 @@ class MechEvent:
     def ipfs_link(self, event_name: MechEventName) -> Optional[str]:
         """Get the ipfs link based on the event."""
         if event_name == MechEventName.REQUEST:
+            if self.for_block < FORMAT_UPDATE_BLOCK_NUMBER:
+                return self._ipfs_link()
             return self.ipfs_request_link
         if event_name == MechEventName.DELIVER:
             return self.ipfs_deliver_link
@@ -256,11 +263,12 @@ def parse_events(raw_events: List) -> List[MechEvent]:
     """Parse all the specified MechEvents."""
     parsed_events = []
     for event in raw_events:
+        for_block = event.get("blockNumber", 0)
         args = event.get(EVENT_ARGUMENTS, {})
         request_id = args.get(REQUEST_ID, 0)
         data = args.get(DATA, b"")
         sender = args.get(REQUEST_SENDER, "")
-        parsed_event = MechEvent(request_id, data, sender)
+        parsed_event = MechEvent(for_block, request_id, data, sender)
         parsed_events.append(parsed_event)
 
     return parsed_events
@@ -281,17 +289,21 @@ def create_session() -> requests.Session:
     return session
 
 
-def request(session: requests.Session, url: str) -> Dict[str, str]:
+def request(session: requests.Session, url: str) -> Optional[Dict[str, str]]:
     """Perform a request with a session."""
     try:
         response = session.get(url)
         response.raise_for_status()
     except requests.exceptions.HTTPError as exc:
-        print("HTTP error occurred:", exc)
+        tqdm.write(f"HTTP error occurred: {exc}.")
     except Exception as exc:
-        print("Unexpected error occurred:", exc)
+        tqdm.write(f"Unexpected error occurred: {exc}.")
     else:
-        return response.json()
+        try:
+            return response.json()
+        except requests.exceptions.JSONDecodeError:
+            tqdm.write(f"Failed to parse response into json for {url=}.")
+    return None
 
 
 def limit_text(text: str, limit: int = 200) -> str:
@@ -308,10 +320,13 @@ def get_contents(
     contents = []
     for event in tqdm(events, desc=f"Tools' results", unit="results"):
         raw_content = request(session, event.ipfs_link(event_name))
-        struct = EVENT_TO_MECH_STRUCT.get(event_name)
+        if raw_content is None:
+            tqdm.write(f"Skipping {event=}.")
+            continue
 
+        struct = EVENT_TO_MECH_STRUCT.get(event_name)
+        raw_content[REQUEST_ID] = str(event.requestId)
         try:
-            raw_content[REQUEST_ID] = str(event.requestId)
             mech_response = struct(**raw_content)
         except (ValueError, TypeError, KeyError):
             tqdm.write(f"Could not parse {limit_text(str(raw_content))}")
