@@ -54,11 +54,11 @@ HTTP = "http://"
 HTTPS = HTTP[:4] + "s" + HTTP[4:]
 IPFS_ADDRESS = f"{HTTPS}gateway.autonolas.tech/ipfs/"
 IPFS_LINKS_SERIES_NAME = "ipfs_links"
-N_RETRIES = 3
 BACKOFF_FACTOR = 1
 STATUS_FORCELIST = [500, 502, 503, 504]
 DEFAULT_FILENAME = "tools.csv"
 SLEEP = 0.5
+N_IPFS_RETRIES = 5
 N_RPC_RETRIES = 100
 RPC_POLL_INTERVAL = 0.05
 IPFS_POLL_INTERVAL = 0.1
@@ -270,7 +270,7 @@ def create_session() -> requests.Session:
     """Create a session with a retry strategy."""
     session = requests.Session()
     retry_strategy = Retry(
-        total=N_RETRIES + 1,
+        total=N_IPFS_RETRIES + 1,
         backoff_factor=BACKOFF_FACTOR,
         status_forcelist=STATUS_FORCELIST,
     )
