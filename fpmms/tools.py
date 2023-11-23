@@ -22,7 +22,7 @@ import sys
 import time
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Union
 
 import pandas as pd
 import requests
@@ -62,7 +62,7 @@ N_IPFS_RETRIES = 5
 N_RPC_RETRIES = 100
 RPC_POLL_INTERVAL = 0.05
 IPFS_POLL_INTERVAL = 0.05
-FORMAT_UPDATE_BLOCK_NUMBER = 29411638
+FORMAT_UPDATE_BLOCK_NUMBER = 30411638
 IRRELEVANT_TOOLS = [
     "openai-text-davinci-002", "openai-text-davinci-003", "openai-gpt-3.5-turbo", "openai-gpt-4", "stabilityai-stable-diffusion-v1-5", "stabilityai-stable-diffusion-xl-beta-v2-2-2", "stabilityai-stable-diffusion-512-v2-1", "stabilityai-stable-diffusion-768-v2-1", "deepmind-optimization-strong", "deepmind-optimization"
 ]
@@ -289,7 +289,7 @@ def create_session() -> requests.Session:
     return session
 
 
-def request(session: requests.Session, url: str) -> Optional[Dict[str, str]]:
+def request(session: requests.Session, url: str) -> Optional[requests.Response]:
     """Perform a request with a session."""
     try:
         response = session.get(url)
@@ -299,10 +299,7 @@ def request(session: requests.Session, url: str) -> Optional[Dict[str, str]]:
     except Exception as exc:
         tqdm.write(f"Unexpected error occurred: {exc}.")
     else:
-        try:
-            return response.json()
-        except requests.exceptions.JSONDecodeError:
-            tqdm.write(f"Failed to parse response into json for {url=}.")
+        return response
     return None
 
 
@@ -313,26 +310,63 @@ def limit_text(text: str, limit: int = 200) -> str:
     return text
 
 
+def parse_ipfs_response(session: requests.Session, url: str, event: MechEvent, event_name: MechEventName, response: requests.Response) -> Optional[Dict[str, str]]:
+    """Parse a response from IPFS."""
+    try:
+        return response.json()
+    except requests.exceptions.JSONDecodeError:
+        # this is a workaround because the `metadata.json` file was introduced and removed multiple times
+        if event_name == MechEventName.REQUEST and url != event.ipfs_request_link:
+            url = event.ipfs_request_link
+            response = request(session, url)
+            if response is None:
+                tqdm.write(f"Skipping {event=}.")
+                return None
+
+            try:
+                return response.json()
+            except requests.exceptions.JSONDecodeError:
+                pass
+
+    tqdm.write(f"Failed to parse response into json for {url=}.")
+    return None
+
+
+def parse_ipfs_tools_content(raw_content: Dict[str, str], event: MechEvent, event_name: MechEventName) -> Optional[Union[MechRequest, MechResponse]]:
+    """Parse tools content from IPFS."""
+    struct = EVENT_TO_MECH_STRUCT.get(event_name)
+    raw_content[REQUEST_ID] = str(event.requestId)
+
+    try:
+        mech_response = struct(**raw_content)
+    except (ValueError, TypeError, KeyError):
+        tqdm.write(f"Could not parse {limit_text(str(raw_content))}")
+        return None
+
+    if mech_response.tool not in IRRELEVANT_TOOLS:
+        return mech_response
+
+
 def get_contents(
     session: requests.Session, events: List[MechEvent], event_name: MechEventName
 ) -> pd.DataFrame:
     """Fetch the tools' responses."""
     contents = []
     for event in tqdm(events, desc=f"Tools' results", unit="results"):
-        raw_content = request(session, event.ipfs_link(event_name))
-        if raw_content is None:
+        url = event.ipfs_link(event_name)
+        response = request(session, url)
+        if response is None:
             tqdm.write(f"Skipping {event=}.")
             continue
 
-        struct = EVENT_TO_MECH_STRUCT.get(event_name)
-        raw_content[REQUEST_ID] = str(event.requestId)
-        try:
-            mech_response = struct(**raw_content)
-        except (ValueError, TypeError, KeyError):
-            tqdm.write(f"Could not parse {limit_text(str(raw_content))}")
+        raw_content = parse_ipfs_response(session, url, event, event_name, response)
+        if raw_content is None:
             continue
-        if mech_response.tool not in IRRELEVANT_TOOLS:
-            contents.append(mech_response)
+
+        mech_response = parse_ipfs_tools_content(raw_content, event, event_name)
+        if mech_response is None:
+            continue
+        contents.append(mech_response)
         time.sleep(IPFS_POLL_INTERVAL)
 
     return pd.DataFrame(contents)
@@ -355,9 +389,8 @@ def transform_deliver(contents: pd.DataFrame) -> pd.DataFrame:
     return clean(contents.drop(columns=["result", "error"]))
 
 
-def etl(filename: Optional[str] = None) -> pd.DataFrame:
+def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
-    rpc = parse_args()
     w3 = Web3(HTTPProvider(rpc))
     session = create_session()
     event_to_transformer = {
@@ -378,4 +411,5 @@ def etl(filename: Optional[str] = None) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    etl(DEFAULT_FILENAME)
+    rpc_ = parse_args()
+    etl(rpc_, DEFAULT_FILENAME)

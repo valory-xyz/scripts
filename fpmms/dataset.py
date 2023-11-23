@@ -22,22 +22,22 @@ It assumes the correct order of these filenames for simplicity of implementation
 
 import sys
 import warnings
-from typing import Tuple, Optional
+from typing import Tuple, Optional, Union
 
 import pandas as pd
 
-from fpmms.markets import etl as markets_etl, TITLE_FIELD
-from fpmms.tools import etl as tools_etl, PROMPT_FIELD
+from fpmms.markets import etl as markets_etl, TITLE_FIELD, DEFAULT_FILENAME as MARKETS_FILENAME
+from fpmms.tools import etl as tools_etl, PROMPT_FIELD, DEFAULT_FILENAME as TOOLS_FILENAME
 
 DEFAULT_FILENAME = "dataset.csv"
 
 
-def parse_args() -> Optional[Tuple[str, str]]:
+def parse_args() -> Union[str, Tuple[str, str]]:
     """Parse the arguments and return the markets and tools filenames."""
-    if len(sys.argv) == 1:
-        msg = "No arguments were provided. Fetching all the information from scratch..."
+    if len(sys.argv) == 2:
+        msg = "No filenames were provided. Fetching all the information from scratch..."
         print(msg)
-        return None
+        return sys.argv[1]
     if len(sys.argv) != 3:
         err = "Expected the paths to the markets and the tools as positional arguments."
         raise ValueError(err)
@@ -46,12 +46,12 @@ def parse_args() -> Optional[Tuple[str, str]]:
 
 def generate(filename: Optional[str] = None) -> pd.DataFrame:
     """Generate the dataset."""
-    filenames = parse_args()
+    args = parse_args()
 
-    if filenames is None:
-        dfs = markets_etl(), tools_etl()
+    if isinstance(args, str):
+        dfs = markets_etl(MARKETS_FILENAME), tools_etl(args, TOOLS_FILENAME)
     else:
-        dfs = tuple(pd.read_csv(filename) for filename in filenames)
+        dfs = tuple(pd.read_csv(filename) for filename in args)
 
     # extract the titles from the prompts
     fpmms, tools = dfs
