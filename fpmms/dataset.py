@@ -26,7 +26,11 @@ from typing import Tuple, Optional, Union
 
 import pandas as pd
 
-from markets import etl as markets_etl, TITLE_FIELD, DEFAULT_FILENAME as MARKETS_FILENAME
+from markets import (
+    etl as markets_etl,
+    TITLE_FIELD,
+    DEFAULT_FILENAME as MARKETS_FILENAME,
+)
 from tools import etl as tools_etl, PROMPT_FIELD, DEFAULT_FILENAME as TOOLS_FILENAME
 
 DEFAULT_FILENAME = "dataset.csv"

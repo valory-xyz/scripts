@@ -66,7 +66,16 @@ RPC_POLL_INTERVAL = 0.05
 IPFS_POLL_INTERVAL = 0.05
 FORMAT_UPDATE_BLOCK_NUMBER = 30411638
 IRRELEVANT_TOOLS = [
-    "openai-text-davinci-002", "openai-text-davinci-003", "openai-gpt-3.5-turbo", "openai-gpt-4", "stabilityai-stable-diffusion-v1-5", "stabilityai-stable-diffusion-xl-beta-v2-2-2", "stabilityai-stable-diffusion-512-v2-1", "stabilityai-stable-diffusion-768-v2-1", "deepmind-optimization-strong", "deepmind-optimization"
+    "openai-text-davinci-002",
+    "openai-text-davinci-003",
+    "openai-gpt-3.5-turbo",
+    "openai-gpt-4",
+    "stabilityai-stable-diffusion-v1-5",
+    "stabilityai-stable-diffusion-xl-beta-v2-2-2",
+    "stabilityai-stable-diffusion-512-v2-1",
+    "stabilityai-stable-diffusion-768-v2-1",
+    "deepmind-optimization-strong",
+    "deepmind-optimization",
 ]
 
 
@@ -246,7 +255,13 @@ def get_events(w3: Web3, event: str) -> List:
                     )
                     break
                 sleep = SLEEP * retries
-                if not isinstance(exc, ValueError) and not re.match(RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")) is None:
+                if (
+                    not isinstance(exc, ValueError)
+                    and not re.match(
+                        RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+                    )
+                    is None
+                ):
                     tqdm.write(
                         f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
                     )
@@ -313,7 +328,13 @@ def limit_text(text: str, limit: int = 200) -> str:
     return text
 
 
-def parse_ipfs_response(session: requests.Session, url: str, event: MechEvent, event_name: MechEventName, response: requests.Response) -> Optional[Dict[str, str]]:
+def parse_ipfs_response(
+    session: requests.Session,
+    url: str,
+    event: MechEvent,
+    event_name: MechEventName,
+    response: requests.Response,
+) -> Optional[Dict[str, str]]:
     """Parse a response from IPFS."""
     try:
         return response.json()
@@ -335,7 +356,9 @@ def parse_ipfs_response(session: requests.Session, url: str, event: MechEvent, e
     return None
 
 
-def parse_ipfs_tools_content(raw_content: Dict[str, str], event: MechEvent, event_name: MechEventName) -> Optional[Union[MechRequest, MechResponse]]:
+def parse_ipfs_tools_content(
+    raw_content: Dict[str, str], event: MechEvent, event_name: MechEventName
+) -> Optional[Union[MechRequest, MechResponse]]:
     """Parse tools content from IPFS."""
     struct = EVENT_TO_MECH_STRUCT.get(event_name)
     raw_content[REQUEST_ID] = str(event.requestId)
