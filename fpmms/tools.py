@@ -18,6 +18,7 @@
 #   ------------------------------------------------------------------------------
 
 import json
+import os.path
 import re
 import sys
 import time
@@ -27,6 +28,7 @@ from typing import Optional, List, Dict, Any, Union
 
 import pandas as pd
 import requests
+from eth_typing import ChecksumAddress
 from eth_utils import to_checksum_address
 from requests.adapters import HTTPAdapter
 from tqdm import tqdm
@@ -35,10 +37,11 @@ from web3 import Web3, HTTPProvider
 from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
 
-MECH_CONTRACT_ADDRESS = to_checksum_address(
-    "0xff82123dfb52ab75c417195c5fdb87630145ae81"
-)
-MECH_ABI_PATH = "./contracts/mech_abi.json"
+CONTRACTS_PATH = "contracts"
+MECH_TO_ABI = {
+    "0xff82123dfb52ab75c417195c5fdb87630145ae81": "old_mech_abi.json",
+    "0x77af31de935740567cf4ff1986d04b2c964a786a": "new_mech_abi.json",
+}
 # this is when the creator had its first tx ever
 EARLIEST_BLOCK = 28911547
 # optionally set the latest block to stop searching for the delivered events
@@ -217,16 +220,18 @@ def parse_args() -> str:
     return sys.argv[1]
 
 
-def read_abi() -> str:
+def read_abi(abi_path: str) -> str:
     """Read and return the wxDAI contract's ABI."""
-    with open(MECH_ABI_PATH) as abi_file:
+    with open(abi_path) as abi_file:
         return abi_file.read()
 
 
-def get_events(w3: Web3, event: str) -> List:
+def get_events(
+    w3: Web3, event: str, mech_address: ChecksumAddress, mech_abi_path: str
+) -> List:
     """Get the delivered events."""
-    abi = read_abi()
-    contract_instance = w3.eth.contract(address=MECH_CONTRACT_ADDRESS, abi=abi)
+    abi = read_abi(mech_abi_path)
+    contract_instance = w3.eth.contract(address=mech_address, abi=abi)
 
     latest_block = LATEST_BLOCK
     if latest_block is None:
@@ -235,7 +240,7 @@ def get_events(w3: Web3, event: str) -> List:
     events = []
     for from_block in tqdm(
         range(EARLIEST_BLOCK, latest_block, BLOCKS_CHUNK_SIZE),
-        desc=f"Searching {event} events in block chunks of size {BLOCKS_CHUNK_SIZE}",
+        desc=f"Searching {event} events in block chunks of size {BLOCKS_CHUNK_SIZE} for mech {mech_address}",
         unit="block chunks",
     ):
         events_filter = contract_instance.events[event].build_filter()
@@ -431,9 +436,16 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         MechEventName.REQUEST: transform_request,
         MechEventName.DELIVER: transform_deliver,
     }
+    mech_to_abi = {
+        to_checksum_address(address): os.path.join(CONTRACTS_PATH, filename)
+        for address, filename in MECH_TO_ABI.items()
+    }
     event_to_contents = {}
+
     for event_name, transformer in event_to_transformer.items():
-        events = get_events(w3, event_name.value)
+        events = []
+        for address, abi in mech_to_abi.items():
+            events.extend(get_events(w3, event_name.value, address, abi))
         parsed = parse_events(events)
         contents = get_contents(session, parsed, event_name)
         if not len(contents.index):
