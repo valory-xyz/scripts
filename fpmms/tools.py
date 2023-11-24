@@ -32,6 +32,7 @@ from requests.adapters import HTTPAdapter
 from tqdm import tqdm
 from urllib3 import Retry
 from web3 import Web3, HTTPProvider
+from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
 
 MECH_CONTRACT_ADDRESS = to_checksum_address(
@@ -59,6 +60,7 @@ BACKOFF_FACTOR = 1
 STATUS_FORCELIST = [404, 500, 502, 503, 504]
 DEFAULT_FILENAME = "tools.csv"
 RE_RPC_FILTER_ERROR = r"Filter with id: '\d+' does not exist."
+ABI_ERROR = "The event signature did not match the provided ABI"
 SLEEP = 0.5
 N_IPFS_RETRIES = 5
 N_RPC_RETRIES = 100
@@ -256,11 +258,15 @@ def get_events(w3: Web3, event: str) -> List:
                     break
                 sleep = SLEEP * retries
                 if (
-                    not isinstance(exc, ValueError)
-                    and not re.match(
-                        RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+                    (
+                        isinstance(exc, ValueError)
+                        and re.match(
+                            RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+                        )
+                        is None
                     )
-                    is None
+                    and not isinstance(exc, ValueError)
+                    and not isinstance(exc, MismatchedABI)
                 ):
                     tqdm.write(
                         f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
