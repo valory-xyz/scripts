@@ -375,8 +375,10 @@ def parse_ipfs_tools_content(
         tqdm.write(f"Could not parse {limit_text(str(raw_content))}")
         return None
 
-    if mech_response.tool not in IRRELEVANT_TOOLS:
-        return mech_response
+    if event_name == MechEventName.REQUEST and mech_response.tool in IRRELEVANT_TOOLS:
+        return None
+
+    return mech_response
 
 
 def get_contents(
