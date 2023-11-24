@@ -434,6 +434,9 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         events = get_events(w3, event_name.value)
         parsed = parse_events(events)
         contents = get_contents(session, parsed, event_name)
+        if not len(contents.index):
+            raise ValueError(f"No tools' data for {event_name} events found!")
+
         event_to_contents[event_name] = transformer(contents)
 
     tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID)
