@@ -24,6 +24,7 @@ import sys
 import time
 from dataclasses import dataclass
 from enum import Enum
+from io import StringIO
 from typing import Optional, List, Dict, Any, Union
 
 import pandas as pd
@@ -236,6 +237,7 @@ def get_events(
     event: str,
     mech_address: ChecksumAddress,
     mech_abi_path: str,
+    earliest_block: int,
     latest_block: int,
 ) -> List:
     """Get the delivered events."""
@@ -244,7 +246,7 @@ def get_events(
 
     events = []
     for from_block in tqdm(
-        range(EARLIEST_BLOCK, latest_block, BLOCKS_CHUNK_SIZE),
+        range(earliest_block, latest_block, BLOCKS_CHUNK_SIZE),
         desc=f"Searching {event} events in block chunks of size {BLOCKS_CHUNK_SIZE} for mech {mech_address}",
         unit="block chunks",
     ):
@@ -434,6 +436,40 @@ def transform_deliver(contents: pd.DataFrame) -> pd.DataFrame:
     return clean(contents.drop(columns=["result", "error"]))
 
 
+def gen_event_filename(event_name: MechEventName) -> str:
+    """Generate the filename of an event."""
+    return f"{event_name.value.lower()}s.csv"
+
+
+def read_n_last_lines(filename: str, n: int = 1) -> str:
+    """Return the `n` last lines' content of a file."""
+    num_newlines = 0
+    with open(filename, 'rb') as f:
+        try:
+            f.seek(-2, os.SEEK_END)
+            while num_newlines < n:
+                f.seek(-2, os.SEEK_CUR)
+                if f.read(1) == b'\n':
+                    num_newlines += 1
+        except OSError:
+            f.seek(0)
+        last_line = f.readline().decode()
+    return last_line
+
+
+def get_earliest_block(event_name: MechEventName) -> int:
+    """Get the earliest block number to use when filtering for events."""
+    filename = gen_event_filename(event_name)
+    if not os.path.exists(filename):
+        return EARLIEST_BLOCK
+
+    cols = pd.read_csv(filename, index_col=0, nrows=0).columns.tolist()
+    last_line_buff = StringIO(read_n_last_lines(filename))
+    last_line_series = pd.read_csv(last_line_buff, names=cols)
+    block_field = f"{event_name.value.lower()}_{BLOCK_FIELD}"
+    return int(last_line_series[block_field].values[0])
+
+
 def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
     w3 = Web3(HTTPProvider(rpc))
@@ -453,9 +489,11 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
     for event_name, transformer in event_to_transformer.items():
+        earliest_block = get_earliest_block(event_name)
         events = []
         for address, abi in mech_to_abi.items():
-            events.extend(get_events(w3, event_name.value, address, abi, latest_block))
+            current_mech_events = get_events(w3, event_name.value, address, abi, earliest_block, latest_block)
+            events.extend(current_mech_events)
         parsed = parse_events(events)
         contents = get_contents(session, parsed, event_name)
         if not len(contents.index):
