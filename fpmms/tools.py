@@ -54,6 +54,7 @@ DATA = "data"
 REQUEST_ID = "requestId"
 REQUEST_SENDER = "sender"
 PROMPT_FIELD = "prompt"
+BLOCK_FIELD = "block"
 CID_PREFIX = "f01701220"
 HTTP = "http://"
 HTTPS = HTTP[:4] + "s" + HTTP[4:]
@@ -131,14 +132,16 @@ class MechEvent:
 class MechRequest:
     """A structure for a request to a mech."""
 
-    requestId: Optional[int]
+    request_id: Optional[int]
+    request_block: Optional[int]
     prompt: Optional[str]
     tool: Optional[str]
     nonce: Optional[str]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the request ignoring extra keys."""
-        self.requestId = int(kwargs.pop(REQUEST_ID, 0))
+        self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+        self.request_block = int(kwargs.pop(BLOCK_FIELD, None))
         self.prompt = kwargs.pop(PROMPT_FIELD, None)
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
@@ -193,13 +196,15 @@ class PredictionResponse:
 class MechResponse:
     """A structure for the response of a mech."""
 
-    requestId: int
+    request_id: int
+    deliver_block: Optional[int]
     result: Optional[PredictionResponse]
     error: str
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
-        self.requestId = int(kwargs.pop(REQUEST_ID, 0))
+        self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, None))
         self.error = kwargs.pop("error", "Unknown")
         self.result = kwargs.pop("result", None)
 
@@ -373,6 +378,7 @@ def parse_ipfs_tools_content(
     """Parse tools content from IPFS."""
     struct = EVENT_TO_MECH_STRUCT.get(event_name)
     raw_content[REQUEST_ID] = str(event.requestId)
+    raw_content[BLOCK_FIELD] = str(event.for_block)
 
     try:
         mech_response = struct(**raw_content)
@@ -457,7 +463,7 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
 
         event_to_contents[event_name] = transformer(contents)
 
-    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID)
+    tools = pd.merge(*event_to_contents.values(), on="request_id")
     if filename:
         tools.to_csv(filename, index=False)
     return tools
