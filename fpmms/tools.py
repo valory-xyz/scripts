@@ -41,12 +41,12 @@ from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
 
 CONTRACTS_PATH = "contracts"
-MECH_TO_ABI = {
-    "0xff82123dfb52ab75c417195c5fdb87630145ae81": "old_mech_abi.json",
-    "0x77af31de935740567cf4ff1986d04b2c964a786a": "new_mech_abi.json",
+MECH_TO_INFO = {
+    # this block number is when the creator had its first tx ever, and after this mech's creation
+    "0xff82123dfb52ab75c417195c5fdb87630145ae81": ("old_mech_abi.json", 28911547),
+    # this block number is when this mech was created
+    "0x77af31de935740567cf4ff1986d04b2c964a786a": ("new_mech_abi.json", 30776879),
 }
-# this is when the creator had its first tx ever
-EARLIEST_BLOCK = 28911547
 # optionally set the latest block to stop searching for the delivered events
 LATEST_BLOCK: Optional[int] = None
 LATEST_BLOCK_NAME: BlockParams = "latest"
@@ -490,7 +490,7 @@ def get_earliest_block(event_name: MechEventName) -> int:
     """Get the earliest block number to use when filtering for events."""
     filename = gen_event_filename(event_name)
     if not os.path.exists(filename):
-        return EARLIEST_BLOCK
+        return 0
 
     cols = pd.read_csv(filename, index_col=0, nrows=0).columns.tolist()
     last_line_buff = StringIO(read_n_last_lines(filename))
@@ -507,9 +507,9 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         MechEventName.REQUEST: transform_request,
         MechEventName.DELIVER: transform_deliver,
     }
-    mech_to_abi = {
-        to_checksum_address(address): os.path.join(CONTRACTS_PATH, filename)
-        for address, filename in MECH_TO_ABI.items()
+    mech_to_info = {
+        to_checksum_address(address): (os.path.join(CONTRACTS_PATH, filename), earliest_block)
+        for address, (filename, earliest_block) in MECH_TO_INFO.items()
     }
     event_to_contents = {}
 
@@ -518,9 +518,9 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
     for event_name, transformer in event_to_transformer.items():
-        earliest_block = get_earliest_block(event_name)
         events = []
-        for address, abi in mech_to_abi.items():
+        for address, (abi, earliest_block) in mech_to_info.items():
+            earliest_block = max(earliest_block, get_earliest_block(event_name))
             current_mech_events = get_events(w3, event_name.value, address, abi, earliest_block, latest_block)
             events.extend(current_mech_events)
         parsed = parse_events(events)
