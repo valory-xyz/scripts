@@ -32,10 +32,16 @@ import requests
 from eth_typing import ChecksumAddress
 from eth_utils import to_checksum_address
 from requests.adapters import HTTPAdapter
-from requests.exceptions import ReadTimeout as RequestsReadTimeoutError, HTTPError as RequestsHTTPError
+from requests.exceptions import (
+    ReadTimeout as RequestsReadTimeoutError,
+    HTTPError as RequestsHTTPError,
+)
 from tqdm import tqdm
 from urllib3 import Retry
-from urllib3.exceptions import ReadTimeoutError as Urllib3ReadTimeoutError, HTTPError as Urllib3HTTPError
+from urllib3.exceptions import (
+    ReadTimeoutError as Urllib3ReadTimeoutError,
+    HTTPError as Urllib3HTTPError,
+)
 from web3 import Web3, HTTPProvider
 from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
@@ -147,7 +153,9 @@ class MechRequest:
         """Initialize the request ignoring extra keys."""
         self.request_id = int(kwargs.pop(REQUEST_ID, 0))
         self.request_block = int(kwargs.pop(BLOCK_FIELD, None))
-        self.prompt = re.sub(" +", " ", kwargs.pop(PROMPT_FIELD, None).replace(os.linesep, ""))
+        self.prompt = re.sub(
+            " +", " ", kwargs.pop(PROMPT_FIELD, None).replace(os.linesep, "")
+        )
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
 
@@ -266,7 +274,7 @@ def get_events(
     with tqdm(
         total=latest_block - from_block,
         desc=f"Searching {event} events for mech {mech_address}",
-        unit="blocks"
+        unit="blocks",
     ) as pbar:
         while from_block < latest_block:
             events_filter = contract_instance.events[event].build_filter()
@@ -281,9 +289,17 @@ def get_events(
                     retries = 0
                 except (RequestsHTTPError, Urllib3HTTPError) as exc:
                     if "Request Entity Too Large" in exc.args[0]:
-                        events_filter, batch_size = reduce_window(contract_instance, event, from_block, batch_size, latest_block)
+                        events_filter, batch_size = reduce_window(
+                            contract_instance,
+                            event,
+                            from_block,
+                            batch_size,
+                            latest_block,
+                        )
                 except (Urllib3ReadTimeoutError, RequestsReadTimeoutError):
-                    events_filter, batch_size = reduce_window(contract_instance, event, from_block, batch_size, latest_block)
+                    events_filter, batch_size = reduce_window(
+                        contract_instance, event, from_block, batch_size, latest_block
+                    )
                 except Exception as exc:
                     retries += 1
                     if retries == N_RPC_RETRIES:
@@ -473,12 +489,12 @@ def gen_event_filename(event_name: MechEventName) -> str:
 def read_n_last_lines(filename: str, n: int = 1) -> str:
     """Return the `n` last lines' content of a file."""
     num_newlines = 0
-    with open(filename, 'rb') as f:
+    with open(filename, "rb") as f:
         try:
             f.seek(-2, os.SEEK_END)
             while num_newlines < n:
                 f.seek(-2, os.SEEK_CUR)
-                if f.read(1) == b'\n':
+                if f.read(1) == b"\n":
                     num_newlines += 1
         except OSError:
             f.seek(0)
@@ -508,7 +524,10 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         MechEventName.DELIVER: transform_deliver,
     }
     mech_to_info = {
-        to_checksum_address(address): (os.path.join(CONTRACTS_PATH, filename), earliest_block)
+        to_checksum_address(address): (
+            os.path.join(CONTRACTS_PATH, filename),
+            earliest_block,
+        )
         for address, (filename, earliest_block) in MECH_TO_INFO.items()
     }
     event_to_contents = {}
@@ -521,7 +540,9 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         events = []
         for address, (abi, earliest_block) in mech_to_info.items():
             earliest_block = max(earliest_block, get_earliest_block(event_name))
-            current_mech_events = get_events(w3, event_name.value, address, abi, earliest_block, latest_block)
+            current_mech_events = get_events(
+                w3, event_name.value, address, abi, earliest_block, latest_block
+            )
             events.extend(current_mech_events)
         parsed = parse_events(events)
         contents = get_contents(session, parsed, event_name)
