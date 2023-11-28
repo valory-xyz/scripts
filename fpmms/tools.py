@@ -227,15 +227,15 @@ def read_abi(abi_path: str) -> str:
 
 
 def get_events(
-    w3: Web3, event: str, mech_address: ChecksumAddress, mech_abi_path: str
+    w3: Web3,
+    event: str,
+    mech_address: ChecksumAddress,
+    mech_abi_path: str,
+    latest_block: int,
 ) -> List:
     """Get the delivered events."""
     abi = read_abi(mech_abi_path)
     contract_instance = w3.eth.contract(address=mech_address, abi=abi)
-
-    latest_block = LATEST_BLOCK
-    if latest_block is None:
-        latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
     events = []
     for from_block in tqdm(
@@ -442,10 +442,14 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
     }
     event_to_contents = {}
 
+    latest_block = LATEST_BLOCK
+    if latest_block is None:
+        latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
+
     for event_name, transformer in event_to_transformer.items():
         events = []
         for address, abi in mech_to_abi.items():
-            events.extend(get_events(w3, event_name.value, address, abi))
+            events.extend(get_events(w3, event_name.value, address, abi, latest_block))
         parsed = parse_events(events)
         contents = get_contents(session, parsed, event_name)
         if not len(contents.index):
