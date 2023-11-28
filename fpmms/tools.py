@@ -53,6 +53,7 @@ BLOCKS_CHUNK_SIZE = 30_000
 EVENT_ARGUMENTS = "args"
 DATA = "data"
 REQUEST_ID = "requestId"
+REQUEST_ID_FIELD = "request_id"
 REQUEST_SENDER = "sender"
 PROMPT_FIELD = "prompt"
 BLOCK_FIELD = "block"
@@ -421,7 +422,9 @@ def get_contents(
 
 def clean(df: pd.DataFrame) -> pd.DataFrame:
     """Clean up a dataframe, i.e., drop na and duplicates."""
-    return df.dropna().drop_duplicates()
+    cleaned = df.dropna().drop_duplicates()
+    cleaned[REQUEST_ID_FIELD] = cleaned[REQUEST_ID_FIELD].astype("str")
+    return cleaned
 
 
 def transform_request(contents: pd.DataFrame) -> pd.DataFrame:
@@ -499,10 +502,19 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         if not len(contents.index):
             raise ValueError(f"No tools' data for {event_name} events found!")
 
-        event_to_contents[event_name] = transformer(contents)
+        transformed = transformer(contents)
+        events_filename = gen_event_filename(event_name)
+        if os.path.exists(events_filename):
+            old = pd.read_csv(events_filename)
+            transformed = old.append(transformed, ignore_index=True)
+            transformed.drop_duplicates(REQUEST_ID_FIELD, inplace=True)
+        event_to_contents[event_name] = transformed.copy()
 
-    tools = pd.merge(*event_to_contents.values(), on="request_id")
+    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
     if filename:
+        for event_name, content in event_to_contents.items():
+            event_filename = gen_event_filename(event_name)
+            content.to_csv(event_filename, index=False)
         tools.to_csv(filename, index=False)
     return tools
 
