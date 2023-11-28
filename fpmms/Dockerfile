@@ -12,5 +12,4 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # using a public RPC by default
 ENV RPC "https://lb.nodies.app/v1/406d8dcc043f4cb3959ed7d6673d311a"
-
-CMD [ "python", "./dataset.py", "$RPC"]
+CMD python ./dataset.py $RPC
