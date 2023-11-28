@@ -32,8 +32,10 @@ import requests
 from eth_typing import ChecksumAddress
 from eth_utils import to_checksum_address
 from requests.adapters import HTTPAdapter
+from requests.exceptions import ReadTimeout as RequestsReadTimeoutError, HTTPError as RequestsHTTPError
 from tqdm import tqdm
 from urllib3 import Retry
+from urllib3.exceptions import ReadTimeoutError as Urllib3ReadTimeoutError, HTTPError as Urllib3HTTPError
 from web3 import Web3, HTTPProvider
 from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
@@ -49,7 +51,8 @@ EARLIEST_BLOCK = 28911547
 LATEST_BLOCK: Optional[int] = None
 LATEST_BLOCK_NAME: BlockParams = "latest"
 BLOCK_DATA_NUMBER = "number"
-BLOCKS_CHUNK_SIZE = 5_000
+BLOCKS_CHUNK_SIZE = 10_000
+REDUCE_FACTOR = 0.25
 EVENT_ARGUMENTS = "args"
 DATA = "data"
 REQUEST_ID = "requestId"
@@ -233,6 +236,18 @@ def read_abi(abi_path: str) -> str:
         return abi_file.read()
 
 
+def reduce_window(contract_instance, event, from_block, batch_size, latest_block):
+    """Dynamically reduce the batch size window."""
+    keep_fraction = 1 - REDUCE_FACTOR
+    events_filter = contract_instance.events[event].build_filter()
+    events_filter.fromBlock = from_block
+    batch_size = int(batch_size * keep_fraction)
+    events_filter.toBlock = min(from_block + batch_size, latest_block)
+    tqdm.write(f"RPC timed out! Resizing batch size to {batch_size}.")
+    time.sleep(SLEEP)
+    return events_filter, batch_size
+
+
 def get_events(
     w3: Web3,
     event: str,
@@ -246,52 +261,63 @@ def get_events(
     contract_instance = w3.eth.contract(address=mech_address, abi=abi)
 
     events = []
-    for from_block in tqdm(
-        range(earliest_block, latest_block, BLOCKS_CHUNK_SIZE),
-        desc=f"Searching {event} events in block chunks of size {BLOCKS_CHUNK_SIZE} for mech {mech_address}",
-        unit="block chunks",
-    ):
-        events_filter = contract_instance.events[event].build_filter()
-        events_filter.fromBlock = from_block
-        events_filter.toBlock = min(from_block + BLOCKS_CHUNK_SIZE, latest_block)
+    from_block = earliest_block
+    batch_size = BLOCKS_CHUNK_SIZE
+    with tqdm(
+        total=latest_block - from_block,
+        desc=f"Searching {event} events for mech {mech_address}",
+        unit="blocks"
+    ) as pbar:
+        while from_block < latest_block:
+            events_filter = contract_instance.events[event].build_filter()
+            events_filter.fromBlock = from_block
+            events_filter.toBlock = min(from_block + batch_size, latest_block)
 
-        entries = None
-        retries = 0
-        while entries is None:
-            try:
-                entries = events_filter.deploy(w3).get_all_entries()
-                retries = 0
-            except Exception as exc:
-                retries += 1
-                if retries == N_RPC_RETRIES:
-                    tqdm.write(
-                        f"Skipping events for blocks {events_filter.fromBlock} - {events_filter.toBlock} "
-                        f"as the retries have been exceeded."
-                    )
-                    break
-                sleep = SLEEP * retries
-                if (
-                    (
-                        isinstance(exc, ValueError)
-                        and re.match(
-                            RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+            entries = None
+            retries = 0
+            while entries is None:
+                try:
+                    entries = events_filter.deploy(w3).get_all_entries()
+                    retries = 0
+                except (RequestsHTTPError, Urllib3HTTPError) as exc:
+                    if "Request Entity Too Large" in exc.args[0]:
+                        events_filter, batch_size = reduce_window(contract_instance, event, from_block, batch_size, latest_block)
+                except (Urllib3ReadTimeoutError, RequestsReadTimeoutError):
+                    events_filter, batch_size = reduce_window(contract_instance, event, from_block, batch_size, latest_block)
+                except Exception as exc:
+                    retries += 1
+                    if retries == N_RPC_RETRIES:
+                        tqdm.write(
+                            f"Skipping events for blocks {events_filter.fromBlock} - {events_filter.toBlock} "
+                            f"as the retries have been exceeded."
                         )
-                        is None
-                    )
-                    and not isinstance(exc, ValueError)
-                    and not isinstance(exc, MismatchedABI)
-                ):
-                    tqdm.write(
-                        f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
-                    )
-                time.sleep(sleep)
+                        break
+                    sleep = SLEEP * retries
+                    if (
+                        (
+                            isinstance(exc, ValueError)
+                            and re.match(
+                                RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+                            )
+                            is None
+                        )
+                        and not isinstance(exc, ValueError)
+                        and not isinstance(exc, MismatchedABI)
+                    ):
+                        tqdm.write(
+                            f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
+                        )
+                    time.sleep(sleep)
 
-        if entries is None:
-            continue
+            from_block += batch_size
+            pbar.update(batch_size)
 
-        chunk = list(entries)
-        events.extend(chunk)
-        time.sleep(RPC_POLL_INTERVAL)
+            if entries is None:
+                continue
+
+            chunk = list(entries)
+            events.extend(chunk)
+            time.sleep(RPC_POLL_INTERVAL)
 
     return events
 
