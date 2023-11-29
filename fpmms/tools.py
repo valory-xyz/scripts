@@ -18,39 +18,54 @@
 #   ------------------------------------------------------------------------------
 
 import json
+import os.path
 import re
 import sys
 import time
 from dataclasses import dataclass
 from enum import Enum
+from io import StringIO
 from typing import Optional, List, Dict, Any, Union
 
 import pandas as pd
 import requests
+from eth_typing import ChecksumAddress
 from eth_utils import to_checksum_address
 from requests.adapters import HTTPAdapter
+from requests.exceptions import (
+    ReadTimeout as RequestsReadTimeoutError,
+    HTTPError as RequestsHTTPError,
+)
 from tqdm import tqdm
 from urllib3 import Retry
+from urllib3.exceptions import (
+    ReadTimeoutError as Urllib3ReadTimeoutError,
+    HTTPError as Urllib3HTTPError,
+)
 from web3 import Web3, HTTPProvider
 from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
 
-MECH_CONTRACT_ADDRESS = to_checksum_address(
-    "0xff82123dfb52ab75c417195c5fdb87630145ae81"
-)
-MECH_ABI_PATH = "./contracts/mech_abi.json"
-# this is when the creator had its first tx ever
-EARLIEST_BLOCK = 28911547
+CONTRACTS_PATH = "contracts"
+MECH_TO_INFO = {
+    # this block number is when the creator had its first tx ever, and after this mech's creation
+    "0xff82123dfb52ab75c417195c5fdb87630145ae81": ("old_mech_abi.json", 28911547),
+    # this block number is when this mech was created
+    "0x77af31de935740567cf4ff1986d04b2c964a786a": ("new_mech_abi.json", 30776879),
+}
 # optionally set the latest block to stop searching for the delivered events
 LATEST_BLOCK: Optional[int] = None
 LATEST_BLOCK_NAME: BlockParams = "latest"
 BLOCK_DATA_NUMBER = "number"
-BLOCKS_CHUNK_SIZE = 30_000
+BLOCKS_CHUNK_SIZE = 10_000
+REDUCE_FACTOR = 0.25
 EVENT_ARGUMENTS = "args"
 DATA = "data"
 REQUEST_ID = "requestId"
+REQUEST_ID_FIELD = "request_id"
 REQUEST_SENDER = "sender"
 PROMPT_FIELD = "prompt"
+BLOCK_FIELD = "block"
 CID_PREFIX = "f01701220"
 HTTP = "http://"
 HTTPS = HTTP[:4] + "s" + HTTP[4:]
@@ -128,15 +143,19 @@ class MechEvent:
 class MechRequest:
     """A structure for a request to a mech."""
 
-    requestId: Optional[int]
+    request_id: Optional[int]
+    request_block: Optional[int]
     prompt: Optional[str]
     tool: Optional[str]
     nonce: Optional[str]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the request ignoring extra keys."""
-        self.requestId = int(kwargs.pop(REQUEST_ID, 0))
-        self.prompt = kwargs.pop(PROMPT_FIELD, None)
+        self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+        self.request_block = int(kwargs.pop(BLOCK_FIELD, None))
+        self.prompt = re.sub(
+            " +", " ", kwargs.pop(PROMPT_FIELD, None).replace(os.linesep, "")
+        )
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
 
@@ -190,13 +209,15 @@ class PredictionResponse:
 class MechResponse:
     """A structure for the response of a mech."""
 
-    requestId: int
+    request_id: int
+    deliver_block: Optional[int]
     result: Optional[PredictionResponse]
     error: str
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
-        self.requestId = int(kwargs.pop(REQUEST_ID, 0))
+        self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, None))
         self.error = kwargs.pop("error", "Unknown")
         self.result = kwargs.pop("result", None)
 
@@ -217,68 +238,102 @@ def parse_args() -> str:
     return sys.argv[1]
 
 
-def read_abi() -> str:
+def read_abi(abi_path: str) -> str:
     """Read and return the wxDAI contract's ABI."""
-    with open(MECH_ABI_PATH) as abi_file:
+    with open(abi_path) as abi_file:
         return abi_file.read()
 
 
-def get_events(w3: Web3, event: str) -> List:
-    """Get the delivered events."""
-    abi = read_abi()
-    contract_instance = w3.eth.contract(address=MECH_CONTRACT_ADDRESS, abi=abi)
+def reduce_window(contract_instance, event, from_block, batch_size, latest_block):
+    """Dynamically reduce the batch size window."""
+    keep_fraction = 1 - REDUCE_FACTOR
+    events_filter = contract_instance.events[event].build_filter()
+    events_filter.fromBlock = from_block
+    batch_size = int(batch_size * keep_fraction)
+    events_filter.toBlock = min(from_block + batch_size, latest_block)
+    tqdm.write(f"RPC timed out! Resizing batch size to {batch_size}.")
+    time.sleep(SLEEP)
+    return events_filter, batch_size
 
-    latest_block = LATEST_BLOCK
-    if latest_block is None:
-        latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
+
+def get_events(
+    w3: Web3,
+    event: str,
+    mech_address: ChecksumAddress,
+    mech_abi_path: str,
+    earliest_block: int,
+    latest_block: int,
+) -> List:
+    """Get the delivered events."""
+    abi = read_abi(mech_abi_path)
+    contract_instance = w3.eth.contract(address=mech_address, abi=abi)
 
     events = []
-    for from_block in tqdm(
-        range(EARLIEST_BLOCK, latest_block, BLOCKS_CHUNK_SIZE),
-        desc=f"Searching {event} events in block chunks of size {BLOCKS_CHUNK_SIZE}",
-        unit="block chunks",
-    ):
-        events_filter = contract_instance.events[event].build_filter()
-        events_filter.fromBlock = from_block
-        events_filter.toBlock = min(from_block + BLOCKS_CHUNK_SIZE, latest_block)
+    from_block = earliest_block
+    batch_size = BLOCKS_CHUNK_SIZE
+    with tqdm(
+        total=latest_block - from_block,
+        desc=f"Searching {event} events for mech {mech_address}",
+        unit="blocks",
+    ) as pbar:
+        while from_block < latest_block:
+            events_filter = contract_instance.events[event].build_filter()
+            events_filter.fromBlock = from_block
+            events_filter.toBlock = min(from_block + batch_size, latest_block)
 
-        entries = None
-        retries = 0
-        while entries is None:
-            try:
-                entries = events_filter.deploy(w3).get_all_entries()
-                retries = 0
-            except Exception as exc:
-                retries += 1
-                if retries == N_RPC_RETRIES:
-                    tqdm.write(
-                        f"Skipping events for blocks {events_filter.fromBlock} - {events_filter.toBlock} "
-                        f"as the retries have been exceeded."
-                    )
-                    break
-                sleep = SLEEP * retries
-                if (
-                    (
-                        isinstance(exc, ValueError)
-                        and re.match(
-                            RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+            entries = None
+            retries = 0
+            while entries is None:
+                try:
+                    entries = events_filter.deploy(w3).get_all_entries()
+                    retries = 0
+                except (RequestsHTTPError, Urllib3HTTPError) as exc:
+                    if "Request Entity Too Large" in exc.args[0]:
+                        events_filter, batch_size = reduce_window(
+                            contract_instance,
+                            event,
+                            from_block,
+                            batch_size,
+                            latest_block,
                         )
-                        is None
+                except (Urllib3ReadTimeoutError, RequestsReadTimeoutError):
+                    events_filter, batch_size = reduce_window(
+                        contract_instance, event, from_block, batch_size, latest_block
                     )
-                    and not isinstance(exc, ValueError)
-                    and not isinstance(exc, MismatchedABI)
-                ):
-                    tqdm.write(
-                        f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
-                    )
-                time.sleep(sleep)
+                except Exception as exc:
+                    retries += 1
+                    if retries == N_RPC_RETRIES:
+                        tqdm.write(
+                            f"Skipping events for blocks {events_filter.fromBlock} - {events_filter.toBlock} "
+                            f"as the retries have been exceeded."
+                        )
+                        break
+                    sleep = SLEEP * retries
+                    if (
+                        (
+                            isinstance(exc, ValueError)
+                            and re.match(
+                                RE_RPC_FILTER_ERROR, exc.args[0].get("message", "")
+                            )
+                            is None
+                        )
+                        and not isinstance(exc, ValueError)
+                        and not isinstance(exc, MismatchedABI)
+                    ):
+                        tqdm.write(
+                            f"An error was raised from the RPC: {exc}\n Retrying in {sleep} seconds."
+                        )
+                    time.sleep(sleep)
 
-        if entries is None:
-            continue
+            from_block += batch_size
+            pbar.update(batch_size)
 
-        chunk = list(entries)
-        events.extend(chunk)
-        time.sleep(RPC_POLL_INTERVAL)
+            if entries is None:
+                continue
+
+            chunk = list(entries)
+            events.extend(chunk)
+            time.sleep(RPC_POLL_INTERVAL)
 
     return events
 
@@ -368,6 +423,7 @@ def parse_ipfs_tools_content(
     """Parse tools content from IPFS."""
     struct = EVENT_TO_MECH_STRUCT.get(event_name)
     raw_content[REQUEST_ID] = str(event.requestId)
+    raw_content[BLOCK_FIELD] = str(event.for_block)
 
     try:
         mech_response = struct(**raw_content)
@@ -408,7 +464,9 @@ def get_contents(
 
 def clean(df: pd.DataFrame) -> pd.DataFrame:
     """Clean up a dataframe, i.e., drop na and duplicates."""
-    return df.dropna().drop_duplicates()
+    cleaned = df.dropna().drop_duplicates()
+    cleaned[REQUEST_ID_FIELD] = cleaned[REQUEST_ID_FIELD].astype("str")
+    return cleaned
 
 
 def transform_request(contents: pd.DataFrame) -> pd.DataFrame:
@@ -423,6 +481,40 @@ def transform_deliver(contents: pd.DataFrame) -> pd.DataFrame:
     return clean(contents.drop(columns=["result", "error"]))
 
 
+def gen_event_filename(event_name: MechEventName) -> str:
+    """Generate the filename of an event."""
+    return f"{event_name.value.lower()}s.csv"
+
+
+def read_n_last_lines(filename: str, n: int = 1) -> str:
+    """Return the `n` last lines' content of a file."""
+    num_newlines = 0
+    with open(filename, "rb") as f:
+        try:
+            f.seek(-2, os.SEEK_END)
+            while num_newlines < n:
+                f.seek(-2, os.SEEK_CUR)
+                if f.read(1) == b"\n":
+                    num_newlines += 1
+        except OSError:
+            f.seek(0)
+        last_line = f.readline().decode()
+    return last_line
+
+
+def get_earliest_block(event_name: MechEventName) -> int:
+    """Get the earliest block number to use when filtering for events."""
+    filename = gen_event_filename(event_name)
+    if not os.path.exists(filename):
+        return 0
+
+    cols = pd.read_csv(filename, index_col=0, nrows=0).columns.tolist()
+    last_line_buff = StringIO(read_n_last_lines(filename))
+    last_line_series = pd.read_csv(last_line_buff, names=cols)
+    block_field = f"{event_name.value.lower()}_{BLOCK_FIELD}"
+    return int(last_line_series[block_field].values[0])
+
+
 def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
     w3 = Web3(HTTPProvider(rpc))
@@ -431,18 +523,45 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         MechEventName.REQUEST: transform_request,
         MechEventName.DELIVER: transform_deliver,
     }
+    mech_to_info = {
+        to_checksum_address(address): (
+            os.path.join(CONTRACTS_PATH, filename),
+            earliest_block,
+        )
+        for address, (filename, earliest_block) in MECH_TO_INFO.items()
+    }
     event_to_contents = {}
+
+    latest_block = LATEST_BLOCK
+    if latest_block is None:
+        latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
+
     for event_name, transformer in event_to_transformer.items():
-        events = get_events(w3, event_name.value)
+        events = []
+        for address, (abi, earliest_block) in mech_to_info.items():
+            earliest_block = max(earliest_block, get_earliest_block(event_name))
+            current_mech_events = get_events(
+                w3, event_name.value, address, abi, earliest_block, latest_block
+            )
+            events.extend(current_mech_events)
         parsed = parse_events(events)
         contents = get_contents(session, parsed, event_name)
         if not len(contents.index):
             raise ValueError(f"No tools' data for {event_name} events found!")
 
-        event_to_contents[event_name] = transformer(contents)
+        transformed = transformer(contents)
+        events_filename = gen_event_filename(event_name)
+        if os.path.exists(events_filename):
+            old = pd.read_csv(events_filename)
+            transformed = old.append(transformed, ignore_index=True)
+            transformed.drop_duplicates(REQUEST_ID_FIELD, inplace=True)
+        event_to_contents[event_name] = transformed.copy()
 
-    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID)
+    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
     if filename:
+        for event_name, content in event_to_contents.items():
+            event_filename = gen_event_filename(event_name)
+            content.to_csv(event_filename, index=False)
         tools.to_csv(filename, index=False)
     return tools
 
