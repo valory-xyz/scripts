@@ -18,7 +18,6 @@
 #   ------------------------------------------------------------------------------
 
 import functools
-import os.path
 import warnings
 from string import Template
 from typing import Optional, Generator, Callable
@@ -173,8 +172,9 @@ def fpmms_fetcher() -> Generator[ResponseItemType, int, None]:
         yield query_subgraph(OMEN_SUBGRAPH, fpmms_query, FPMMS_FIELD)
 
 
-def fetch_fpmms(latest_id: str) -> pd.DataFrame:
+def fetch_fpmms() -> pd.DataFrame:
     """Fetch all the fpmms of the creator."""
+    latest_id = ""
     fpmms = []
     fetcher = fpmms_fetcher()
     for _ in tqdm(fetcher, unit="fpmms", unit_scale=BATCH_SIZE):
@@ -212,25 +212,8 @@ def transform_fpmms(fpmms: pd.DataFrame) -> pd.DataFrame:
 
 def etl(filename: Optional[str] = None) -> pd.DataFrame:
     """Fetch, process, store and return the markets as a Dataframe."""
-    if os.path.exists(filename):
-        old_fpmms = pd.read_csv(filename)
-        latest_id = old_fpmms.tail(n=1)["id"].values[0]
-    else:
-        old_fpmms = None
-        latest_id = ""
-
-    fpmms = fetch_fpmms(latest_id)
-
-    n_markets = len(fpmms.index)
-    print(f"Found {n_markets} new markets.")
-
-    if n_markets == 0:
-        return pd.read_csv(filename)
-
+    fpmms = fetch_fpmms()
     fpmms = transform_fpmms(fpmms)
-
-    if old_fpmms is not None:
-        fpmms = old_fpmms.append(fpmms)
 
     if filename:
         fpmms.to_csv(filename, index=False)
