@@ -553,7 +553,7 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         events_filename = gen_event_filename(event_name)
         if os.path.exists(events_filename):
             old = pd.read_csv(events_filename)
-            transformed = old.append(transformed, ignore_index=True)
+            transformed = pd.concat((old, transformed), ignore_index=True)
             transformed.drop_duplicates(inplace=True)
         event_to_contents[event_name] = transformed.copy()
 
