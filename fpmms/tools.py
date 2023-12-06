@@ -217,7 +217,7 @@ class MechResponse:
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
         self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, None))
+        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
         self.error = kwargs.pop("error", "Unknown")
         self.result = kwargs.pop("result", None)
 
