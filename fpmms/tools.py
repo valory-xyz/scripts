@@ -554,7 +554,7 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
         if os.path.exists(events_filename):
             old = pd.read_csv(events_filename)
             transformed = old.append(transformed, ignore_index=True)
-            transformed.drop_duplicates(REQUEST_ID_FIELD, inplace=True)
+            transformed.drop_duplicates(inplace=True)
         event_to_contents[event_name] = transformed.copy()
 
     tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
