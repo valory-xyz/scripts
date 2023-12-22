@@ -25,7 +25,15 @@ import time
 from dataclasses import dataclass
 from enum import Enum
 from io import StringIO
-from typing import Optional, List, Dict, Any, Union
+from typing import (
+    Optional,
+    List,
+    Dict,
+    Any,
+    Union,
+    Callable,
+    Tuple,
+)
 
 import pandas as pd
 import requests
@@ -94,6 +102,9 @@ IRRELEVANT_TOOLS = [
     "deepmind-optimization-strong",
     "deepmind-optimization",
 ]
+# this is how frequently we will keep a snapshot of the progress so far in terms of blocks' batches
+# for example, the value 1 means that for every `BLOCKS_CHUNK_SIZE` blocks that we search, we also store the snapshot
+SNAPSHOT_RATE = 10
 
 
 class MechEventName(Enum):
@@ -152,9 +163,9 @@ class MechRequest:
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the request ignoring extra keys."""
         self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-        self.request_block = int(kwargs.pop(BLOCK_FIELD, None))
+        self.request_block = int(kwargs.pop(BLOCK_FIELD, 0))
         self.prompt = re.sub(
-            " +", " ", kwargs.pop(PROMPT_FIELD, None).replace(os.linesep, "")
+            " +", " ", kwargs.pop(PROMPT_FIELD, "").replace(os.linesep, "")
         )
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
@@ -217,7 +228,7 @@ class MechResponse:
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
         self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, None))
+        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
         self.error = kwargs.pop("error", "Unknown")
         self.result = kwargs.pop("result", None)
 
@@ -515,6 +526,55 @@ def get_earliest_block(event_name: MechEventName) -> int:
     return int(last_line_series[block_field].values[0])
 
 
+def pipeline_step(
+    w3: Web3,
+    session: requests.Session,
+    event_to_contents: Dict[MechEventName, pd.DataFrame],
+    event_to_transformer: Dict[MechEventName, Callable],
+    mech_to_info: Dict[ChecksumAddress, Tuple[str, int]],
+    stop_block: Optional[int] = None,
+    start_block: Optional[int] = None,
+):
+    """Perform a step of the pipeline, from start block (or default earliest) to stop block."""
+    for event_name, transformer in event_to_transformer.items():
+        events = []
+        for address, (abi, earliest_block) in mech_to_info.items():
+            if start_block is None:
+                start_block = max(earliest_block, get_earliest_block(event_name))
+                stop_block = start_block + SNAPSHOT_RATE * BLOCKS_CHUNK_SIZE
+            current_mech_events = get_events(
+                w3, event_name.value, address, abi, start_block, stop_block
+            )
+            events.extend(current_mech_events)
+        parsed = parse_events(events)
+        contents = get_contents(session, parsed, event_name)
+        if not len(contents.index):
+            raise ValueError(f"No tools' data for {event_name} events found!")
+
+        transformed = transformer(contents)
+        events_filename = gen_event_filename(event_name)
+        if os.path.exists(events_filename):
+            old = pd.read_csv(events_filename)
+            transformed = pd.concat((old, transformed), ignore_index=True)
+            transformed.drop_duplicates(inplace=True)
+        event_to_contents[event_name] = transformed.copy()
+
+    return stop_block
+
+
+def store_progress(
+    filename: str,
+    event_to_contents: Dict[MechEventName, pd.DataFrame],
+    tools: pd.DataFrame,
+) -> None:
+    """Store the given progress."""
+    if filename:
+        for event_name, content in event_to_contents.items():
+            event_filename = gen_event_filename(event_name)
+            content.to_csv(event_filename, index=False)
+        tools.to_csv(filename, index=False)
+
+
 def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
     w3 = Web3(HTTPProvider(rpc))
@@ -536,33 +596,26 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
     if latest_block is None:
         latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
-    for event_name, transformer in event_to_transformer.items():
-        events = []
-        for address, (abi, earliest_block) in mech_to_info.items():
-            earliest_block = max(earliest_block, get_earliest_block(event_name))
-            current_mech_events = get_events(
-                w3, event_name.value, address, abi, earliest_block, latest_block
-            )
-            events.extend(current_mech_events)
-        parsed = parse_events(events)
-        contents = get_contents(session, parsed, event_name)
-        if not len(contents.index):
-            raise ValueError(f"No tools' data for {event_name} events found!")
+    next_start_block = to_block = None
+    while True:
+        if next_start_block is not None:
+            to_block = next_start_block + SNAPSHOT_RATE * BLOCKS_CHUNK_SIZE
+            to_block = min(to_block, latest_block)
+        to_block = pipeline_step(
+            w3,
+            session,
+            event_to_contents,
+            event_to_transformer,
+            mech_to_info,
+            to_block,
+            next_start_block,
+        )
+        tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
+        store_progress(filename, event_to_contents, tools)
+        next_start_block = to_block
+        if next_start_block == latest_block:
+            break
 
-        transformed = transformer(contents)
-        events_filename = gen_event_filename(event_name)
-        if os.path.exists(events_filename):
-            old = pd.read_csv(events_filename)
-            transformed = old.append(transformed, ignore_index=True)
-            transformed.drop_duplicates(REQUEST_ID_FIELD, inplace=True)
-        event_to_contents[event_name] = transformed.copy()
-
-    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
-    if filename:
-        for event_name, content in event_to_contents.items():
-            event_filename = gen_event_filename(event_name)
-            content.to_csv(event_filename, index=False)
-        tools.to_csv(filename, index=False)
     return tools
 
 

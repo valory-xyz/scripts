@@ -5,13 +5,14 @@ description = "Experiments with FPMMs, tools and predictions."
 authors = ["Adamantios Zaras"]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.12"
+python = ">=3.10,<3.12"
 requests = "^2.26.0"
 pandas = "^1.3.5"
 tqdm = "^4.62.3"
 web3 = "^6.11.1"
-notebook = "^7.0.6"
+notebook = "^6.5.6"
 matplotlib = "3.1.0"
+mech-client = "^0.2.9"
 
 [tool.poetry.dev-dependencies]
 
