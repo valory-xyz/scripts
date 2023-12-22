@@ -163,9 +163,9 @@ class MechRequest:
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the request ignoring extra keys."""
         self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-        self.request_block = int(kwargs.pop(BLOCK_FIELD, None))
+        self.request_block = int(kwargs.pop(BLOCK_FIELD, 0))
         self.prompt = re.sub(
-            " +", " ", kwargs.pop(PROMPT_FIELD, None).replace(os.linesep, "")
+            " +", " ", kwargs.pop(PROMPT_FIELD, "").replace(os.linesep, "")
         )
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
