@@ -3,8 +3,10 @@ id,currentAnswer,title
 0x00b03e86def06f5afb3b5219df72df758c96ec87,Yes,Will the ChatGPT app for Android exceed 1 million downloads on 7 August 2023?
 0x00b35c004225b9f1ff44572672d04488bff289ea,No,Will Burger King exit Russia by 7 October 2023?
 0x00d387d63a419c03de5938a1b75c254e8a8ff681,No,Will Microsoft successfully resolve the Activision merger issues with the UK regulator by 3 August 2023?
+0x0113665e528cb312c76998b9d5a3b1a53244ac31,No,Will Nvidia's cut-down version of RTX 4090 graphics card be released by 16 December 2023?
 0x012b6a79207139a2aee5903db344a6958b53910a,No,Will Britain implement the ban on new fossil fuel car sales by 29 September 2023?
 0x014c63c36684f18fda5548f26ad3bf4c70cd9821,No,Will Spotify add full-length music videos to its app by 13 August 2023?
+0x0150561807f8b53b3d4ae31448ed00475f941fa0,No,"Will the new school funded by Elon Musk open in Austin, Texas by 21 December 2023?"
 0x015d0da18916444ee47e19c26320d215320e3135,Yes,Will the Comet Nishimura be visible from Earth on 15 September 2023?
 0x016430e373eb2068b6df60047e0a45f49fc40750,No,Will the hostage-prisoner swap between Hamas and Israel be successfully negotiated by 15 October 2023?
 0x01aa4be90f6bd212d0d298655f1a6b2fe6fa5b46,No,Will Pope Francis change his stance and allow women to become priests by 1 November 2023?
@@ -23,6 +25,7 @@ id,currentAnswer,title
 0x02f3b6da5a26251d726b883ee3be0794d8303c45,No,Will Florida recover from Storm Idalia's aftermath by 4 September 2023?
 0x03273ab99c2c7b3cf23d9f60bdfb70c0985164d8,Yes,Will a new Fitbit smartwatch be released by 22 October 2023?
 0x0333412a18791264a6dc18b2bf63b04f6e3bd337,No,"Will the woman arrested for animal abuse in Chandler, Arizona be convicted on 29 September 2023?"
+0x037c270d36797e66da0fb99e1a8614596925ca49,No,Will Lyon hire a new Italian manager by 10 December 2023?
 0x03d97021a7005c0a265913eb2d56aa197a911c5d,No,Will the 'Long Boom' scenario see a significant resurgence in social media discussions on 3 August 2023?
 0x03dd5717cb999202944424278523afb8a700512f,Yes,Will Zimbabwe hold its national election by 29 August 2023?
 0x040155ce5f539c9463e5795ad84d3207087e4fa2,Yes,Will the Ford Motor Company strike end by 3 November 2023?
@@ -30,26 +33,36 @@ id,currentAnswer,title
 0x0441159a5b25f5971a10d05b597e470cc876bfcf,Yes,Will the Hollywood actors' strike end on 15 November 2023?
 0x046fb118b349ed61c921152f012e872190693691,No,Will Twitter complete its rebrand to 'X' by 5 August 2023?
 0x0484113bb2491ebdff166b4077048d72d7d3af41,Yes,Will Apple's new M3 Pro chip be launched by 9 November 2023?
+0x04ad9b895a3d4fc922873472207594ce3241c3bd,No,Will Tesla launch a phone on or by 6 December 2023?
 0x04bd848fc5fedf279dab81935c825eff472589b8,No,Will Dolce & Gabbana finish the construction of the tallest and most luxurious skyscraper in Miami by 26 September 2023?
+0x056c9f3808053001e9cd66f4e984e6910e3fad50,Yes,Will the Galaxy Z Flip 5 phone be declared as the best minimalist phone of the year on 9 January 2024?
 0x057057147092b3cb0348a620d8835957849084e7,No,Will the European Central Bank raise its key interest rate on 18 September 2023?
 0x057387d960a53c7347fb7bbd7585c81dc1bebff1,Yes,Will Volkswagen fully recover from its major IT outage by 3 October 2023?
 0x05925776a5cf13459d981bed549fc4cdcc54ec8b,No,Will Apple have another partnership similar to the one with Linkfire by 27 August 2023?
 0x05ccaa8aea21770215cf588ad86d469f9bb602e1,No,Will search operations find the missing mountaineers in the Tibetan mountain on 12 October 2023?
+0x0628a1db6f419e2ff6a27a650ffaf2d05a5a1cf1,Yes,"Will the US military's X-37B spaceplane successfully launch into a higher orbit by January 7, 2024?"
 0x067ec2535e49ddf4eb005a6a960598886757b4c8,No,Will there be another climate activist demonstration at Berlin's Brandenburg Gate by 21 September 2023?
+0x06869448163219e65735e78c0e4235be18c2ecf2,Yes,Will the Googlefication of Fitbit lead to an increase in its market share by 26 December 2023?
 0x06bbbf1198bdc252f64b64da0cd4dad13c3c56d2,No,Will Marvel's Echo TV show be released on 10 November 2023?
 0x070ad1baa41b0f94631726eba1f95eddfc9bddb6,No,"Will the results of Seamus Bruners' two-year investigation into Gates, Zuckerberg, Soros lead to any legal action by 15 November 2023?"
 0x07488656dc02325b2af65ac1a221242780f7460d,Yes,Will there be any legal action taken against Syria by the Netherlands and Canada in the United Nations' highest court by 19 October 2023?
 0x075a03b692bfd86c1321f87fb6272c9daf23005a,No,Will Tesla agree to build a factory in Turkey by 22 September 2023?
 0x0797959bb15defeecab7a5d765f2697d2d6e6bcc,No,Will Donald Trump's gag order in the federal election case still be in effect on 26 October 2023?
 0x07a1709cd9a1837b3526e0f141f170f6fca78fff,No,Will John King announce his candidacy for the 2024 election by 30th September 2023?
+0x07cd095a2ad78d51467add19a0ed4a5106d9606a,No,Will NASA's Voyager 1 spacecraft resume communication with Earth by 20 December 2023?
 0x07f1548c7c3e292e021bc9388c78c5c3fe7ab7ff,No,Will Netflix host a live F1 racing event by 26 October 2023?
 0x083e2b2894b145917799d13bae251b4bb9225d4d,Yes,Will Russia maintain the lift on gasoline export restrictions on 26 November 2023?
 0x088faeb693f07e0685ad9d5d75ac282857035c62,No,Will AIP-2 be voted in by the DAO before the end of October 2023?
+0x08b153074e19d23b58cbe9eeda11e4d9d6438e3c,No,Will the Florida school board member implicated in a sexual assault scandal resign on or by 19 December 2023?
 0x08bf2bdebe736795668c5ada446724d2d9fa486a,No,Will Frank Rubio's record for the longest single spaceflight by an American be broken by 1 October 2023?
 0x0901c261da19f5b66c7c128d276e0f0768c79a1d,Yes,Will Starfield be released by 11 September 2023?
+0x0944e1460e8ed29b4c018cea50081b1df73cedc3,Yes,Will China use military force to annex Taiwan by 6 January 2024?
 0x094cf570feca4b288a104b6d562a3660466165fd,No,Will Senator Bob Menendez resign from his position by 30th September 2023?
+0x095021624b3e6336675c1af8ca84592408c707c9,Yes,Will the San Antonio Spurs defeat the Los Angeles Lakers in their game on 25 December 2023?
+0x095b101bd6fbd60efabf6bf8bb5bf25e981f9c94,No,Will the University of Pennsylvania receive another donation of $100m or more by 14 December 2023?
 0x0974774ca01b618c792d40cd778525bf2edb86d1,No,Will Microsoft sell more than 1 million licenses for its 365 AI Copilot by 3 August 2023?
 0x097fa69b75d999fc2a9218b5d06c5ac0bfbebf35,No,Will the SEC take action against another NFT project as an unregistered security by 6 September 2023?
+0x0983812e0343a105837c066ef654b11bc9628567,No,Will Putin win another presidential term in Russia on 16 December 2023?
 0x09df3000bea448664789f74bb3417f0efa139b1c,No,Will Gov. Newsom introduce another bill for decriminalizing psychedelic mushrooms on or by 13 October 2023?
 0x0a233a236cc200a376f1b39bfc36a38b596d66c9,No,Will Avi Loeb correct his claim about the alien origin of the spherules by 12 August 2023?
 0x0a6e6a284d08861a3dbf257b97e8a3055d016264,No,Will the state of emergency declared by Kentucky Gov. Andy Beshear over train derailment and chemical spill end by 2 December 2023?
@@ -57,40 +70,56 @@ id,currentAnswer,title
 0x0b29980a36fea278148cbe12b5879bc0a0b3cc51,No,Will Japan's advanced X-ray telescope discover a new celestial object by 13 September 2023?
 0x0b2b32452a7da8064f5c9289b3e46c01049b005c,Yes,Will the House Speaker battle be resolved by 26 October 2023?
 0x0b72553c7bb389f3d6824ab0b068130229fc1d56,No,"Will Frégate-F100, the Canadair Made in France, launch a new model on 12 October 2023?"
+0x0b93d0f0c88912ee2146f45b91e314a72d755de3,Yes,Will the trial of the human trafficking incident involving the plane grounded in France conclude by 30 December 2023?
 0x0baebdbb8142ff0e3bffe2b7b2837dd2e0e27657,No,Will the police find the husband of the owner of the nursery involved in the child fentanyl death case by 25 September 2023?
 0x0bbb32368e62c91fc693bab6fba330b0f2f0346f,No,Will the Supreme Court adopt a formal code of conduct for justices by 23 October 2023?
 0x0c2fae0dfa6809c975241c49ba81a41ff1c3843c,Yes,Will the ceasefire agreement in Nagorno-Karabakh hold until 25 September 2023?
+0x0c463cf0600dde07a674bf36b06ad9b64dbba381,Yes,Will Arsenal secure a deal with Matthijs de Ligt on or by 6 January 2024?
 0x0c47af0400f5d3f9105d07c66ab622f25ca83e93,Yes,Will Tokyo property prices continue to surge on 8 October 2023?
 0x0c5409e22e1b25e69c288c0c63368d0684ba9a95,Yes,Will Withings' ScanWatch 2 with a body temperature sensor and improved health tracking be launched on or before 10 September 2023?
 0x0c697e2fcf332ed56725783805d01365f1292636,No,Will Mike Pence endorse Donald Trump for the 2024 presidential race by 5 November 2023?
+0x0ce94d8812167c85ed748870fd52c05f8b0bedcc,No,Will Uefa president Aleksander Ceferin change his own rule to remain in power until 2031 by 20 December 2023?
 0x0d34fed702fcf049465cedab2373e07755106a1e,Yes,"Will Tesla confirm 'insider wrongdoing' as the cause of the massive employee data leak by August 30, 2023?"
+0x0d61caad420233c8c92e215d3d4b069b174f47d3,Yes,Will the Hungarian government change its stance and approve the EU funding to Ukraine by 25 December 2023?
+0x0d6433eb020b0064168a8d6417de61fc65d66261,Yes,Will the number of Americans filing for unemployment benefits decrease by 6 January 2024?
 0x0d69628abd2b25b2898f12f579f08359156ee787,No,Will Virginia Republicans ban abortion by 4 October 2023?
 0x0d7bc41840efd9df2c9878c2bba6e25d7549010f,Yes,Will Palm Springs recover from the flooding caused by Storm Hillary by 31 August 2023?
 0x0da61ac4cac5a278fbaf6a0b0325e701c79c992b,No,Will there be a seventh allegation against Lizzo on or by 19 August 2023?
 0x0dbaf96249fa9e27748fe042e4e7fe09f25fb866,No,Will the Haiti gang violence result in further protests on 5 September 2023?
 0x0e22a7d1bb4b08ea731e8ed2daf9625f33ee28da,Yes,Will Princess Cruises extend its offer of allowing two extra guests for free beyond 20 August 2023?
+0x0e2a03a6469f8b8ca045e620f2d3429b4000756c,Yes,Will David Warner's 'baggy green' cap be returned by 7 January 2024?
 0x0e4ab66030acaa0c7b19cc3770f0231984f654d7,No,Will bitcoin reach a new all-time high by 1 November 2023?
 0x0e56932623bbceb36161eb1acdbb168bde088ed0,No,Will France officially ban disposable vapes by 19 September 2023?
+0x0e727ec6cb227f89af5f888d8b2e38d414e2aa5a,No,Will the cease-fire in Myanmar be effective by 5 December 2023?
 0x0e829500c7e2b922833528bc77fc51ff2e71ceb5,No,Will President Joe Biden veto the Senate Republican effort to reverse 'Buy America' EV charging waiver by 14 November 2023?
 0x0eae6d59d07f7edc799afcbfeb6797f72c34a72f,Yes,Will the annual cost of owning a car exceed $12K by 5 September 2023?
+0x0f0887b06621d9383b55558fd879eb3f53a95da9,Yes,Will Sierra Leone lift the nationwide curfew by 5 December 2023?
 0x0f2fac94975df98e1adb3ed1cef2d72d9e2a1b32,No,"Will Walmart face any legal action for data-mining Ozempic prescriptions by October 16, 2023?"
 0x0f66e91cdc0e9f0104ed95614f846926396d08f0,No,Will X/Twitter CEO Linda Yaccarino resign by 28 November 2023?
 0x0f896e4c79e394cc59a9d5f0d6077c427da7a113,Yes,Will the fourth man who escaped a Georgia jail in mid-October be captured by 20 November 2023?
 0x0fc2a44d33bb7dd39f2d7c9eb172ad85c80bac74,Yes,Will Shakira face legal consequences for her tax fraud case by 27 November 2023?
 0x0fe7cf226b133f4ae1f483eed893e92c093d719d,No,Will South Korean authorities identify the motive behind the stabbing incident outside the presidential compound by 9 November 2023?
 0x100d6a0f20d610bed6045351b08b97605e8bba48,No,Will the Meta 'Super Rumble' game have more than 1 million players by 10 August 2023?
+0x10289d0f2fc38da1885a2f2bf1090e34990cb1a8,Yes,Will the U.S. and China improve their relations by 30 December 2023?
+0x106f0a00fdc03a3d53de7d0f41bb96ec32fa1a58,Yes,"Will the LA Dodgers' Yoshinobu Yamamoto win his first game by December 29, 2023?"
 0x108cab4fcdb3e670d352b35dc042da62ae5d447a,No,Will Mark Zuckerberg and Elon Musk participate in a cage fight on 11 August 2023?
+0x10946228c9d8f777fa609fe4b7e45cf5cf42d817,Yes,Will Warner Bros Discovery and Paramount Global merge by 28 December 2023?
 0x10a962a9853c9b04163db3f64db9c7023542a155,No,Will Annapurna Interactive release a new indie game on 10 August 2023?
+0x10b72ee3e7a6c34f19b15207364b587ac701633b,Yes,Will the all-white alligator born in Florida still be alive on 18 December 2023?
 0x10e3ea638b622334e5e6bc71a37e85378bed0e26,No,Will California experience effects from a tropical storm on 25 August 2023?
 0x110ff5f0d6f90e0788e46b122d49be79ac34ff32,No,Will Stephen Kenny continue as the manager for the Republic of Ireland after McClean's retirement?
 0x1118cccd45ed8e09b5e15a4c641d83ea35deadae,No,Will U.S. Army Private Travis King face legal charges upon his return to Texas by 4 October 2023?
+0x113d61a74e276c85538d137edc9675c61db4e33c,No,Will Twitter go bankrupt under Elon Musk's leadership by 10 December 2023?
 0x11715bc5b603e6e18c8a9bd900127c0c33f923cd,No,Will the US cease aid to Ukraine by 5 October 2023?
 0x119856fde7a1a920d1fdc4e9233be0fd44d7d66b,No,Will San Marino win their first competitive match by 29 November 2023?
+0x11fae569e00dcb1bc785432fdd2934a520d37f5b,Yes,Will Iceland's volcano on the Reykjanes peninsula stop erupting by 27 December 2023?
+0x12242a5cf2c619dec6ec4d44cc232637fefefa37,No,Will Gucci reverse its decision to move its design office from Rome to Milan by 6 December 2023?
 0x125e1a5f170e3b0008a9183aa36b260bc2d76b0d,No,Will new Philips Hue security cameras be available in the market by 28 August 2023?
 0x1285563522c4a00731c126d48d1ea9a04ef701dc,No,Will Jimbo Fisher be reinstated as the head football coach at Texas A&M University by 19 November 2023?
 0x12cbdd54a3dd8dc51dcb10297ca1587f326fd50a,No,Will the Perseverance Rover find definitive evidence of past life on Mars by 8 August 2023?
 0x12e48f6f548c1855017ede4610d122665e67183c,No,Will Panic host its first games showcase by 22 August 2023?
 0x12e97eec18774336b600b96bbec957881e9bf838,Yes,"Will the American caver, who fell ill in a deep cave in Turkey, be successfully rescued by 14 September 2023?"
+0x12ffc1b3ce4d768514e532c809b97adf52818965,No,Will Donald Trump be disqualified from the 2024 Presidential race due to Constitutional reasons on 3 January 2024?
 0x13004856e7982af1597a2dfbe5593c06177f9a89,Yes,Will the first ever Angry Birds cafe in New York be open on 15 August 2023?
 0x134bb701790acebc13a11313cb24a7d4e814e53b,No,Will China Evergrande Group shares drop below 50% of its current value by 22 September 2023?
 0x135988d48b16a48ff3fd04b71d24f5d15db6100f,No,"Will Donald Trump's charges related to hush money payments be dismissed by October 9, 2023?"
@@ -99,23 +128,30 @@ id,currentAnswer,title
 0x13f7257f81a47260729215918cd6ea09ba08e604,No,"Will China publicly support Israel on or before October 17, 2023?"
 0x1426042723cdaaa2350103bd979ddee4e3b89ad0,Yes,Will Sam Bankman-Fried be found guilty in his fraud trial by 9 November 2023?
 0x142a2a3f7129999d1a7a65ba8335e67229011b25,Yes,Will the social network X launch its job listing feature by 9 September 2023?
+0x1430be28d22ee37dbfd4cb092487196d1f09d9ab,Yes,Will Samsung launch the Galaxy S24 Ultra by 30th December 2023?
 0x144a596247a49cde29e198798d1e09e1e8a614b6,No,Will Kostis play another match under Simeone's coaching on 9 October 2023?
 0x1472c5ad74863dd8d522f0ef9af6bf0629287920,Yes,Will the wildfire in Hawaii's Oahu rainforest be completely extinguished by 18 November 2023?
 0x14a7af977a4bc03be94d0d6f2755df42bd011e0a,No,Will the Nobel Prize in literature be awarded to a non-European author on 9 October 2023?
+0x14e18867456fb981ca5b2ac02bf94c279354489f,Yes,Will the Los Angeles Dodgers sign free agent Shohei Ohtani by 14 December 2023?
+0x14ef43892d8cdaef88d61796df8fc76c210cd3af,No,Will the LG B3 remain the best OLED TV of 2023 by 17 December 2023?
 0x15086c39853ed28b77b411c5caf03a94d1293462,No,Will the Hollywood writers and producers reach an agreement by 1 September 2023?
 0x15094a3ded9afa07d41fd1c4354ab32df409901e,Yes,Will Netflix's One Piece anime adaptation receive an IMDb rating of 8 or more by 8 September 2023?
 0x156cc896a4af78b68428dd19e7a01818d80396f1,Yes,Will the repair work on the I-10 freeway in Los Angeles be completed by 23 November 2023?
+0x15959c178d085f6cc41371619145f7b76c919325,Yes,Will the Air Force major convicted of manslaughter receive an appeal by 18 December 2023?
 0x1597e57b5b0ba1cfebb849c11e006226be548d88,No,Will the Ahsoka-themed fashion line by RSVLTS be sold out by 27 August 2023?
 0x15cc760ab3d0a3aeaf7bd57a5e692a51fbd62193,No,Will the Seattle officer involved in the controversial recording be suspended or fired by 19 September 2023?
 0x15f98cd9a69741bf6421a0a59bc4298b5ed8be81,No,Will Meta discover another misinformation campaign on 4 September 2023?
 0x15fe32954f2c4a99c42cb366395785e59c5a38f0,Yes,Will Facebook continue to allow Cambodia's Ex-Prime Minister Hun Sen's accounts to remain active on 7 September 2023?
+0x160d14a0fd85a4b9d8196b7349ffcc263bae9d21,No,Will Microsoft release Windows 12 by 15 December 2023?
 0x160df81ea57909158bcde0e609507463da310786,No,"Will the match between RKC Waalwijk and Ajax be resumed by 5 October 2023, after being abandoned due to goalkeeper Etienne Vaessen's injury?"
 0x1632316f9f3eb050ac3363d3e6482057c8138fd3,Yes,Will the 41 construction workers trapped in a collapsed tunnel in northern India be rescued by 4 December 2023?
 0x165eed0083358305f1e402b41339fe53148eeb1d,No,Will Tesla deliver the first Cybertruck by 24 October 2023?
 0x1690b486ae6f250110b20b121a31b7bbaf296374,No,Will the Pixel 8A be officially released by 17 October 2023?
 0x16c4207445ee6aaec9afd8d24be35ab612dff0da,No,Will the Texas state lose the lawsuit over TikTok ban on 13 August 2023?
 0x16d48bdbd5b1935e544c45c38c66ea34e9fa1ab0,No,Will there be a verdict in the new allegations against singer Lizzo by 14 August 2023?
+0x1700ccae4118723e0ce7f6bac3b8d947ee1e4a65,No,Will Real Madrid maintain their top position in La Liga on 12 December 2023?
 0x17581836592c460e4961c30dc8bcab996de1ad19,No,Will there be another high altitude heist in Switzerland by 4 September 2023?
+0x179dcaa211ac2ac96641a4c26d8b39cca1a51ba4,Yes,Will the North American wolverine receive threatened species protections under the Biden administration proposal by 8th December 2023?
 0x17a645505153341abea84a7ef1978aa7804c22dd,No,Will Elon Musk and Mark Zuckerberg's fight event actually occur by 12 August 2023?
 0x17c6fa07a5b54b46d23952ac4f98bc45477d37f0,No,Will the FDA ban the oral formulation of the nasal decongestant phenylephrine by 17 September 2023?
 0x17c75e68eebc6a590a6a5713ec48dded747ac3da,No,"Will Apple release a feature to prevent shoulder surfing on iPhones by December 1, 2023?"
@@ -123,20 +159,28 @@ id,currentAnswer,title
 0x180b4c01b6a2e53cb05ad004a6033d503ae3b8f9,No,Will Donald Trump's hush money charges be dismissed by 10 October 2023?
 0x18149535c6003a27eb50dd972d8e8d5ca5bcbb28,No,Will the right to carry firearms in public be reinstated in New Mexico on or by 20 September 2023?
 0x1856fa7b1df326c3ceafa9fb6e38b59a99f8b360,No,Will Equinor start the development of the Rosebank oil and gas field by 1 October 2023?
+0x1861acfe085d630e2a13493c5ab324326ccb929d,No,Will  the Philippines and China resolve their territorial dispute by 18 December 2023?
+0x186ee14822a5b802afd69ad3625993fceef9e805,Yes,Will Xiaomi become one of the world's top five automakers by 5 January 2024?
 0x18bd8063785b5b66116eb5191afb55ce29bde7ea,No,Will Donald Trump be acquitted in his New York fraud case by 28 November 2023?
 0x18c2361cf011482cdb81d92f1c3a41a587ea0e70,No,Will the US government shut down on 28 September 2023?
+0x18e1ebb9bbcc2a0fc672ab1f4f144a78266a8e7b,Yes,"Will Tesla resolve the recall issue of 120,000 vehicles over doors that could unlock in crash by 29 December 2023?"
 0x1926848859ae7c43cd3ce29e783a840bb88ba105,Yes,Will the Write Bot AI for businesses be discounted by 90% on 7 August 2023?
 0x1953ca68f75e9b46e548bc8f80bbe9ec7b97c85c,Yes,Will Chengpeng Zhao plead guilty to the money laundering charges by 1st December 2023?
 0x1980312ff2ad3d6f44a054d957dff487436286ac,No,Will 'Sharknado' re-release gross over $10 million by 17 August 2023?
 0x1a48c28a3007bb01916697c3ec80f507676a8267,No,Will Greek authorities arrest more arsonists related to the wildfires by 5 September 2023?
 0x1a62f7ef27dfd397347130348589d9ded1b5c979,No,Will the GoPro desktop app be released for macOS by 14 November 2023?
 0x1a9be0fe16e1f87f9ad905b493afbf912f8f63b8,No,Will oil prices reach $150 a barrel by 9 November 2023?
+0x1ab2dd8b88e9bd5d718fff52a8d519d744c3e06a,Yes,Will Ryan Day remain Ohio State coach by 5 December 2023?
 0x1add803b070ea2fe8372be32125999191ae549f7,No,"Will the US interest rates rise again by September 25, 2023?"
+0x1aeea12e0b45b9c42dd673b60fd26adff16e49f7,Yes,Will there be a significant policy change in Biden's stance towards Israel on 5 January 2024?
 0x1b0356b4b68b9a232ae7a607ece870e05b889541,No,Will Tesla's car insurance be discontinued due to customer complaints by 28 November 2023?
 0x1b197b0aaabc412a231362087c5d671f53487027,No,Will WeWork close more than 50% of its global offices by 8 November 2023?
 0x1b432b6a83109604dab2777eb6f5ba443280cb11,No,Will Poland resume supplying weapons to Ukraine by 27 September 2023?
 0x1b50919de9c12a2acd74c34da5146c751b960d03,No,Will Google release the Pixel 8 Pro on 5 September 2023?
+0x1b54b1ec440f1bcb74d17719d88e3356e18947bd,Yes,"Will Shohei Ohtani officially sign the $700 million, 10-year contract with the Los Angeles Dodgers by 18 December 2023?"
 0x1b669b8286533e59ad8b3e2583d4a41856480d4f,No,Will the production of the Alien TV series resume on 4 September 2023?
+0x1bb04204bd798bb26701a0454a7e6eb539f7b9c9,Yes,Will a woman be hired as a general manager in the NFL by 28 December 2023?
+0x1bb38bcb65de07c52790b02a38e9cf8849080521,Yes,Will Voyager 1 resume communication with Earth by 21 December 2023?
 0x1bd953482bd57c7bfec8f15e13cf380ab7a02e70,No,Will the British Museum recover the stolen artefacts by 29 August 2023?
 0x1bd9ea6a3e1899cdd68700052724967ee24a5374,No,Will an investigation into Elon Musk's role in the Ukraine war be launched by 17 September 2023?
 0x1be316df968626474214fce0641a40ce6f286538,No,Will TSMC start the production of 4-nanometer chips in Arizona before 7 August 2023?
@@ -145,10 +189,13 @@ id,currentAnswer,title
 0x1c138f722c20d4be91e200a597705a28fc804a00,No,Will the four detainees who escaped the Bibb County Detention Center be captured by 23 October 2023?
 0x1c18ce5a390aa2dfdecc2b6ce874424768272746,Yes,Will oil prices increase due to fear of Middle East supply disruptions by 14 October 2023?
 0x1c19e9b6f41a85a92078d6e28afe1f50120b7169,No,Will Meta lay off more employees in its metaverse-oriented Reality Labs division by 8 October 2023?
+0x1c30be42633bbf7092f121a3501897c4dc1a4722,Yes,Will the Japanese company complete the purchase of the United States Steel Corporation by 29 December 2023?
 0x1c432a610f73426805c3812b021e0fddd29040d6,Yes,Will Amazon launch a second internet satellite on or before 24 October 2023?
+0x1c525322f9ecbff136498cc7769639bb17751942,No,Will the Samsung Galaxy S24 be released by 9 December 2023?
 0x1ce80de8e145cb3c3a8090a2562ade56326ed3e8,No,Will the AI moderator 'Toxmod' be launched with 'Call of Duty: Modern Warfare 3' by 7th September 2023?
 0x1d4a890e1a52616da53f4e802657d5f67408469b,No,Will the Ohio GOP lawmakers succeed in blocking courts from implementing new abortion amendment by 17 November 2023?
 0x1d6ca3f7a8db18fa964ebf0022e46785a8782e40,No,Will the new Philips Hue security cameras be released by 29 August 2023?
+0x1d8a24354580a9ea120cc7be0baa5a524ea12165,Yes,Will the world population exceed 8 billion by 6 January 2024?
 0x1d8db4ce050dbf4e804986620ede9fbbdfc5ca30,Yes,Will the actors' strike in Hollywood end by 16 November 2023 following the tentative agreement?
 0x1dadffe4bcf80c6086b93407e18cecf8917158ad,Yes,"Will the missing F-35 fighter jet near Charleston, South Carolina be found by 22 September 2023?"
 0x1dd0f466f74365ecc2c36842c4b26cd0986bb434,No,Will the conflict between Israel and Turkey escalate into a full-scale war by 24 October 2023?
@@ -168,12 +215,17 @@ id,currentAnswer,title
 0x210684b2441a3a692514fbf8684bdec5b7a0d12b,No,"Will the Cricut Venture cutting machine be priced at $1,000 on 5 August 2023?"
 0x214ba5609c3994ac22a9db4af7ab6b2e0c6ddde8,No,Will Disney and other major studios resume ads on X platform by 26 November 2023?
 0x214bad39c2da02b7d559089a00da4b86714219e5,Yes,Will North Korea fully redeploy troops to surveillance posts along DMZ by 4 December 2023?
+0x215334c5a097a118366edf4c524719f4c70647c1,No,Will the Trans Mountain pipeline expansion delays be resolved by 17 December 2023?
 0x2169b9272b53a83441e66f89e546c4b1303bab67,No,Will Tesla confirm the identity of the insider responsible for the massive data leak by 28 August 2023?
+0x216bded09ae85c819cc9f2457070ec5347a627e3,No,Will the Grand Theft Auto VI game featuring protagonist Lucia be released by 14 December 2023?
 0x218bda076910efbed827b29c9d9e4df48b07950c,No,"Will Uganda's main opposition party leader, Bobi Wine, be released from arrest by 10 October 2023?"
 0x220d35c1af13b6d273def1eeccf10759762a2909,No,"Will Shanna Gardner be found guilty in the murder case of her ex-husband, Microsoft executive Jared Bridegan, on or by 11 November 2023?"
+0x2222aeda856d5efd9d7dfe8bc39da76b527f66f4,Yes,Will NASA's Parker Solar Probe successfully race past the Sun on 24 December 2023?
 0x22b172d41e2d232df99ce5b4aaa32871feab27d3,No,Will Instagram introduce a chronological feed for Stories and Reels worldwide by 31 August 2023?
+0x22b98ea6ceae397f53aac70ffe2e9f1c1bbb1bbc,No,Will Kevin Durant move into the top 5 of the NBA all-time scoring list by 12 December 2023?
 0x22f68f1e2d8237a44092ce2fed8bf772b8e897ca,Yes,Will Amazon officially announce to ditch Android on its Fire devices on 17 November 2023?
 0x232a31243fde412cfeca62852692bd6efee7d3af,Yes,Will Xóchitl Gálvez officially start her presidential campaign on 4 September 2023?
+0x232e84156ff4736dbd820b3bda52f126660ce1e9,Yes,Will oil prices end 10% lower on 7 January 2024?
 0x232ff67c12846b0a927551f51eac41efe2a3ef88,Yes,Will 'The Super Mario Bros. Movie' be available to rent on Peacock on 12 August 2023?
 0x23d0c31978cac3030f3c3499430f33509ecfc6a8,Yes,"Will the world's biggest iceberg, A23a, make a significant movement by 3 December 2023?"
 0x23e8c8e1d48290dc881844b0d566f42218674e6b,No,Will Slovakia send any military aid to Ukraine by 25 September 2023?
@@ -182,12 +234,17 @@ id,currentAnswer,title
 0x244d720a7b0852806f3a5c0f9d0e5c1b543988e1,Yes,Will the driver who crashed into the Chinese consulate in San Francisco be identified by 19 October 2023?
 0x248a9fea9ecb0091a36e3354c094917cbfa9cb0e,Yes,Will the Samsung Galaxy A03 be available for purchase on 17 October 2023?
 0x24a2268b123f1e03fc42104b8b4804dc8a840d41,No,Will Annapurna Interactive release a new indie game on 13 August 2023?
+0x24a29a908a4a30835522b3ca569bf49fcc250dd1,No,Will Uefa president Aleksander Ceferin succeed in changing his own rule to stay in power until 2031 by 18 December 2023?
 0x24a60f6e60fca08820a6ca4059232a29b57e5d2b,Yes,Will New York remain the world's top financial centre by 3 October 2023?
+0x24f7d156cf80778450dbb0d6c97f5aeefc3cc6f6,Yes,Will the house where four Idaho college students were slain be demolished on 24 December 2023?
 0x2561574f5f873be3bf19de4f078f00b87ea5cf69,No,Will Citigroup complete its biggest reorganization in decades on or by 10 October 2023?
 0x25807f8f27a677ca7b5acd34c5de2067dc72f642,Yes,Will the New Zealand government be officially formed by the three political leaders by 30 November 2023?
+0x25cd562a4c4ca310e7a7448a713d4422e2432d40,Yes,"Will there be another whooping cough outbreak in Suffolk County, New York, by January 9, 2024?"
 0x26d0b13b81aa6b6d59fe23f5bf2768d9b469de34,No,Will the trial of the man accused in fatal stabbing of a 6-year-old Muslim boy conclude with a verdict by 7 November 2023?
+0x26d44d6c221e3daa200476d4476cc8b8b5aec216,Yes,Will Tesla officially launch the Cybertruck on 9 December 2023?
 0x2730b5e4f3bad387f57d02541bbfac4632755026,No,Will a new chili pepper dethrone Pepper X as the world's hottest pepper by 24 October 2023?
 0x2737b8422d89fdf2beaac8e0d78a1137bbc8c9b9,No,Will the LK-99 'superconductor' be confirmed to be a room temperature superconductor by 23 August 2023?
+0x273c94c1f3de52edf5000528550970911f6a8d87,No,Will the Republican National Committee sanction a presidential debate by 18 December 2023?
 0x2765242123e3d0b0a1c6a553fd46c3ac57127e62,No,Will the University of Rochester professor Heikki Rantakari be found safe by 2 November 2023?
 0x276641a8b571f62c2bb3492d32038ef199321734,Yes,"Will the Los Angeles I-10 freeway reopen by 25 November 2023, as stated by Gov. Gavin Newsom?"
 0x27c6fcc146083d872b3dd7f9d2f3edbe2cc5ee44,Yes,Will the New Hampshire hospital shooting suspect be apprehended by 27 November 2023?
@@ -199,34 +256,46 @@ id,currentAnswer,title
 0x288e67e341621551d90c162dcf68f834cb650b88,No,Will Samsung Galaxy A25 be released by 15 October 2023?
 0x289531dba5e44971c2212159658d139da949f39a,No,Will Taiwan's first domestically developed submarine be operational by 2 October 2023?
 0x28a73626eaf9b73bcae355007047be218abbd44d,Yes,Will El Chapo's wife be released from the halfway house by 17 September 2023?
+0x28b9c3fa4db000508e422be7776e157b63f897f8,Yes,Will Microsoft announce a new platform to replace Windows Mixed Reality by 29 December 2023?
+0x2939d80e836be22ad2c761acdf627f0ab043aae5,Yes,Will Amazon Prime Video increase its subscription fee after starting to show ads in January by 5 January 2024?
 0x295be87022a7cc0786de8ed0fe463e011d5c8e88,No,"Will a new CEO be appointed for X company by 17 October 2023, following Linda Yaccarino's dropout?"
+0x298916cf779d7206e8d60c906ed8458eeee2bd9d,Yes,Will Israel remove Hezbollah from the border with Lebanon by 5 January 2024?
+0x299a4acaa36f95fac93449080071d6ed448d2583,Yes,Will Microsoft launch its first true 'AI PCs' by 5 January 2024?
 0x29abba7c36d44859b84453c2c89f989ce14d2f77,No,Will the Google Pixel 8a be released by 14 October 2023?
 0x29afd690834a334f5a4666a65f151ef14ac09fb1,Yes,Will the Biden administration request $100 billion in Ukraine and Israel aid from Congress on 23 October 2023?
 0x29bb0c26191ef6a155008d90cb78bcc7fee44203,No,Will Thaksin Shinawatra return to politics in Thailand by 31 August 2023?
+0x29f4f37456ac032d6e8d0625577d51ca381770f8,Yes,"Will ChatGPT become the most used AI chatbot in the world by January 9, 2024?"
 0x2a122a401e13c501b6b6b8bfa9e8083601f39ff0,Yes,Will Bavaria have a new parliament on or by 13 October 2023?
 0x2a137020fdb18c6ec840f0014b174709d5da233d,Yes,Will Amazon Prime Day offer a discount on smartwatches on 7 August 2023?
 0x2a2c2b8926897329dc1c38f58ab7809cf013e975,No,Will Nothing Chats be available on Google Play again by 27 November 2023?
 0x2a6f44451bb3987122729f93c6609eeb2ed381b6,Yes,Will the Egyptian-controlled border crossing into Gaza reopen on or before 21 October 2023?
+0x2a92f961e1567b4aaf4e500f32da40cfc8773209,Yes,Will the US Postal Service increase stamp prices from 66 cents to 70 cents on 30 December 2023?
 0x2ac0b298f80af7f22f29631370a782c6b177fbff,No,Will Niger's military junta successfully prosecute deposed President Mohamed Bazoum for high treason by 26 August 2023?
 0x2b0c90ecfb841d4ac153df29c5022a8a227d15d9,No,Will there be a ceasefire between Israel and Hamas by 4 November 2023?
 0x2b18897d45b748058e6b4680613de4f0755d23e7,No,Will there be another major flooding in Spain by 12 September 2023?
+0x2b35485614bf0cf5668727cc10f67b7500c73782,Yes,Will Masimo win its lawsuit against Apple on or by 4 January 2024?
+0x2b4aee5414e316b4c645fc3f7f089b2614a04510,No,Will the federal judge approve JetBlue Airways' proposed acquisition of Spirit Airlines by 15 December 2023?
 0x2b5eeb972f7324428200b5a714ad63b8f01b24b2,No,Will Asian stocks recover to their previous year's level by 7 October 2023?
 0x2b94ed00e81e253b8946fe00319997fc8afe4339,Yes,Will the iPhone 15 be released in stores by 26 September 2023?
 0x2b99d7af381f7ec053063755def69b504080b3ee,No,Will Windows 11 reach half a billion active users by 23 October 2023?
 0x2bb6179efe2ff856e4c879bd0213776d6a64e557,Yes,Will Gregory Yetman be arrested in connection to the Capitol riot by 14 November 2023?
 0x2bd80118af52030c7b9e0bc43ced9e2c25364146,No,Will Beijing provide the World Health Organization full access to determine COVID's origins by 21 September 2023?
+0x2c36b9d4bb2b091123b4c1ee76cbf96f4b205e87,Yes,Will YouTube announce another change to its ad policy by 22 December 2023?
 0x2c5b3e3d83446a005e133a431c7d48df0884bfae,No,Will Aung San Suu Kyi receive the 'urgent care' she has been denied by 10 September 2023?
+0x2c5f79b1c51a580c247b7b92ebdbb9d3ff6b9e80,No,Will the law protecting minors from sex change drugs and surgeries in Idaho still be blocked on 5 January 2024?
 0x2c68f854688e136f5f9f1ff1984a8167034a491a,Yes,Will the special mosquitoes bred to fight Dengue show positive results by 20 September 2023?
 0x2c954b72f9870ebe644b93c8d62079c27cbfce72,Yes,Will Hallmark and Venmo expand their cash with greeting cards feature by 8 September 2023?
 0x2ce74c228467c52de8c3903bc40a533b550b3fe6,No,Will MrBeast's total net worth exceed $200 million by 14 August 2023?
 0x2ceb1b6341ea691ed64b7bd108ff497f244698ae,No,Will the death toll from the Mbankolo landslides in Cameroon's capital Yaoundé rise above 40 by 16 October 2023?
 0x2d1f6f732c9e44f7f2a0f2302d454c3a0ab96a79,No,Will the proposed cage fight between Mark Zuckerberg and Elon Musk occur on 18 August 2023?
 0x2d2d75af4c6ff271e06a0058edda24b85418e442,No,Will the EU pass its AI Act by 30 October 2023?
+0x2d4ad25ba6be1b958d09e401cbc98054c4fd36fe,Yes,Will the execution by nitrogen gas in Alabama take place by 20 December 2023?
 0x2d65a3214ab463c7ce1fe035fb2df914b45720d1,No,Will Joshua Kimmich leave FC Bayern on or before 21 September 2023?
 0x2d6ada23cb3630db21caeefbf21f9bf0c57b5960,Yes,Will the flight chaos caused by a data processing glitch be resolved by 4 September 2023?
 0x2d8f4e4432a2b1e59ed7c14779f1f42e15997760,No,Will Sam Kerr be named BBC Women's Footballer of the Year 2023 by 5 November 2023?
 0x2d91bea8ffccb8271d873c4dd366ebc6587de2d9,Yes,Will the trial of Sam Bankman-Fried conclude with a verdict by 3 November 2023?
 0x2da370ee5610636402b227e8ffe778d9dbd19704,Yes,Will the Picasso masterpiece 'Femme a la Montre' become the highest priced Picasso artwork sold by 17 November 2023?
+0x2ddd0df5b64d21ecff99fcb55556e7a70cb10a0f,No,Will the population of California drop below 38 million by 1 January 2024?
 0x2df78cd02e6322a79906acae8c9e51bdc9805ea2,No,Will Bijou Phillips' divorce from Danny Masterson be finalized by 24 September 2023?
 0x2e1058f88dca8712a7e495a24b51cee3698a42e9,No,Will autonomous vehicles owned and operated by Google swarm the streets by 28 August 2023?
 0x2e158dc123c866269331f56a80f7213de72224c6,No,Will China's defense minister reappear in public by 21 September 2023?
@@ -236,9 +305,13 @@ id,currentAnswer,title
 0x2ef4b6c37233b2ca83ef3778775e47668a6d63ad,No,Will the Israel-Gaza crisis reach a peace agreement on or by 1 November 2023?
 0x2f055da37dc957680df4ce303934b0db19dbacf6,No,Will Ken Pillonel release a new tech modification on 7 August 2023?
 0x2f18943defb476021c4589290266b569d6914604,No,Will the Mexican army regain control over the towns cut off by drug cartels by 2 October 2023?
+0x2f6a2912899023becdfb72355486aab1e52f873b,Yes,Will the Alabama judge rule in favor of allowing execution by nitrogen on 27 December 2023?
 0x302e5988a16cae3b2a5eb57422723046bb6ab25c,No,Will Shell's flagship Prelude liquefied natural gas facility in Australia be shut down for repairs by 14 September 2023?
+0x303be346b5236d53e328c519c213e2f0aad20800,Yes,Will the Samsung Galaxy S24 be released missing a key iPhone feature by 7 January 2024?
+0x30bfab005822c4d578c3fb69d12585ab4fc521fc,Yes,"Will the new school funded by Elon Musk open in Austin, Texas on 23 December 2023?"
 0x30eb2df84b1a85726e1d610c4d3f53ebfd53458e,No,Will Sam Bankman-Fried be found guilty in the fraud case by 31 October 2023?
 0x31351613487961cc9688e41fb40b31b9daaf55a0,No,Will North America's first hydrogen-powered train be operational by 2023-09-30?
+0x31805fbc93f54748c4536f98d3190ba0a840b3dc,No,Will Google fully shut down Play Movies & TV by 20 December 2023?
 0x3187bcb52cc0709219e0456ab0977cfe9b7b3365,No,"Will Amazon founder Jeff Bezos move to Miami from Seattle by 11 November, 2023?"
 0x31bd64f0808297771d6c39fa2b306f504d675cff,Yes,Will the trial to decide how much Rudy Giuliani owes 2 election workers for defaming them commence on 11 December 2023?
 0x31e571391ebb7733deb9c1a4b271b70e2541393c,No,Will Robert Pattinson's Batman use the Batboat in his upcoming adventures on 25 November 2023?
@@ -247,48 +320,80 @@ id,currentAnswer,title
 0x3251828b2decd1885082735ea410a84bdecff208,Yes,Will DoorDash implement warnings about bad service if customers don't tip by 8 November 2023?
 0x32529570db1f210210c64aac3f77de435ca3012f,Yes,Will the United Nations Security Council vote on the Israel-Gaza conflict by 24 October 2023?
 0x3252dc001262ff4592d4c3501af0c9eac3d092de,Yes,Will Phoenix break another record for dry heat by 6 October 2023?
+0x32b7938ff0e08ac114ebacb86605b38141ea4748,No,Will the attacks on commercial ships in the Red Sea result in a significant increase in oil prices by 26 December 2023?
+0x32bed4a5cb334011d479310326e868ee41a06291,Yes,Will there be another earthquake in the Philippines on 12 December 2023?
 0x333c50f5f7460bad7254847871dda18503c217c8,No,Will Beeper release a solution for iMessaging on Android by 27 August 2023?
 0x3352a854484f1d516a46ae6c1d5133994744f15e,No,Will Duane Davis be found guilty in the Tupac Shakur murder case on 29 October 2023?
+0x336a9c9cff43fd6f20860db783d52925af21bea4,Yes,Will Samsung’s next Galaxy Buds with real-time translation using AI be released by 21 December 2023?
+0x3399e3726f6fa04e5624d8f57a4e1e3780bbf6b4,Yes,Will AWS add support for additional languages to its transcription platform by 7 December 2023?
 0x33b31d2ee7cd0cf4a3a8dac7662445a67c01ee6b,No,Will Microsoft announce Windows 11.1 on 3 December 2023?
 0x33d06e21b5298341a84795756248b4ba318c7e1c,No,"Will Russia launch another Moon-landing attempt after Luna-25's failure, by 26 August 2023?"
 0x33d7dfb6b4a47a74879409317bea32faae5472d0,no,Will Samsung release another phone model by 2nd December 2023?
+0x340f9996da97d0b48c4643fb076e29ef57320179,Yes,Will Osaka win the Brisbane International on 8 January 2024?
 0x3412988a50b25f0c2c0f1ae5dc4d28990afb7229,No,Will the Fuell Fllow electric motorcycle be delivered to customers on 2 August 2023?
 0x34834c013b3fb2be11f1da87c9835d3a6f05d51d,No,Will the Portland teachers' strike end by 7 November 2023?
 0x34a1f53473871aba21de9423824cbf7897ab2b86,Yes,Will Meta announce any new features for Horizon Worlds on 7 August 2023?
 0x34ee435d37e6a347c5b16c5d4156c7dc5d8813d3,No,Will Rudy Giuliani pay off his $1.4M debt to his law firm by 23 September 2023?
 0x350863388284dc4aa7608cdbd8ce9a04a228a27d,No,Will Spain's Olga Carmona score a goal in a football match on 30 August 2023?
+0x351ca12f214c6a42618e36ce4a6793cde66711d4,Yes,Will Apple announce a new Apple Watch model on 4 January 2024?
 0x356197ff90a6da1530a02eaba730a8a882f0388f,No,Will Knives Out 3 be released on Netflix by 22 October 2023?
 0x35639056f598a357ea3763cd69b383e6d0480a03,No,Will Nvidia and AMD launch Arm PC chips by 30 October 2023?
 0x35d5ad5f0d398a4e081e846aad96088557990979,Yes,Will the Fentanyl found at the New York nursery lead to criminal charges by 24 September 2023?
 0x3610c04e684690dfc9d1d4864253170943a05454,No,Will NASA launch a giant inflatable bag to collect space junk on 9 September 2023?
 0x3634c521291736bd578950dc6d1f23348d3dabd5,No,Will there be a cage fight between Mark Zuckerberg and Elon Musk on 16 August 2023?
+0x366eb57ec7dde339ba0ee4ad98ca98ab835a64d8,Yes,Will Australia win the Test cricket series against Pakistan on 24 December 2023?
+0x3692a5cd7aab47afd4c7e802b92206b51aef5326,Yes,Will the Detroit Pistons break their losing streak on or before 7 January 2024?
+0x36a44628dbb6f93958f383bb665a5d13520a0f04,No,Will Apple Watch face an import ban in the US on 27 December 2023?
 0x36a7f67d492038528141bc1dfa9159e0b08e973e,No,Will the Dayton Public Schools (DPS) employee be convicted for striking a non-verbal autistic boy by 20 September 2023?
+0x36ca9f4ab034e815290b1a7613bec842d7e71317,No,Will a ceasefire be established in Gaza on 20 December 2023?
+0x36ceba0e2d66c85fd2e18e9badc41b5473fc75d4,Yes,Will Tom Curran's BBL ban still be in effect on 30 December 2023?
+0x36d2d2b56304e43dbbe0088c88ab64fe3172f541,No,Will Netflix release a new show with a 100% score on Rotten Tomatoes by 9 December 2023?
 0x36d3e00b1fc0b907026a795842aa79e91c62b2ca,No,Will the Writers Guild of America resolve their strike by 10 August 2023?
 0x36df8301cfce13410a7969f348c23b76074082bb,Yes,Will Ken Pillonel successfully create a repairable version of the AirPods Pro case by 2 August 2023?
 0x3701548324a9e508b91cdd3afe0c769097c11b9a,No,Will there be another large protest organized by a church leader in Haiti on 6 September 2023?
+0x370c0a61c4190b94a6195c02bfcb421c4ebe7783,No,Will Israel cease its strikes in southern Gaza by 9 January 2024?
+0x375b5aa0c697d2818d5e511c58d5cf8dccbc576d,Yes,Will the US succeed in containing China's chip industry by 7 January 2024?
 0x377d8fbcceba9fb36edca9886868118664fe9158,No,Will Disney's live-action 'Snow White' starring Rachel Zegler be released by 5 November 2023?
 0x37b3c919acb161fe7c8c1db72dffd7d1b97ba9c4,Yes,Will India's Congress party continue to back the government's rejection of Canada's suspicions on 24 September 2023?
+0x37f3b300d2f73f0e8341dfb57f5475f7a493616c,Yes,"Will Bitcoin maintain a value above $40,000 by 12 December 2023?"
 0x384cbab8311f06813e1bc046b2b366475f67c672,No,Will President Biden face an impeachment vote by 29 November 2023?
 0x38b07552967a962521f8688f96547804f286197a,No,Will further evidence of South Africa supplying arms to Russia be discovered by 12 September 2023?
 0x39b66a112426600574be54581562c422d0d7713f,No,Will the cause of Matthew Perry's death be officially announced by 5 November 2023?
+0x39d940f8365a456e56086aff52a27ba295189fa4,Yes,"Will QR codes phishing scams increase notably by 18 December 2023, as warned by the FTC?"
 0x39e9005b6376a378950914bdc1aa78bc3d3b0b1c,No,Will Vietnam restart its biggest rare-earths mine by 29 September 2023?
+0x3a2d35552d80b6f9aa1e9148db8890a49ca33aaa,Yes,Will the Metropolitan Museum return the 16 pieces of ancient art to Thailand and Cambodia by 24 December 2023?
 0x3a58b22a4077d540f04eb64b99f4d7a9f9fa7c09,No,Will the US Open tennis tournament conclude on 8 September 2023?
 0x3a68f5e1a1163ccffbe21d5b1f705df8ce4733c3,No,Will the U.S. military successfully recover the crashed aircraft in the eastern Mediterranean Sea by 20 November 2023?
 0x3aa04bd18d1718161480e38d4b73acbd47e516fe,No,Will the $219 WiiM Pro Plus audio streamer sell out by 21 August 2023?
+0x3abb5f5766eca25e0560468d1de0850c52a33e20,No,Will Nick Saban return as Alabama's football coach on 8 January 2024?
 0x3aed681bb1e1306d4abcae951c336c5dad434c18,No,Will the US Senate leader secure a trade agreement with China on or by 12 October 2023?
+0x3af9f565848530af55b7d950680246e2206441a7,No,Will Warner Bros. Discovery and Paramount complete their merge by 1 January 2024?
+0x3bdf178f2a6cf3802ce8dc2a6bdf2cae29843933,No,Will the Mercedes F1 team win the F1 championship by 16th December 2023?
+0x3c3016db747e742598f68eb128cc43e59dcf6ba5,Yes,Will Everton remain outside of the relegation zone on 13 December 2023?
 0x3c366afd50955aac2ee167511138a6dce343deea,Yes,Will the man who fell off a cruise ship in the Gulf of Mexico be found alive on 22 November 2023?
 0x3c5fad0693e87ab11c858e1c3c416bb18081db73,No,Will Alibaba shares recover from the 4% drop following the CEO's departure from the cloud unit on or by 15 September 2023?
+0x3c7704ca9e9733c1559e3eda3ae7d6690f320662,No,Will the Philippines and China resolve their dispute over the South China Sea collision incident by 18 December 2023?
 0x3c8b9b008ce879de775cc95f763496ae70df3047,No,"Will the Baton Rouge police deputy chief return to duty on or by October 4, 2023?"
 0x3c96553ba80563836fac54412842140ba2b689d1,No,Will Princess Martha Louise of Norway wed Durek Verrett on 18 September 2023?
 0x3ccb99755db829b79fa8d0b66ce46b5dafa9db20,No,Will Samsung launch a new smartwatch on 6 September 2023?
 0x3cd737c08eb1f07eb2910200a23cd8e50099e113,No,Will the US veto another UN Security Council action on Israel and Gaza on or before 28 October 2023?
+0x3cdea927871f3f0927b9c590d129d27e24525aa5,No,Will there be a ceasefire in the Israel-Gaza conflict by 18 December 2023?
+0x3ceda57c163fa13f3770f33aec6d07cd20ad99f3,Yes,Will the NBAs Dallas Mavericks be sold to a new majority shareholder on or before 8 December 2023?
+0x3d272eb7a75627abe71ccedc946450079f0b8082,No,"Will the earthquake death toll in Gansu, China rise above 120 by 26 December 2023?"
 0x3d6170a027eda16274baf6758100f493408a9d91,No,Will the FDA approve the needle-free epinephrine for treatment of severe allergic reactions by 25 September 2023?
+0x3d9f4414fdf94cb9074c3eb97198ce43d3895cca,Yes,Will the lawsuit between Elon Musk's X and Mark Schobingers over unpaid Twitter bonuses be resolved by 5 January 2024?
+0x3de68361f9c2da4622f3aeb85a58ba0d1eee8787,No,Will Ford and Resideo announce a breakthrough in EV technology for home HVAC systems on 14 December 2023?
 0x3e579baa2ce8195c8e6fc1d7f2e53519a02f5350,No,Will the investigation into the death at Burning Man festival be concluded by 12 September 2023?
+0x3e709f8b44afb23e20cb618c3330183edda8b673,Yes,Will Google completely shut down Play Movies & TV service on 22 December 2023?
 0x3e9ef9f7344db2354e1c1c1972689c533e909d8c,Yes,Will the chemical plant fire near Houston be completely extinguished by 15 November 2023?
 0x3eb2f2984544191aea123dfb0a84a088f497ddb1,No,Will Citizen resolve the 'Technical Software Issues' of the CZ Smartwatch by 2 September 2023?
 0x3f40523fc378e37967383eabbf2ea3b370a911b7,No,Will the Belgium-Sweden football match be replayed by 22 October 2023?
+0x3f6dd00bf12e90c57d4566b77987906e0fb4d6ce,Yes,Will Ethan Crumbley be sentenced to life in prison for the deadly Oxford school shooting on 15 December 2023?
+0x3f867a53a65df8291f5482d463880a6672a82644,Yes,Will Tottenham maintain their top-four position in the Premier League by 23 December 2023?
 0x3fc866e4c1c33ccb3baf2bf9042f281575773f44,No,Will Russia succeed in rejoining the UN's human rights council by 30 September 2023?
+0x3fcb67401438b2919a008889cc7fb328c1b17220,No,"Will Apple, Google, and Comcast successfully implement L4S to fix internet lag by 18 December 2023?"
 0x3fdde11eb91718279dcadb539e25db748140aa8f,Yes,Will there be a crossover game featuring Cult of the Lamb and Don’t Starve Together by 27 August 2023?
+0x3ffe09ca1581cb5cb29ad2a1bdabf9a20c1bb330,No,Will the U.N. Security Council vote in favor of aid for Gaza on 30th December 2023?
 0x4016c5dd3b8e739858011ca35ebe86ee908a366a,Yes,Will Israeli forces launch a ground offensive in Gaza by 21 October 2023?
 0x405ca27762b06c7b0810caad8b3b60c6835c7f0f,No,Will TikTok users in the European Union be able to switch off the content-selection algorithm by 21 August 2023?
 0x405d30ccd02258ea63b63d14744a23f3a3445354,No,Will the law limiting the power of Israel's Supreme Court be approved by 16 September 2023?
@@ -297,6 +402,7 @@ id,currentAnswer,title
 0x40a36e840c373ba5beb4022e479b7919ef61e73d,No,Will the New York subway's ride tracker security loophole be fixed by 5 September 2023?
 0x40af74f7308bd5e4b4f9e16eb9abfcddcf749880,Yes,Will Sharknado's theatrical re-release occur on or by 19 August 2023?
 0x4110ced8c88d93e9168b63d6e23a083a2212d0eb,No,Will relations between North Korea and South Korea improve by 29 September 2023?
+0x4113905f925227877b954f032dee920828d24c7e,No,Will England win another Women's Nations League match on 11 December 2023?
 0x415fbc5bc0cc7e4917900a9f2662b7dfc5e236c0,No,Will all users of social media platform X have to pay for access by 23 September 2023?
 0x41628d05d94a802dc165d79f55df299ed3c20605,Yes,"Will there be snowfall in Iowa on December 4, 2023?"
 0x417a34c5bba9ddeabb7048f8b8802d84c0228cf1,No,Will Rex Heuermann's trial be concluded by 22 November 2023?
@@ -304,31 +410,41 @@ id,currentAnswer,title
 0x418f31997f1112f7ea2f065807bd86935fea7032,No,Will a new indie game for Nintendo Switch be released by 14 August 2023?
 0x419474bc7610f23bc193e9b76bbb890695deccae,Yes,Will the referendum to recognize Australia's Indigenous people in the constitution pass by 21 September 2023?
 0x41ad9d737fbd4ebea6adbef5e54c863a353cdb0f,No,Will Devon Lara Lucas release a new board game on 3 August 2023?
+0x41e2ca783516a93ad01dfa1ff4b56a965c067b79,No,Will the New England Patriots win their next match against the Pittsburgh Steelers on 16 December 2023?
 0x422c61a2d32b89f124cc4256704e1611724c2ac6,Yes,Will the Hollywood actors' strike officially end by 14 November 2023?
 0x42604a15d5c7af14f203936884e941c2f71ec895,No,Will Cole Palmer score a goal for Chelsea on 22 November 2023?
 0x426a8ec1becca9d7dbb329fcdb81e821c52428e5,Yes,Will Chevron's Wheatstone facility in Australia resume its full LNG production by 20 September 2023?
 0x426ba32db1768371096d1549ecdef979ea12e798,Yes,Will Vikings' quarterback Kirk Cousins be confirmed to miss the rest of the season due to an Achilles injury by 7th November 2023?
 0x426e7d059388837a01344860456a8d6bb1a6b464,Yes,"Will the 128-year-old mummy, 'Stoneman Willie', finally get a funeral by 7 October 2023?"
+0x42d46989870a0ad27ce60a1d4f447d1113ee16b2,No,Will Dell's XPS laptop line up change be officially announced by 9 January 2024?
 0x42fe3f3bc5425e53e79c45b69cdf3fc42a5f07cf,Yes,"Will Robert De Niro's production company pay $1.2 million to a former employee by November 19, 2023?"
 0x436b86cd120337bb2a3f9730926c703451f7c158,No,Will Grimes release a new AI-generated piece of music by 18 August 2023?
 0x437f33931e85a22993ad53fefb39e2ed1e5c5b40,No,Will A$AP Rocky be found guilty in his trial by 29 November 2023?
+0x4394d50fec4eda8580c513a83b79d4c46bfc3e2f,Yes,Will a new season of the Netflix show 'Wednesday' begin production by 8 January 2024?
 0x43d08dea91d9d989410f65e725f377b567aabf9a,Yes,Will the Super Mario Bros. Movie be available on Peacock on 17 August 2023?
 0x43f7071b3caadd46c3c045c30d01baf922bf01e6,No,Will New Orleans' Facial Recognition Systems lead to any arrests by 9 August 2023?
+0x4476696266090114656ec938577a9c4fcba89f0e,No,Will Hamas release all hostages by 18 December 2023?
 0x448ea90aeaba621a8582495d3d77337235cb770e,No,Will the SAG-AFTRA new contract regarding the use of artificial intelligence be approved on or by 28 November 2023?
 0x44927d56b8caad819e662cba506cbfe7d7685e71,Yes,Will Head Start teachers receive a pay raise by 23 November 2023?
 0x44c3c5ac2cf1d068514025d7288d32ed37ec728a,No,Will Threads reach 1 billion users by 9 August 2023?
+0x44c6c9de42291bce92d3837c7b79d83adbd020fc,No,"Will US job openings increase by 18 December 2023, following the low levels reported in October?"
 0x452aa2401164e8224ffb8bd2457d8498ecdb2e20,Yes,Will Bayer Leverkusen maintain their top position in Bundesliga on 3 December 2023?
 0x4570322b9eef4c0770e7f2713b486fccd838d757,No,Will the Powerball jackpot be won by 6 October 2023?
 0x45a7832bbf28fcab90f9f88c1ea4a58039cd57ae,No,Will the 30-year fixed mortgage rate in the US reach 9% by 29 October 2023?
+0x45db686a5f7c4af67e2eca43b89e7ca560393b3c,Yes,Will Dolly Parton perform another surprise concert for a terminally ill fan on 7 January 2024?
 0x4618e6acdea1057e8a7800c7f3ae37ab535c30c5,No,Will Congressman Henry Cuellar's carjacker be caught by 7 October 2023?
 0x46458b03ee31ef592f9434af59232baa0e5f06bf,No,Will South Africa be found to have supplied arms to Russia by 9 September 2023?
+0x466cc5e2d406506dd4a49989276cd62f4057fa54,Yes,Will Disney start a new building project by 6 December 2023?
+0x468c847ff5efe15de041303f5a9f470ad8840e79,Yes,Will Michigan win the national title on 7 January 2024?
 0x474d4ba2121f77693c2eb98b96cdbaf8ec8bccdb,Yes,Will all nine teenagers who fled from the Pennsylvania juvenile detention center be found by 22 September 2023?
+0x47aef552e1a092973e7b42b6d3012103c64b520b,No,Will Hunter Biden's tax-related charges be fully resolved by 17 December 2023?
 0x47b97883ec2b3870e3ddef0eab3cbb1fd965a055,No,Will the death toll from the Mbankolo landslides in Cameroon exceed 40 by 18 October 2023?
 0x47fffb7d747cf4b7f65337e725ab4b247d8055ad,Yes,Will Julius Malema remain the leader of South Africa's second-largest opposition party on 16 August 2023?
 0x481378185621968bfdd617d99517373de71bf148,No,Will Luis Diaz's kidnapped father be found by 7 November 2023?
 0x488c53f681e62403416be8d1c2dfe80361631bc4,No,Will the WGA and the AMPTP reach an agreement by 19 August 2023?
 0x488f8e8b894e023df93fb3009cc47e8faf0d6537,No,Will the Star Wars series 'Ahsoka' release a new season on or by 6 September 2023?
 0x48a6e588ecb35229f57d7b3057c8ab8844236410,No,Will the situation in Gaza escalate to a full-scale war involving Venezuela by 21 October 2023?
+0x48b2db9fae8ebe9f6ac938ea5f9a121945d97512,No,Will the Biden Administration announce another gift to U.N. Green Climate Fund on 12 December 2023?
 0x48f73b9c7f7adc60f715c5b426f250dd6a374ea8,No,Will the couple involved in the Bitfinex hack be sentenced by 9 August 2023?
 0x491ca0ee01b7ee1b5a05db9b6992d4d134bc032a,No,"Will Amazon be found guilty in the landmark monopoly case by October 1, 2023?"
 0x496dd220935654f342fa4c51bfe563053c0c4bad,Yes,Will Sam Bankman-Fried be found guilty in his fraud trial on or by 4 November 2023?
@@ -342,9 +458,13 @@ id,currentAnswer,title
 0x4afb0dee90020f72a3960b39d26f8106425fb500,Yes,Will Tweetdeck become part of the paid Blue subscription by 27 August 2023?
 0x4b845653a03dbb7c1c1e12acae79092560c0f142,Yes,Will Donald Trump announce his candidacy for the 2024 Republican presidential nomination by 2 October 2023?
 0x4bb42f8c76a55695234f37cefc7a3e3851c262e6,No,Will Elizabeth Holmes be released from prison by 8 August 2023?
+0x4bdbfeafd4f5ce22bce1423c4f0912e03e6bad4f,No,Will Xbox Cloud Gaming on Meta’s Quest VR headsets be available for all users by 22nd December 2023?
+0x4bf81097ae9a561e19e572d43562037dcd23e917,No,Will Donald Trump win the GOP nomination for the 2024 Presidential election on 18th December 2023?
 0x4c103b0e6fc2a7b845fbccc1f1407e05dfa186e5,Yes,Will the Zimbabwe election result be announced by 26 August 2023?
 0x4c3572d36e288f6cc38c70d7e8ee35b41b0af288,No,Will Rudy Giuliani face legal charges for the alleged groping incident mentioned in Cassidy Hutchinson's new book by 25 September 2023?
 0x4c45bc69d9b55dc405c8510a4251eef742d9cef9,Yes,Will the 30-year fixed mortgage rate exceed 8% on 27 October 2023?
+0x4c5cc051879e46906468ecfb595b967a8c6533cd,No,Will Epic Games have any adults-only rated blockchain games available on their marketplace on 28 December 2023?
+0x4c795013c82e2525792824333a32423a271647db,Yes,"Will Google Pixel 8 Pro release an updated version of its video boost feature by January 1, 2024?"
 0x4ca1967efa1aba5cbc1a51e8ec5293daad60dd1a,No,"Will Bored Ape Yacht Club successfully block OpenSea over payment disputes by August 24, 2023?"
 0x4cbc403623dffef8a63904044f4489d34425ba8d,No,Will the Barbie movie officially start showing in Russia on 2 October 2023?
 0x4cc2d11a39b84ff994e1a0687e8c3e9a9f53627b,No,Will Apple withdraw iPhone 12 from the market by 17 September 2023 due to high radiation levels?
@@ -358,6 +478,7 @@ id,currentAnswer,title
 0x4e49693373cfd7b273b3379733ef03e4fe545a12,No,Will the Vatican make any changes to its statement on transgender people's rights in the Roman Catholic Church by 16 November 2023?
 0x4e772af842658e4298d2f9f033f83985804521e6,No,"Will the US House of Representatives successfully avert a government shutdown by November 20, 2023?"
 0x4ef7e584c6f39bd591f5ff3a344ac8d3dbaaa210,No,Will the shortage of ADHD medication be resolved by 1 September 2023?
+0x4f319985cd2682467a81ed123004b077ed257003,No,Will Meta Platforms' paid ad-free service be banned in Austria as a result of the privacy complaint by 7 December 2023?
 0x4f7280fe39e0a07b516fbe46f5c3b1fe4639056e,No,Will Geoffrey Hinton publish a new research paper on AI by 4 August 2023?
 0x4f7f73d1d3eb55bbbb87d1040e1b18308d61212e,No,Will the series 'Scott Pilgrim' and 'The Last Airbender' be released on Netflix's Geeked Week 2023 by 25 October?
 0x4f88c9ca45513df50ca726592ff3fe3ce5ba8bde,No,Will Adobe announce a successor for Dr. John Warnock by 29 August 2023?
@@ -370,11 +491,14 @@ id,currentAnswer,title
 0x5074c1cb42fb101d52aaa99cdb4285cc4e351285,No,Will shares in Evergrande remain suspended on 4 October 2023?
 0x5077ff2c41066de95c00320a0d2cd94c43c3909b,No,Will MrBeast win the lawsuit against his fast food chain by 14 August 2023?
 0x5080c43775dafbb00c449988dcdd8043892468fc,Yes,"Will the stage of St George's Guildhall in King's Lynn, where William Shakespeare would have performed, be officially recognized by 10 October 2023?"
+0x5092ea13c0ee6a51577293e8c91dba4723ba74cb,Yes,"Will Argentina's President-elect Javier Milei visit Israel and the United States before his inauguration on December 10, 2023?"
+0x50aacb4b236ba3bf523ca4d956be9874a9d28812,Yes,Will Sir Jim Ratcliffe increase his stake in Manchester United beyond 25% by 3 January 2024?
 0x50e4c6c9b10549cd1bc2d78ee35edec52d54c574,No,Will Sweden's NATO membership bid be ratified by Turkey's parliament by 30 October 2023?
 0x50ef1dbe013ea2299dbddde813ea6dcc881afe59,Yes,Will flights to Israel by major airlines remain suspended on 16 October 2023?
 0x50f60c3ad155976e4889502d860f927f4894a165,No,Will there be a ceasefire in the Israeli-Hamas conflict by 16 October 2023?
 0x50f6f8ceabe434a6334911572458d37d2de9b886,Yes,Will Voyager 2 send back new information from outside the solar system on 15 August 2023?
 0x514294b35a9b87e312af0c26b6517c9ba35ac38f,No,Will Omar Abbosh be the CEO of Pearson by 24 September 2023?
+0x5170f9eae4b4d8df83a14dc5ace2ec0a56057f69,No,Will Shein successfully go public in the United States by 5th December 2023?
 0x51a05c1f72953008082584154a24c7a2f5243828,Yes,Will any Australian city host pro-Palestinian rallies by 20 October 2023?
 0x51a5d5975aaad241eca901cfd8019d25f7574694,No,Will HSBC complete the acquisition of Citigroup's China consumer wealth management business by 3 October 2023?
 0x51c676ce199830ea261360b9ed56a8efecb268e1,No,Will the Indian Supreme Court rule in favor of same-sex marriage by 23 October 2023?
@@ -383,17 +507,22 @@ id,currentAnswer,title
 0x52241bf062c4745e6cbbfb6faabf17db65046cae,No,Will the manhunt for the suspect in the fatal shooting of a Maryland judge be concluded by 29 October 2023?
 0x52585b1b09004301112bc754e1ee8090e5ab056f,No,Will Harvard University take action against the pro-Palestinian statement from students on 19 October 2023?
 0x52be114710ff1b21cb91f32fbf877b5055c7fcf2,Yes,Will Linda Yaccarino still be the CEO of X on 27 November 2023?
+0x52bfa385e787aa75de4dc34abcae6f7f6769713f,Yes,Will Moody's upgrade China's credit outlook to stable or positive on 25 December 2023?
+0x52c110f8a33527db6f448e2c78a3ffe857480bde,No,Will the Samsung Galaxy Book 4 be officially launched by 12 December 2023?
 0x531312137b2316e6ddf4ccaec56f928bd86caded,No,Will American Airlines take disciplinary action against the baggage handler involved in the viral video incident by 28 November 2023?
 0x5319d0277cdb2dff34373ab96eb07cb90b94f4cf,No,Will Peloton recover from its subscriber and financial backlash by 1 September 2023?
 0x5323d9bcc384ac4f53481226d7df0016c20d22ee,No,Will the NFL ban the hip-drop tackle on 29 November 2023?
+0x53301cd02004a46cc0be82d7ca1996c80ecc82c1,Yes,Will the Bank of Japan raise its negative benchmark interest rate on 24 December 2023?
 0x535a67198836fa27b5b4c2d3a9619d3233a1fdcc,No,Will American Airlines flight attendants go on strike on 27 November 2023?
 0x5388e9e00471370097bc39e2256a76fccffaa1b2,Yes,Will all individuals be rescued from the Santa Cruz church collapse in Mexico by 6 October 2023?
+0x53ad10721ff66126dc25e47246e6e2309a0893d7,No,Will Virgin Atlantic operate another flight using 100% sustainable aviation fuel on or by 7 December 2023?
 0x54256287d7e70a10ad1a6c2bafabc0593f8b4be2,No,Will Ukrainian forces retake the city of Bakhmut by 18 August 2023?
 0x5439d0e120afacdcad672a881eb06b3b7b8d3980,No,Will AMD's Ryzen 5 5600X3D be available at other retailers besides Micro Center by 2023-08-01?
 0x545c2689cec9e4e1ad8399b6e7eccaea7ffcd690,Yes,Will Google's Bard be available to teens on 25 November 2023?
 0x5466670579aa2bf73c1b537a49e55d232cd2629f,No,Will Geoffrey Hinton release a new research paper on AI by 13 August 2023?
 0x54a563f2ba6986473fee3918e5b2b2058b077f00,Yes,Will Twitch allow streamers to simultaneously stream on any service they want on 27 October 2023?
 0x54be122da8ea70ed93cccad32a37449a7e602f5b,No,Will Sam Bankman-Fried be convicted in his ongoing case by 22 October 2023?
+0x54d912f3efea303085c6b0fce99d1965f22d5d49,No,Will Wyoming proceed with the auction of the large piece of land inside Grand Teton by 16 December 2023?
 0x54e857aa4b6a455a7195449f8d2e1b3648aaa8fa,No,Will Meta's Quest 3 Headset be launched by 31 August 2023?
 0x54eef6b80c269f82298388fc26810d82d1ba6500,Yes,Will the Noiselab Music Production Hub subscription price remain at $59.99 by 29 August 2023?
 0x553265db15cd6fe13660732ad084e6abcb61a70b,No,Will Verizon have completed its major upgrade to rural 5G by 21 August 2023?
@@ -403,17 +532,22 @@ id,currentAnswer,title
 0x564a3b6cbb3de493557d80028ec4a86704f04cb0,No,Will the senior Baton Rouge officer be reinstated on or before 2 October 2023?
 0x56941d7aea055663cb1debd65b5c16bf82de9b12,No,Will the alleged Rwandan serial killer be convicted by 11 September 2023?
 0x56b66b7b685e91bdd34de18ba506bd236c3ae7f3,No,"Will Amazon announce a successor for Dave Limp by August 22, 2023?"
+0x56d7e5eefa1e324fd4800b1370a1460d760c9235,No,Will Fortnite publisher Epic Games win the lawsuit against Google on 9 December 2023?
 0x57345c25d210f44ae44736f64d589854476653ad,No,Will Jennifer Aniston post another tribute to Matthew Perry on Instagram by 24 November 2023?
+0x57357eb0219c2bb94c58a9755b6a4d3c2ccce967,Yes,Will a new game of Quordle be released on 18 December 2023?
 0x57385c52b11de2f0a5aa3352cb75ecdb39ab377d,No,Will Blizzard release a new patch for Diablo IV on 10 August 2023?
 0x5748663a3fcbe8a7c3ea6ad278914920567d0dff,No,"Will a new Speaker for the US House be elected by October 9, 2023?"
 0x578dc021da61ce067f42efa53157f5f6ba4d8805,Yes,Will Google's AI tool 'Genesis' be able to generate news articles by 8 August 2023?
 0x5793076d1e581f8000ee07ef5311b8bb1b7b0d98,No,Will the Apple Magic Keyboard Folio for iPad (10th Gen) increase in price by 13 September 2023?
 0x57c5ce485b5be37b06f5d1533e954398515b93a3,No,"Will the 'Jalapeño Gate' controversy be resolved by August 27, 2023?"
 0x57d82b6638e7a25ce2831b5d9e48a4b41e4fbf18,No,Will Dead Space remake be available on Xbox Game Pass on 23 October 2023?
+0x57f1584e27d2ff83106e12b1d8ca4db0dd5540ae,Yes,Will Munich flights and trains resume normal operation on 12 December 2023 after heavy snowfall?
 0x580dd7fbaf3ab8a48b9f33d1bd5d46b1e9ec1652,Yes,Will the large fire at the chemical plant near Houston be extinguished by 16 November 2023?
 0x58151787138d83d73b105e058e1e86c6fd27ee4b,No,Will Lizzo face any legal consequences due to the new allegations against her by 18 August 2023?
 0x58331b46818f11aa31a8b792eb9c08ed7a19d1b1,No,Will the Nothing Phone (1) receive another OS update on 2 September 2023?
 0x58555c6f47acc9fd9027ba18bcd7324494ba58fb,Yes,Will Facebook successfully reenter the Chinese market by 17 November 2023?
+0x588f2630274c689b3f682ef2e61da55604c319fd,No,Will Lori Vallow be convicted for the murder of her fourth husband on 14 December 2023?
+0x58a49f622566315706ebb0d0b8948255da267246,Yes,"Will Donald Trump face criminal charges for actions he took as president by December 10, 2023?"
 0x58cb4f276016f01aab7ec49d14ee9f8e3bb3d9cc,No,Will Spotify add full-length music videos to its app by 15 August 2023?
 0x58cd9140a06c9e48550e0d76e828f9efdb1f5170,No,Will CD Projekt Red release a new game by 9 August 2023?
 0x58d8e8ee2dcb4498e350a2e0ca6a1838495dba1e,No,Will the 9 deputies charged in the Memphis jail death be convicted by 28 September 2023?
@@ -422,24 +556,34 @@ id,currentAnswer,title
 0x591c5148b37886b6c41410f342beab40cfacf929,No,Will Syngenta sell its 160 acres of farmland in Arkansas by 25 October 2023?
 0x5926d6ebf9f8cdb90202082389385e80de2e03af,No,Will more information about the key ingredient for EVs under the former volcano be revealed by 6 September 2023?
 0x5976d4441f6fea4d75b19146f841b3b951d42b25,No,Will there be a tribute concert for Smash Mouth's Steve Harwell by 12 September 2023?
+0x59b224d04abb1b2091d0aa790efcf1ba384c02a7,Yes,Will Intel launch the Raptor Lake Refresh CPUs on 22 December 2023?
+0x59b7d3dc768d8544eb4cbc847164c7357a778e57,Yes,Will the Switzerland gunman be captured by 18th December 2023?
 0x59daa6711aabb88087ce231e61d8db2d3fe07101,No,Will Amazon's Echo Studio smart speaker still be on sale for $160 on 25 August 2023?
 0x5a251a711f0c6452f4a8469fafa0c8fa890fbfec,No,Will Mark Zuckerberg and Elon Musk publicly reconcile their differences by 25 August 2023?
 0x5a28e57197a8d36d8137634df42930161ad3a76d,Yes,Will Grubhub launch Amazon’s cashierless tech at colleges by 3 September 2023?
 0x5a33e8ef00926309277cf913363ea0e7376f4ce8,No,Will the dispute between Egypt and Ethiopia over the Nile dam be resolved by 15 September 2023?
+0x5a7c68b8a89301446cc698893d9fddafcb61d052,No,Will the Carolina Panthers win their next match on or by 5 December 2023?
 0x5a806b060c9c0df83c4990b6eedf3437e754fc01,No,Will Blue Origin successfully launch a rocket without engine explosion on 8 August 2023?
+0x5ab525a19eeccb23f40548307f4dd30be72a5eab,No,Will Arsenal lead the Premier League table on 3 January 2024?
+0x5abd572ee98fbd1f8b4ae7f93a306c27578bac33,Yes,Will Digi's AI-powered chatbot and avatar system 'girlfriends' be commercially available by 1 January 2024?
 0x5ad99641dc7c8ec1663743cb0d44838223ed2d5d,No,Will the white Kansas teen be tried on federal hate crime charges by 21 September 2023?
 0x5ae4a561493ce1df4063097c347dc68231385eb2,No,Will NASA successfully implement the use of a giant inflatable bag for space junk collection by 10 September 2023?
 0x5b12fe2c0b35c7f4959b55f495f81f16339709f7,No,Will the first phase of the Ram Temple in India's northern town of Ayodhya open to devotees by 20 September 2023?
+0x5b3cec07c29d07829be9e03cfba3c06f8cc83e84,No,Will Selena Gomez and Benny Blanco announce a break up by 15 December 2023?
 0x5b3de5d6eace610f241e4b02a2e581d13df07c7d,No,Will the Analogue's 4K Nintendo 64 be released by 23 October 2023?
 0x5b4c59ca3e0df0811611987f1001f6c3f1ff0a55,Yes,Will the United Auto Workers union strike against major US car makers by 15 September 2023?
+0x5b9e7ad1294631b7d7fe40aa133cd99db8f15792,No,Will Liz Cheney officially announce her third-party US presidential run by 18 December 2023?
 0x5bc3141e5b19e123dee9ab5680de0fdf5daaeb4b,No,Will the Hollywood strikes end by 20 August 2023?
 0x5bcb047bf6da62b1b7667779f831fc0618c9ebf6,No,Will Disney World Princess Week be celebrated again on 1 September 2023?
 0x5bdc3169d6309851eedf7410128b1faddd49c807,No,"Will California implement a new law against caste discrimination on or before October 17, 2023?"
 0x5bf1c9278a7eda940ba9a8b7f0dd21942795a0ba,No,Will Donald Trump win the New York business fraud case on or before 21 November 2023?
+0x5bf928f5d3aa11c299659cdfee56ed9a2cc1f7b2,Yes,Will the Somerset family reach Australia without flying by 27 December 2023?
 0x5c34483d3f392ab270436710a95faa4ac125933f,No,Will the new malaria vaccine be widely distributed by 8 October 2023?
+0x5c389c8c54a093d51646b1458b4a06513e703d75,No,Will the Apple iPad Air with an M2 chip be released on or before 18 December 2023?
 0x5c633e846c28c3b60e8de76a51b34a2e689c5441,Yes,Will Jill Biden recover from Covid-19 by 9 September 2023?
 0x5cb53311b904a5a3e0ffc870575e64e92749d6ba,No,Will the Macy's workers in Washington state end their strike by 1 December 2023?
 0x5ccf3560816d7996c8379e413e46d4b5f0bee377,Yes,Will the United Auto Workers union end its strike against Stellantis by 31 October 2023?
+0x5d5dcff44157eb4042965e5950f7b6794e131d4a,No,Will the Samsung Galaxy Fit 3 be officially launched by 18 December 2023?
 0x5d6d78a2f0471b35b747af394832ca90aa9d546b,No,Will Tottenham Hotspur maintain their lead at the top of the Premier League table by 3 November 2023?
 0x5d76d2a8ecf5f5c565760cc4e6f3686b31404060,No,Will Iran officially declare support for the attack on Israel by 17 October 2023?
 0x5d77380bdec7414d3231f02441a369e875b26806,Yes,"Will the five Americans that were jailed in Iran and are on their way home to the United States, arrive safely by 23rd September 2023?"
@@ -454,6 +598,8 @@ id,currentAnswer,title
 0x5f013b211f0ca95e3ee049072173ed57f2b71799,No,Will the container ship Joseph Schulte be attacked in the Black Sea by 26 August 2023?
 0x5f125450bee5efa58cfa48314b7a35242a4169a0,Yes,Will the Beatles maintain their position at the top of the singles chart on 18 November 2023?
 0x5f49ea7c32988ce89898622e3104e8ef30953b7b,No,Will MrBeast win the lawsuit against his fast food chain by 9 August 2023?
+0x5f4be9e10628f3af9ae16220a9f81dc90a59ead9,Yes,Will the OnePlus 12 be released internationally on 24 December 2023?
+0x5f5a0b281cb23ce97f1fbb6bb2a6f2b289ac9285,No,Will the Apple iPad Air with an M2 chip be released by 19 December 2023?
 0x5f6128a158a3ff979a90733c61efdbb6e3d42a61,No,Will Nikki Haley become the GOP presidential candidate on 30 October 2023?
 0x5f7afde133ee96254d5238299b0ad830f1c0867b,No,Will the dollar value continue to rise after the oil surge by 2 October 2023?
 0x5f7ea654f1bc519d7b199dadc6b91d3cbf361c19,No,Will 'The Boys' season 4 release be launched before 19 November 2023?
@@ -463,16 +609,22 @@ id,currentAnswer,title
 0x5fe3b33fbba2e6d60f72034be1db8dde8db17e71,No,Will the acquisition of Hess by Chevron be completed by 31 October 2023?
 0x6028b8f1887b32243a0b53a3cfa285bf0aa6ece6,No,Will Snoop Dogg remain smoke-free by 26 November 2023?
 0x60b8a1c2b2cc80452596c92be7cc73b5854bd163,No,"Will the legal case against the ex-king of Spain be reopened by October 13, 2023?"
+0x60cc81ccdf548ac03b45f19d3ff09a79c83fa880,Yes,Will Iran's warship presence lead to a military conflict in the Red Sea shipping lanes by 7 January 2024?
 0x60e5223bb5da781daec2874b01bb8c6132ac35ef,No,Will GoPro's desktop video editing app be launched on macOS by 13 November 2023?
 0x610ba8b765eb691bcd90691297f6dc0fd2cc7274,Yes,Will Thaksin Shinawatra be in jail on 1 September 2023?
+0x611c10364732cd08129a2edce7a4aeaef8b72f87,No,Will Fortnite Chapter 5: Underground release another new island on 12 December 2023?
+0x615445c9714415a95c1b7ad05938d10566c13e9d,Yes,Will Greece repay another set of loans ahead of schedule to euro zone countries by 6 December 2023?
 0x6173eb9b529b6a584a8fd2b876204c6c318d2c4f,No,Will the Supreme Court agree to hear Apple's appeal of Epic Games' anti-trust case on 3 August 2023?
 0x6177d8224cec4fe1e1f61704e05701b7dd41d88b,Yes,Will the Philadelphia Phillies secure a second consecutive trip to the World Series by 30 October 2023?
+0x61d89e06ca4043d2fb5abe24c03e6abc8f2ebf0a,Yes,"Will Luka Doncic score more than 10,000 career points in the NBA by 3 January 2024?"
 0x61f6ec8160100fa7ddae6e3783c489f749ee609e,Yes,Will Apple's sci-fi drama Invasion be renewed for a third season by 29 August 2023?
 0x61f7c34e2833d02efa878cc936c9cb4acb72ffbd,No,Will the trial of the ex-cop who fired into Breonna Taylor’s apartment result in his conviction on 8 November 2023?
 0x620dcc15654f75cf1829f188daabf16f72c5a4b0,No,Will Ray Epps be sentenced for his role in the Capitol riot by 24 September 2023?
 0x6214b791da725300a7c173014636c98e8ee00720,Yes,Will Microsoft's new AI assistant become available to all by 25 October 2023?
+0x623a5fd5f97c1a2951844269ebff0f73fbb8ede8,No,Will Bristol Myers Squibb complete its acquisition of Karuna Therapeutics by 30 December 2023?
 0x623f408c34097a12cfcf3c87be01f3e20a1f4c99,No,Will 'The Super Mario Bros. Movie' be the most-streamed film on Peacock on 13 August 2023?
 0x627e9308beee028450b220ac59dadc654aa4a3e9,Yes,Will JIP's takeover of Toshiba be completed by 25 September 2023?
+0x628ee9736e91e33f5b679eb67fb50f75a403b5fb,No,Will the asteroid pass in front of star Betelgeuse creating a one-of-a-kind eclipse on 16 December 2023?
 0x629ae6c78cd0b8de006ac9bbacc4cf5854bed938,Yes,Will the UK's artificial intelligence safety institute be established by 3 November 2023?
 0x62d4fa295eb4320960a5551bc441f6ad7730bb86,Yes,Will the identity of the plant thief at Humphrey Herington's Australian nursery be confirmed as Claude the koala on or before 10 September 2023?
 0x62f2c4d94a70170f27afaba81e7f1faac3601520,No,Will WhatsApp introduce its AI assistant to all users by 2 December 2023?
@@ -482,33 +634,46 @@ id,currentAnswer,title
 0x630ded3966329cb1e2f4856f6048d3bdd23fe191,Yes,Will Robert F Kennedy Jr announce his candidacy for president as an independent by 14 October 2023?
 0x63244adc6b13a18dd1859cad43defbd20648032c,No,Will researchers find additional evidence of organic matter on Mars by 7 August 2023?
 0x632dcfac62bc37f5bf730e80f2455e56e504a122,No,Will Nikki Haley surpass Ron DeSantis in the Iowa Poll by 7 November 2023?
+0x634c0294401c082324676e400b7fadc27879fbcc,No,Will British billionaire Jim Ratcliffe's investment of $300 million in Manchester United be realized by 3 January 2024?
+0x635d87ca39869e04223d56e4a591562439340e67,No,Will Taylor Swift attend another charity event by 21 December 2023?
+0x6397e2fc1ca2e35f4f723e02376334c76bbd7002,No,Will the Samsung Galaxy S24 series be released by 18 December 2023?
 0x63a38f5ffeab39e9708466d84afceebdb1e4df2a,No,Will the civil suit brought by the state of New York against Donald Trump result in a mistrial by 11 November 2023?
 0x641f2d5f40df2b08074c9ccc4d5e323f5be3f13f,No,Will Instagram officially make Reels longer to compete with TikTok by 5 September 2023?
 0x644dcf686a83617b4d391af8c02e7e1ca987d3c2,Yes,Will Russia's ban on state officials using Apple devices still be in effect on 13 August 2023?
 0x645f02936697ca10e97c430d97e6fc8e20828d20,No,Will the police chief leading the raid of a small Kansas newspaper be reinstated on or by 5 October 2023?
 0x649596349be96f564fccf1463553a13dacfdb674,No,Will the verdict of the New York fraud trial involving the Trump family be announced on 12 November 2023?
+0x650c1d41f009aeae4a5c36ee930be14cdfaf7c4d,Yes,Will Anthony Joshua fight Deontay Wilder on 4 January 2024?
 0x653e7a26d85ce301a04ab40f3049554c81a549cd,Yes,Will SiriusXM announce a new podcast series on 3 September 2023?
+0x65635debdd6987be26fd5a12dec67431b6470e20,Yes,Will there be a new crisis situation where Americans are stranded without help from the Biden administration by 8 January 2024?
 0x65773978e26987564d0c4a7ce6e0e6f9a8782f2e,Yes,Will Typhoon Khanun be over by 15 August 2023?
 0x65f869299c2c43d5c1805ee0b661d0107d5dcadb,No,Will the Cricut Venture sell more than 5000 units on 6 August 2023?
 0x6609a90ff4abb2381e7a1fa5b254807542db0450,Yes,Will the Powerball jackpot exceed $1.6 billion by 13 October 2023?
 0x66221d74c5d6add699284907143da808d14ed133,No,Will a Biden impeachment inquiry officially begin by 18 September 2023?
 0x66400982a4945996edf1f7c334e4e8dc0304f746,No,Will Twitter resolve its bot problem by 12 September 2023?
+0x66518748639bbf3772d87ad7b9172ca411895bd2,Yes,Will the U.S. military MV-22 Osprey aircraft crash result in at least one fatality by 8 December 2023?
 0x66776c757cec6b7444dce1e897bd30443924af68,No,Will Elon Musk and Mark Zuckerberg's cage fight take place in Italy on 19 August 2023?
+0x671e78862ecdc514f49aa824494868e295e4735e,Yes,Will Claudine Gay remain as Harvard President by 21 December 2023?
+0x672f04b773e17a7582ff493b648f4fa02e534a5a,No,Will there be an escalation in the conflict between Russia and Ukraine by 8 January 2024?
+0x67583685fff9b193e80e9c82366cc077191b9a8c,No,Will Hunter Biden's request for dismissal of gun charges be granted by 19 December 2023?
 0x6781c48f4f15a6cb0d7f611d1a3e541bdad5535a,No,Will the suspect in the fatal shooting of a Maryland judge be captured by 28 October 2023?
 0x678e6fe04ea219c74c6b74753f323e34340145b2,Yes,Will the U2 concert take place at the Sphere venue in Las Vegas on 5 October 2023?
 0x67ebc70024345749954c3f152deed54f5549f29e,No,"Will the Danish artist repay €67,000 to the museum by 23 September 2023?"
 0x67fdefe7fc18cbc43249c72aaf6906646841674f,No,"Will total number of transactions across chains by Olas (prev Autonolas) autonomous services exceed 160k by the end of week 42, 2023?"
 0x683296e27c8d8aa48c0c441ac17fb99eb801f591,No,Will a commercially available automated insulin delivery system powered by AI be approved by the United States or United Kingdom regulatory bodies by 4 August 2023?
 0x6836aecb27b6f116906206fe198df1c97eca4e8d,No,Will OpenAI open more offices outside Dublin by 18 September 2023?
+0x68806230744c5a3abaeba89a79948a0d44e7046e,Yes,"Will bitcoin's price exceed $45,000 on 9 January 2024?"
 0x6884a1885f5dbf860811c881ec80b906fcce2d5e,Yes,Will the sea-ice surrounding Antarctica reach a new record low by 21 September 2023?
 0x6894d172edd045b2c276676ae0e97da401392332,Yes,Will the first set of Gnosis bonding products see significant uptake in their first week?
 0x68ada5813fe68bc25825faf9e4d9ca84f660906b,No,Will the imprisoned artist protesting the Ukraine war in Russia be released by 25 November 2023?
 0x68add4373e999e7556d7249139a8a04b37f81b9b,No,Will the Brazilian satellite launched in 1993 cease operations by 27 September 2023?
+0x68e8e75b26417f84d41470cafdcede580a7ea652,Yes,"Will Denver Broncos' Russell Wilson still be benched on January 6, 2024?"
 0x6928defad53f4111d85c7f1b6975c86c5403bc25,Yes,Will Iran deploy weapons in or through Syria by 20 October 2023?
 0x695f600859ffe66fa941f5907348942f91e7323d,No,Will the US join the EU in regulating AI by 4 August 2023?
+0x696d733e78179c4b3f4a241ee9a7618c8814c65f,No,Will the investigation of the crash of US military Osprey off Japan conclude by 18 December 2023?
 0x6973605f6b9b7a1fffcda8e9a11a8e298036c228,No,Will Medicare successfully negotiate the prices of the first 10 prescription drugs by 3 September 2023?
 0x699664f609b052ba6766af9bc4db12b24f4ebe58,Yes,Will the investigation into the decades-old cold case killing in Virginia be concluded by 20 September 2023?
 0x69b0bfae5bb59b29c5f9cefefa215e9500471a9a,No,Will the wildfires in Maui be fully contained by 23 August 2023?
+0x69f099f8cdb6b06e40dd1267e7df527da0af40ae,No,Will Alexei Navalny remain in the 'Polar Wolf' prison in the Arctic by 3 January 2024?
 0x6a526bf9b5573290be316fb95bc418f91ced9e18,No,Will MrBeast's lawsuit against his fast food chain result in a settlement or verdict by 18 August 2023?
 0x6a66d67522cca43b0d1f6678f9283e006d7dc72e,No,Will a new Prime Minister be appointed in Portugal by 20 November 2023?
 0x6a856511a7693e45380616dd4860bca34b444b85,Yes,Will the final series of Netflix's The Crown be released by 22 November 2023?
@@ -517,6 +682,9 @@ id,currentAnswer,title
 0x6b65a14896aff5941a16835ee04ce4bcc2adaf45,No,Will a new US House Speaker be elected by 15 October 2023?
 0x6b8f6abbbd1ce88a7db21ecc58cdaa3207312c0a,No,Will a new Speaker for the US House of Representatives be elected by 19 October 2023?
 0x6bdef6984002257c7e503978872895d884c78388,No,Will former U.S. President Donald Trump visit President-Elect Javier Milei in Argentina on 2 December 2023?
+0x6bf51a655393400ea063304736523084261b8dad,Yes,Will the ACLU's lawsuit challenging Texas' new law authorizing police to arrest migrants be settled on 29 December 2023?
+0x6bf570bf2e9943dc33546539b95fa4bbcea780f2,No,"Will the names of Jeffrey Epstein's associates be released by January 8, 2024?"
+0x6c026ab0464f520b20d81cec69ba03fc1fa60699,No,Will Ukraine receive the threatened US defence package worth billions of dollars by 19 December 2023?
 0x6c0317915ee781097b354d27f9a93b42b32ba069,Yes,Will Ubisoft fix the 'technical error' causing pop-up ads in Assassin's Creed by 2 December 2023?
 0x6c0bdcf1de8163d709c122d1522793ecc61c151f,No,Will the United Auto Workers (UAW) end their strike against Stellantis by 29 October 2023?
 0x6c1344f68d2c7c252ecb96ff62e5b972b2766b01,No,Will 'Alan Wake II' be released before 22 August 2023?
@@ -525,12 +693,14 @@ id,currentAnswer,title
 0x6c900424e0ed9b6d61c0b26d7389bacd1de5145c,No,Will the Virginia man arrested for carrying weapons in a church be convicted by 1 October 2023?
 0x6c90de692fc23aa4aaaaea83be2a4b6fb952d8e8,Yes,Will the escaped lion prowling town streets be captured by 21 November 2023?
 0x6c968c3d1c6dd7a03f0fb27bd3605aba04035256,No,Will a new significant WiFi technology be announced by 21 August 2023?
+0x6cc918ed2ecc4c3f4dacffe3ae6ea3ad29717e26,Yes,Will Tesla's new feature to automatically call 911 after a crash be officially released by 18 December 2023?
 0x6ceefbc046df3bb3295821411138cebb110fb9d8,No,Will Atari's 2600+ console be launched by 29 August 2023?
 0x6cfe6980615159867cec823b14b82f4ee8c0819f,No,"Will the missing 102 individuals, including 22 army personnel, be found by 9 October 2023 after the glacial lake burst in northeast India?"
 0x6d1c8cd53c2baeec3c544b4f0ef111fd97484968,Yes,Will there be any new movies debuting in theaters worldwide on 11 November 2023?
 0x6d77d4f2bc9b686a2b3e0ad70972c8ff47bbe989,No,"Will the thieves who stole $300,000 in gaming trading cards at Gen Con 2023 be caught by 17 August 2023?"
 0x6dc1b56eff79055f16fadd039d38c772b1b54fb8,Yes,Will Facebook change its logo by 28 September 2023?
 0x6e205b974f9c72f423ab035800270b6c84eb909d,No,Will the outbreak of salmonella linked to cantaloupes be contained by 27th November 2023?
+0x6e2a032422f67008a9884b981cffe9623ea60d04,Yes,Will Beijing record sub-freezing temperatures on 3 January 2024?
 0x6e321458dda60ec3c6a1985371ff9d5555a16624,No,Will Meta release another open source AI kit by 19 August 2023?
 0x6e3938b238832ae77a94f8b286b76e70b09f506f,No,Will Apple release a cheaper Vision Pro follow-up by 21 October 2023?
 0x6e53ed4b5841817cf109148f5313f4db4fbbfb11,No,Will JM Smucker complete the acquisition of snack maker Hostess Brands by 16 September 2023?
@@ -543,6 +713,7 @@ id,currentAnswer,title
 0x6e9f2c0ae2c868743fa0c71470386e1b315ebaf3,No,Will the missing Georgia fishermen be found by 5 November 2023?
 0x6eb061be535ce09767d9c9888fad503aa208e5cb,No,Will the release of 'Rebel Moon: Part One' be delayed beyond 17 November 2023?
 0x6eb12471b81106022a90144cf15e8a11417922bf,No,Will new details about JFK's assassination be revealed by 17 September 2023?
+0x6ec9465d47422648c76d95355a54cb25323b2b28,Yes,Will Moody's upgrade China's government credit ratings by 24 December 2023?
 0x6eee4da0379e90cf2f42c2a0225baed721347361,Yes,Will Zhongzhi Enterprise Group officially declare insolvency by 1 December 2023?
 0x6ef59cf6c870b29d4ac4f900249e1b61bcb5a4fd,Yes,Will Instagram enact stricter content policies regarding historical figures by 8 August 2023?
 0x6f0630440336be8e6fbbe92f202b4fb3fb028f11,No,Will the strike of California scientists be resolved by 23 November 2023?
@@ -551,9 +722,11 @@ id,currentAnswer,title
 0x6fa3e9a7b2eff82876cd377c2ee2cc7039614753,No,Will former NFL player Sergio Brown be found by 22 September 2023?
 0x6fbcafb06c9d453ee856d1397a8ffa0053aa559c,No,Will biometric authentication replace passwords completely on or before 7 September 2023?
 0x6fe909e0b3eedc343cbe01209ff45c6ba063520c,No,Will the United Auto Workers' strike end by 12 October 2023?
+0x6ff8d3c92a1ea37ab8faee014a80b2d25a90454c,Yes,Will Microsoft's Copilot app be updated or have a new feature added on 8 January 2024?
 0x7023c1935066b791b8171bced30912f3b8be032f,No,Will the James Webb space telescope discover another active supermassive black hole on 8 August 2023?
 0x7032c3013ec561f3b41fd4c4adfd4baaeee5aeed,No,Will the Gaza City conflict end on 15 November 2023?
 0x7047c1d86490f2000f98f3da8da751752883768b,No,Will the newly elected ceremonial president of Singapore face any political scandals by 13 September 2023?
+0x7050a2292aef91b9856eaa80168d0ffbaf8930b6,No,Will Carlo Ancelotti still be the manager of Real Madrid on 6 January 2024?
 0x705402df7c699ad435e1f0daf08e0c2cddc02783,No,Will Spirit Airlines resume its full flight operations by 28 October 2023?
 0x7073843e99755cc8c4e4f5f2ab0a37cd2824e706,Yes,Will the European Commission lift the freeze on its development aid for Palestinians on or before 15 October 2023?
 0x70b8a51e3ffaebc4991dd864a697511bc1b03511,Yes,Will a truce deal between Hamas and Israel be established by 30 November 2023?
@@ -579,6 +752,7 @@ id,currentAnswer,title
 0x738d4e76ea8461e16f526514a44d43bf4d6190ab,Yes,Will the person who crashed the car into the Chinese consulate in San Francisco be identified on or before 17 October 2023?
 0x7392c9491a5bc7634bf10d3f796f10a2a6257aaa,No,Will a form of digital 'immortality' be publicly available on 19 August 2023?
 0x739ae60c523f13142966a43b66461df80b4be5db,No,Will Blue Origin successfully test a rocket engine without explosion on 5 August 2023?
+0x739cb0f6722a3dd1b30e45b1d15646f568242f5f,Yes,Will Anthony Joshua and Deontay Wilder fight in March 2023?
 0x73b79842a3f40e5ffccecbb47d73de4c9f1f4f2a,No,Will Hunter Biden and James Biden testify under oath by 13 November 2023?
 0x7427fe56c980148622a2b4e96185505b5ee6aec0,No,"Will a new version of the iPad be released by Apple on October 21, 2023?"
 0x74f7e39833cef70e2b650eaef343043e03c6e594,No,"Will North Korea's leader Kim Jong Un complete his visit to Russia by September 16, 2023?"
@@ -588,18 +762,24 @@ id,currentAnswer,title
 0x7517166a87e048d540ec9a78c2dc69635742a529,No,Will Metro Bank successfully raise 600 million pounds to fix finances on or by 11 October 2023?
 0x752dd0a265b422d0abb19f46ec2222c48b00e5fd,No,Will there be another cyclone disaster in Brazil by 12 September 2023?
 0x758d4da3561f963d7f7607196ad422ae3b35056c,No,Will Mophie release new Qi2 magnetic wireless chargers by 7 September 2023?
+0x75c33a6bb5f1ed0102c9fc0b98684f5a41296c9a,Yes,Will the removal of the Confederate statue in Arlington Cemetery be completed by 28 December 2023?
 0x75fd1d9d02130fcaa65c75939bc6bb1acc2aebbd,No,"Will the Nashville police chief's son, suspected in the shooting of 2 Tennessee officers, be captured by 1 November 2023?"
 0x7634dca7eb6c91d3368b254fde34bb7d2f328afb,No,Will Lloyd's finalize an insurance cover deal for Ukrainian grain shipments with the UN by 14 September 2023?
 0x76fc4acb42e43691f437c0e3dd997bb5934b025b,No,Will Ken Paxton's impeachment trial be concluded in Texas by 10 September 2023?
 0x770b21b224a170b7a30f7933b1b030c6ccd64ced,Yes,Will Mike Johnson remain the House Speaker on 7 November 2023?
+0x77167556a9f1cc0179686a027a0621a6f335232c,No,Will the impeachment inquiry against President Biden conclude by 20 December 2023?
 0x779616116396444c36e08edf9cd63bbda2ebdfac,No,Will the WSJ Tech Live conference be rescheduled due to the drop out of X CEO Linda Yaccarino by 15 October 2023?
+0x77cfac01fa3d4aec658ce95b490f472a08c52e42,Yes,Will there be any new hacking cases reported against Mirror Group Newspapers on 24 December 2023?
 0x77d9430c75be1b5f8f6068b13c495b1930e17c5f,Yes,Will Alibaba's artificial intelligence model Tongyi Qianwen be publicly available by 17 September 2023?
 0x77f2f23b273c94e30adb3b020843875c8d6c156c,Yes,"Will Super Mario Bros: Wonder become the best selling game on the Nintendo platform by October 29, 2023?"
+0x783690dcd4794eac2b21ddb7b9989a833afa6121,No,Will Ukraine become an official candidate for EU membership on or before 21 December 2023?
 0x784f89b9d6dcf669ea8f57ddcf42eb22a9fdfffc,No,Will South Korea's heat alert still be at its highest level on 17 August 2023?
+0x785e9bff28e8857113a34435514781dc9fa63c45,No,Will the coronavirus subvariant JN.1 become dominant in the US by 26 December 2023?
 0x7864fcbcec21659d16c2ddd983f919cb3fafcc66,Yes,Will 'The Super Mario Bros. Movie' be available on Peacock on 5 August 2023?
 0x788126b6e21d023fa074789c055fe46439717690,Yes,Will Apple's sci-fi drama Invasion release its second season by 31 August 2023?
 0x78a33faf04ffd9afa9d42471a81c2aa53146ca8c,No,Will the 'Silent Barker' mission by the US spy satellite agency be successfully completed by 3 September 2023?
 0x78a56a53c6599ff748aac5e6a9fedf7b8074290a,No,Will Ozzy Osbourne perform a show on 4 December 2023?
+0x78ec713265901181ae18a10625703a313a403f6e,Yes,Will there be a fifth-gen Echo or an updated Echo Show 8 released on 8 January 2024?
 0x7933bfd6e7252f6753f2e91ace7b5d0310b2e667,No,Will Withings' ScanWatch 2 be released by 9 September 2023?
 0x7956c2032ecbf5a2b314881abce9bebe8bdb0b76,No,Will Senator Joe Manchin officially announce his 2024 presidential run by 24 November 2023?
 0x797e97e9ddb5d0f01054283073aeb941ae7b505a,No,Will the DAO vote AIP-2 in before the end of October 2023?
@@ -609,21 +789,34 @@ id,currentAnswer,title
 0x799e6f7f76d3b4849e68550a528a1b1f9b8e5076,Yes,Will the United States capture more key Islamic State militants by 30 September 2023?
 0x7a4b9ac6a89a9984733f5eb455932696627a2836,No,Will the film director Terence Davies receive a posthumous award on or by 12 October 2023?
 0x7acbe09c2d4a236bd123e826cc0acd0623fc07ce,Yes,Will Hibernian end their winless run in the Scottish Premiership by 13 November 2023?
+0x7aedf8434f5da2f80b5cd0c22f918b7dc98ba2a7,Yes,Will the Epic v. Google lawsuit be resolved in favor of Epic Games by 18 December 2023?
 0x7b10b7853318f3e177cae1f28405690908d4e165,No,Will the DOJ conclude its probe into Tesla's EV range exaggeration allegations on 2 November 2023?
 0x7b4086241adc57029fc0dc6d8b43e9f5a63a2f3d,No,Will there be another glacial lake burst causing casualties in India by 11 October 2023?
 0x7b47d7b80d481e6dcffee15b37f92fbc1254e7ca,No,Will Foxconn successfully sell its two large facilities in Wisconsin by 7th September 2023?
 0x7b501a1cb4015944f1e93a7c4b180a9493b081fc,No,Will Romana Didulo be forced to leave the Canada town by 2 October 2023?
+0x7b60c9c509c8e1a7fb0632edddb0ddeebf233941,No,Will Tesla deliver all pre-ordered Cybertrucks by 9 December 2023?
+0x7b66a7a37eefda094e8cc19afceec2aca8aebcab,Yes,Will the Pope's call for a binding treaty to regulate artificial intelligence be realized by 20th December 2023?
 0x7b6d844198e13be77e0c132961f0b34b9f6cc932,No,Will an eastern Pennsylvania candy factory face another explosion on or by 12 October 2023?
 0x7bfdf6709ec46cf283431878a4c3b60fe9d61ad5,No,Will the UK government take stronger action against Beijing following the arrest of a parliamentary researcher by 15 September 2023?
+0x7c0a5991b1192b04d88232f70911643a83e62fcd,Yes,Will Wix incorporate generative AI into its platform by 6 December 2023?
+0x7c44ea42bd687cc37ac1c322b69fdeb0d39eacd7,No,"Will the verdict of JetBlue's Spirit merger be released by December 18, 2023?"
+0x7d54fb2ba26557be610772c264f969db86d2f0f5,No,Will Gerry Turner and his chosen lady from 'The Golden Bachelor' get married on TV by 11 December 2023?
+0x7d68c8571edf0a6f57bedaf598c54047c175e36a,Yes,Will Pope Francis attend any public events on 8 December 2023?
 0x7dbf67359b918b7c7c6f8fd7f47de0598d0e92fa,No,Will Joe Biden be officially charged for mishandling classified documents on or by 15 October 2023?
+0x7e2ad7cbd2492d9eed0fc56e99f0712c4301703a,No,Will the US Air Force complete the re-commissioning of the Pacific island airfield that launched the atomic bombings of Japan by 1 January 2024?
 0x7e7ec7a4a8a157bbe1942390861ba60b4445a8ab,No,Will the Internet Archive lose its lawsuit to Sony and Universal by 21 August 2023?
 0x7eceafc3672220aa80f8d9e3a5325418d0bc4a96,No,Will Foxconn's shares recover from the drop caused by the report of China tax audit and land use probe by 30 October 2023?
 0x7ef9b2258bf293ac8d3e8b55755fbc860e4d5d90,No,Will the Hollywood writer's strike end by 25 September 2023?
+0x7f3a29c451d3b9505d0265e428dccc30ff679c40,No,Will Amazon start making its own hydrogen to power vehicles by 6 January 2024?
 0x7f4ec78ffb9ff4b2c1cdc58f5b3c170f3c509323,Yes,Will Russian President Vladimir Putin accept Kim Jong Un's invitation to visit North Korea by 18 September 2023?
 0x7f69ef3825db9333eefb7886fb28b398eeafb684,Yes,Will President Joe Biden provide continued support to Ukraine on 6 October 2023?
+0x7f6d09a8c26b1aff965b9c11cbdff4aefe5c11ca,Yes,Will the Universities of Wisconsin implement the pay raises-diversity deal on or by 20 December 2023?
 0x7f8e15175e4ea0563a19fe76ce8f0c8c1c50d2ad,No,Will Elon Musk issue a public apology to Taiwan for his comments by 18 September 2023?
+0x7f9f057ad7adc0500e01d2576d5e55643fd7549e,No,Will Microsoft's Edge Copilot AI be able to summarize every YouTube video by 18 December 2023?
 0x7fd1143db301c1ad64934234428612d07d635966,No,Will Avi Loeb provide valid scientific proof for his claim of finding alien tech by 5 August 2023?
 0x7fd1ac9ce76da6ac24f259c7f7fc8506ceba37e2,No,Will Rep. George Santos be expelled from the US House of Representatives by 4 November 2023?
+0x804d5749dfc390f392888f90fd149c99e689447a,No,Will the Gold Coast reconsider and bid for the 2026 Commonwealth Games by 11 December 2023?
+0x806147a8af4b687086bba64e4445c5cdf7a4977b,Yes,Will Liverpool win against Manchester United on 20 December 2023?
 0x80a488565e3f0f9aaf99549cfe23e073ad5161e5,No,Will Ramzan Kadyrov's proposal to postpone the Russian presidential election be accepted by 13 October 2023?
 0x8136168ca5b75ddad256e1496b3fbde3fc2e15b3,No,Will the red-bellied piranhas at Chester zoo attack any visitors by 14 August 2023?
 0x815e881d0339966b19850779b642daba4a851e44,Yes,Will an impeachment inquiry be launched against President Joe Biden on or by 8 November 2023?
@@ -634,12 +827,15 @@ id,currentAnswer,title
 0x820370f9532b3b4d6cde5d9022e4bdfddba723d4,No,Will Geert Wilders become the Prime Minister of the Netherlands by 3rd December 2023?
 0x8256aad7771abc71355c8508a3c24573ac2d461c,No,Will California Gov. Gavin Newsom officially announce his candidacy for the presidency by 3 November 2023?
 0x82eda72104e1595fcc222002303cdf9e163dceee,Yes,Will the Minnesota Supreme Court rule in favor of Donald Trump being on the 2024 ballot by 13 November 2023?
+0x82f9c3899e0aa8bd0584e51944ff96d7a3618555,Yes,"Will Cristiano Ronaldo score another goal in his career match on or before December 15, 2023?"
 0x830328b33c1916bbb08c69439ebf4a9b1efb06a0,No,Will the peace plan discussed in Malta bring a resolution to the conflict in Ukraine by 6 November 2023?
 0x8386648582dc8fca460b2e70a01fa0046e85363e,No,Will Netflix release a new movie from Zack Snyder on 9 September 2023?
 0x8398bc89d1508056e0beadcd4feade38f9028ba8,Yes,Will the 10 Freeway in downtown L.A. be shut down due to a massive fire on 19 November 2023?
+0x83dd9b5fcb1e3f2f83fb9e33913e8e164b3577a0,No,Will a new firm take over the Smile Direct Club customer base by 18 December 2023?
 0x83f957cb7cc6bb5bb68b158aeda6972b831d52db,No,Will Spotify add full-length music videos to its app by 8 August 2023?
 0x841350d87073208a2ac054fbd3c2023d13fe910a,No,Will the tension at the Israel-Lebanon border escalate into a war by 20 November 2023?
 0x84202fa4cd3776535c705800ee9d8cdf48cf6354,No,"Will Neymar return to professional football after his ACL surgery by October 28, 2023?"
+0x84296655f220a5c64ef94bd3a554d57b723c2077,No,Will Jonathan Majors be removed from the Marvel Cinematic Universe by 27 December 2023?
 0x84415fb93f14016854050a0ad2f48ec18fc1f176,Yes,Will California's assault weapons ban still be in force on 5 November 2023?
 0x845a1c4755bdfd1ef985fd7ab1977aabc6b213f6,No,Will Neuralink conduct its first human trials by 24 September 2023?
 0x849ecc22b8b3872b1bb420e9f0b544baed3ae028,Yes,Will Thaksin Shinawatra be in jail by 2 September 2023?
@@ -649,6 +845,7 @@ id,currentAnswer,title
 0x859d2e71475d851092449919034e56766ecfa77d,No,Will the UK special forces be found guilty of killing nine unarmed civilians in Afghanistan by 16 October 2023?
 0x85cc26bb72e9a31e0a2445c11182bd9cd5790156,No,Will Ronnie O'Sullivan announce his retirement from professional snooker by 29 November 2023?
 0x862fd88afe559c126265de4c4cf1388a129e1fc5,Yes,Will the FDA update Ozempic label to acknowledge some users’ reports of blocked intestines by 4 October 2023?
+0x863c84e4774eeaaee80d0314b30bb633ae7baf2f,No,Will the investigation into the death of Canadian entrepreneur Daniel Langlois in Dominica conclude by 13 December 2023?
 0x865b363a0f211fef797f4a771564d4bdff1dfda0,No,Will Jared Leto climb another iconic building on 18 November 2023?
 0x865d2032bf5cdadc955197f8b0620d7d71ff1d10,No,Will the TV series 'Rebel Moon' release its first part before 19 November 2023?
 0x8685ce261a7a7d2e373d4d975d278e5d5af5bd48,No,Will the 70 escaped crocodiles in southern China be recaptured by 16 September 2023?
@@ -657,6 +854,7 @@ id,currentAnswer,title
 0x870553a0e5e7a6c01ba326c6de320fe0ef498f84,No,Will the Bored Ape Yacht Club still be blocking OpenSea in the fight over payments on 25 August 2023?
 0x87461bad728f26410bac883803920fdde2aca3e8,Yes,Will the Claude Monet painting fetch more than $65 million at the auction on 10 November 2023?
 0x876f563ab747a5fdb009a02df42fdb2b111b9dda,No,Will the man claiming false arrest due to misuse of facial recognition technology win his lawsuit by 8 October 2023?
+0x8773e95d319d3eea626dc20d7d61364072bf3fe8,Yes,Will Scottie Scheffler win another PGA Player of the Year award on 9 January 2024?
 0x87a025956e11332ae90a3b012b8c2aec952c9879,No,Will the 'pink tax' on women's health care be addressed or removed by 6 October 2023?
 0x87c43ecb89b516f9f65f357432199dafa047b7d6,No,Will the Custer County triple homicide suspect be convicted by 1 December 2023?
 0x880cb7bc47da95bfd21e1967ccdd6a084337e498,No,Will Snoop Dogg maintain his decision to quit smoking weed by 25 November 2023?
@@ -667,7 +865,9 @@ id,currentAnswer,title
 0x898827b92b9b5d4abe090bd25367d68a4922bccd,No,Will the Indian authorities successfully rescue the workers trapped inside the collapsed tunnel in the Indian Himalayas on or by 26 November 2023?
 0x89c88c7a603f70560e7ddb77ad21392edcac049b,No,Will California increase the minimum paid sick leave days beyond five by 9 October 2023?
 0x89ddd475e76f4a749ff9d280f68066eafaa2c1b4,No,Will Twitter release more data to the January 6 investigation by 24 August 2023?
+0x89ee44f72981e8654f04c6882e556bab3b06fdc4,Yes,Will a tsunami hit the Northwest of United States before 22 December 2023 according to FEMA's Risk Analysis?
 0x8a556a1e97e36e572d014731003fda7413518acc,No,Will there be more protests in Iran leading to arrests by 8 September 2023?
+0x8a6fcf35e5e0f6f747eeea3d15e4b91bde2aa51f,Yes,Will Singapore's economy show growth in the first quarter of 2024?
 0x8a91435f17c00530dac8008b8469e2fa21379392,No,Will Dropbox introduce a new cloud storage plan by 3 September 2023?
 0x8aea05e1b273ebc3cb262418459f7b9c3d41bc4b,Yes,Will Rally's and Checkers continue to use AI chatbots for Spanish-language food orders on 25 August 2023?
 0x8af62bfe082d5d202c9058eeffc86a9e5c743639,No,Will Microsoft Excel launch a rebranding campaign on 6 August 2023?
@@ -675,6 +875,7 @@ id,currentAnswer,title
 0x8afa3ea60b16a563d0265f00d6726b0601cc35a2,Yes,Will Chrome introduce another security-related update by 25 August 2023?
 0x8b48c26efb56cff207293eaa7b0fde168f7a8178,No,Will Ivanka Trump testify in Donald Trump's civil trial by 4 November 2023?
 0x8b4cbb885249a8d5ca445c884cedc3dacd1e22f9,No,Will Andy Farrell be appointed as the British and Irish Lions head coach by 8 November 2023?
+0x8b6bc2a8f4cadd294b68dd43c39c394fe97b6d37,Yes,Will Jenson Button win a race in the World Endurance Championship on 24 December 2023?
 0x8b7aa84e50309a02c410707426acab43ce7bbac9,No,Will the lawsuit filed by Genesis against Gemini be settled by 30 November 2023?
 0x8bb8023c5890ddb3084e96a42983e7f036954326,Yes,Will the Gaza hostages be released by 1 December 2023?
 0x8bc177d20495285ab72f5c863312859272829a10,No,Will there be a significant breakthrough in the analysis of asteroid Bennu samples by 29 September 2023?
@@ -682,13 +883,21 @@ id,currentAnswer,title
 0x8c22c712eec356e91e1f6d5f0b5a61d6b6342258,Yes,Will the hostage situation at Hamburg airport be resolved by 12 November 2023?
 0x8c36770e378d22e751ac0ffed3ffd1145f2f542d,No,"Will Volvo's electric cars in the US, Canada and Mexico start using Tesla's North American Charging Standard by 5 August 2023?"
 0x8c4d4c502a8f93fc0657bae3469c157da0933373,No,Will another artefact be stolen from the British Museum on or before 28 August 2023?
+0x8cdce5404f1f4f45da9aa2630c9d09a274c04a34,Yes,Will the trial of the Alabama man accused of the 1988 killing conclude with a verdict on 4 January 2024?
 0x8cec9bbe210c8f416799396029912f9895a3aa34,Yes,Will MrBeast remain the world's biggest YouTuber by 14 August 2023?
+0x8cfaec692ff8f4e5a6c686cce7f2e98e0ce5d7a7,No,Will the Chinese EV giant BYD exceed their 2023 vehicle sales by 8 January 2024?
+0x8d072e0329a258e20f6ae3032d32f32485ea7b36,No,Will Google's new geothermal energy project expand to additional locations by 7 December 2023?
 0x8d3a761825dea5754961ebb3f7455f645e7bdcc5,No,Will the Bank of England hike interest rates again on or before 22 September 2023?
 0x8d5224265a91886ee76dfcd2f94416b9882e3b70,No,"Will Netflix fill the $900,000 AI job role by 5 August 2023?"
 0x8d608ff5909e505e459d667cbebdea62003899fa,No,Will the missing Titanic sub be rescued by 2023-08-20?
 0x8da8f5be9f0c3d213889f4add0858368081d57ef,Yes,Will the 2023 Ryder Cup see any controversy related to player compensation by 18 October 2023?
+0x8dacca2827e4d222d99200c4db4a63e77ac4bcd8,Yes,Will Bronny James play another college basketball game by 18 December 2023 after his cardiac arrest?
 0x8dc7b2f183ffcca9ffc079e97966dd76e769014a,No,"Will Donald Trump be officially disqualified from running for presidency by November 5, 2023?"
 0x8dde1ac019877fbcdaf16797e1d8a8acf37e5f18,No,Will Sony sell over 50 million PlayStation 5 consoles on or by 11 August 2023?
+0x8e023fd94b20f48a5e1443d3a14571243819f5aa,Yes,Will Tesla's EV charging plugs become the industry standard in the United States by 28 December 2023?
+0x8e03407d94992678554515912f9312ba09d7549d,No,Will Javier Milei implement his proposed economic 'shock treatment' in Argentina by 18 December 2023?
+0x8e658f1c91bddaa6006efa3454eb38a9ec80b444,Yes,Will the Universities of Wisconsin reach an agreement on the employee pay raise-diversity deal by 18 December 2023?
+0x8e6b355502fb255e209bae0ddaa2daf6fcc37a54,No,Will there be another earthquake in Bangladesh with a magnitude of 5.5 or higher on 10 December 2023?
 0x8e73c621f2b58864732e6fb8407605a2fa117beb,Yes,Will the Meta 'Super Rumble' game have over 1 million active players on 15 August 2023?
 0x8ed8de219f460efcb73b6deaad65e0a6ea36d05f,No,Will the proposed additional 10% tax on diesel vehicles in India be approved by 16 September 2023?
 0x8f4d840fb1ab956d82d691e98d2ec32e4a928f87,No,Will a trailer for Grand Theft Auto 6 be released by 13 November 2023?
@@ -698,30 +907,39 @@ id,currentAnswer,title
 0x8f6f6fe54fb7a5ff869d3b53386131de9de4b7d3,No,Will Sancho's extradition be requested by 23 September 2023?
 0x8f81d584709cff1389861417d80e4d6607c42756,No,Will the Vatican officially bless same-sex unions by 7 October 2023?
 0x8fc1e9cf4d997e7c9ccbab7cd15e34cadd25573a,No,Will the DAO vote AIP-2 in before the end of October 2023?
+0x906c2c35fd3c5831dc2f19023e560d866195aebc,Yes,Will Meta's 'Quests' feature in Horizon Worlds increase user engagement by 20% by end of 2023?
+0x90a53ebc8c7f5cb0f35922b21366b84f81b8eb78,No,Will the acquisition of Hawaiian Holdings by Alaska Air Group be completed by 12 December 2023?
 0x90fd25b68a7762e995e37bd0fba50224600bc265,No,Will the new G7 guidelines for AI developers be released by 13 October 2023?
 0x910c98df9457ee0c992dbe5ed0c57ade64187389,No,Will the Hollywood strikes end on or before 12 August 2023?
 0x913b00edd42751b952d679b285d9822f36914018,Yes,Will Amazon Prime Day have another air fryer deal on 3 August 2023?
 0x919f95cd9996c2e62358c3fecf7529d614647b9f,Yes,Will Michael Cohen testify against Donald Trump in the fraud trial on 2 November 2023?
 0x91bab95d0f5ed0f1e903fde98f3230e8fd676f57,Yes,Will Taylor Swift's movie pre-sales surpass Marvel's by 12 September 2023?
 0x91df3a629df15e0893e0d482c71f4af73a5d163a,No,Will the European Union present a report about Ukraine's progress in Kyiv on 12 November 2023?
+0x9203dc88d10c1acf2a0c97515d7e86635101d5ff,No,Will a ceasefire be established between Israel and Gaza by 19 December 2023?
 0x92286cb9bb116dbce43480657365b3127a8f0d17,Yes,Will the two Missouri men charged with assaulting police officers during the U.S. Capitol riot be convicted by 6 November 2023?
+0x9230c551b8ab1256534b9778c7e5e90c2e780a0d,Yes,Will Donald Trump announce his candidacy for the 2024 presidency on 25 December 2023?
 0x925f644d405d6c0dae4746ae6e3d32def3ee75ff,No,Will Sam Bankman-Fried be convicted in his criminal fraud trial by 1 November 2023?
 0x9260545ac15a35b3ee631bc452efa61250cca0f6,No,Will Japan's Prime Minister Fumio Kishida implement an income tax cut for households and corporate tax breaks on or by 30 October 2023?
 0x926b806ab06d373e8c16f3eb0d5187b181f0bba3,Yes,"Will the strike at Kaiser Permanente, the largest health care worker strike in US history, end by 11 October 2023?"
 0x9275edb9e69f7cb419724b0b80f7e9195c912946,No,Will there be a volcanic eruption in southwestern Iceland on or by 23 November 2023?
+0x92a26ddb3f8b56cecf0c2c34fc6ae031b4136697,Yes,Will Netflix remove the 'CoComelon Lane' episode facing backlash over a crossdressing boy scene by 27 December 2023?
 0x92bb9a78a2fa7d5f360ca0794e61c7d2fc1e43f5,Yes,Will Amazon Alexa's integration with IFTTT cease to function by 31 October 2023?
 0x92bca6775678e9e8b158a768aee72a0d6db1e1b2,No,Will the James Webb space telescope discover another active supermassive black hole on 2 August 2023?
 0x92c595a24c03e3d970828c1dfae062fbf3f5ee64,No,Will Disney announce a new addition to the Disney Bundle on 30 August 2023?
 0x930fec3b6cc597dcc5cc33f561f638b5fde28af2,No,Will there be a significant increase in climate-related disasters in China by 3 September 2023?
 0x9311084dd48e46605996c8aa41cf9ceb04ee1124,No,Will Twitter have released Donald Trump's DMs by 23 August 2023?
+0x931468ede251242344cc4f860e183482fe5c840c,No,Will Uefa president Aleksander Ceferin change his own rule to remain in power until 2031 before 18th December 2023?
 0x931b8c49b55e8bbe9078e2aadc620488abed55ec,No,"Will Ford Motor Co. resume construction of its Michigan battery plant by September 30, 2023?"
 0x934420ba976ffce845fb438b506f6d1720f6e413,No,Will there be any further unrest at Eritrean cultural festivals in Germany by 21 September 2023?
+0x934bdeead5d3b7fbfdf42cfba5190124dce6e9e4,Yes,Will the Federal Reserve cut interest rates by 21 December 2023?
 0x9386575d5c746c11c5bc301dc2fb17a9487d2e9d,No,Will there be a major aftershock (6.0 or above) following the 6.2-magnitude earthquake in northern Chile on or by 14 September 2023?
 0x93c9cfedf377c436ba495b91bda8b68ab41e1879,No,Will a new Indie game be released on Nintendo Switch on 19 August 2023?
 0x9427290807ebca579def8b206ae62258e20c2a85,No,Will Samsung release another QD-OLED TV model by 14 August 2023?
 0x945aaed085ca00c9118eb14a87d9dbf40042584b,Yes,Will the Met Gala reveal their 2024 theme on 15 November 2023?
 0x946bf5adc0794e264ef9a175272d6f1d0c560367,No,Will AI be successfully used to decode whale communication by 3 September 2023?
 0x950845db39755f4f0f94e7d718e1a5ea23e0ca25,No,Will Samsung launch a new generation of foldable phones at the Unpacked 2023 event on 7 August 2023?
+0x9554c47ff8fd8e2b67bb98a9bb23ce901a2df814,Yes,Will Russia intensify attacks against Ukraine military targets on 6 January 2024?
+0x955509b8d6954a2716788e2aa413e7cbda5fe9b2,Yes,Will the film adaptation of Hideo Kojima's Death Stranding videogame be released on 22 December 2023?
 0x956973bba2e6b5e55ac6f6c72b6f8bcc8238bada,Yes,Will Sergio Ramos return to Sevilla be officially recognized on 14 September 2023?
 0x957a524acac3051cf48babb62098040f4ef0339c,No,Will the astronomical observatories shut down by hackers be operational again by 6 September 2023?
 0x95a8ebab53f636e011aeb252c1edbd2379241acd,No,Will the match between RKC Waalwijk and Ajax be resumed by 5 October 2023?
@@ -729,38 +947,53 @@ id,currentAnswer,title
 0x96359fae3417c5dd8eaa2ab5f5366b6ef3609066,No,Will Honda announce a follow-up model to the Honda E compact electric car by 8 August 2023?
 0x9653f0e09bbf77e75b71d2c6b4295d8585276678,No,Will the strike by United Auto Workers end on or before 14 October 2023?
 0x96c1653855fa3aa56d60357f75a93bc981cd1e35,No,Will Southwest Airlines change its boarding policies again by 4 September 2023?
+0x96e7e8ff504a32d149d5735ea1cd4802b4708172,Yes,Will the Turkish MP who suffered a heart attack during a tirade against Israel return to the parliament by 20 December 2023?
+0x96fb8e5893e658d818841a15ae7a1fa234a47dee,No,Will there be another tornado or severe storm in Tennessee by 18 December 2023?
+0x971ea2c19ec86978b8b877fb1eb3009f5c1728bb,No,Will Cristiano Ronaldo score more than 50 goals in total by 17 December 2023?
 0x977f7f25e91fb2c0ec09be082d82e027d3174031,Yes,Will Unity appoint a new CEO by 16 October 2023?
 0x97dc9aea8adc8eeb131c51fc69d1f397acc37002,No,Will Verizon announce a major upgrade to rural 5G on 19 August 2023?
 0x97fa5002d5486bf861658385dad4e520802db845,No,Will the Los Angeles sheriff's deputy who was shot in Palmdale recover from his injuries by 22 September 2023?
 0x9806852acd6e68c9154a68f5010cbbfa539a1410,No,Will Twitter resolve its bot problem by 11 September 2023?
 0x9829cfe469e7d135b8ecc443de215c8370871e12,Yes,Will Charles Martinet officially step away from voicing Mario in games by 29 August 2023?
 0x98728b160b8c5181752f57e385e12d98ada3778b,No,Will the United Auto Workers union approve the tentative pay deal with Stellantis by 7th November 2023?
+0x98d4f1af2b41f11b6dc669e3def8ac3bee5d9214,Yes,Will a verdict be reached in Hunter Biden's California tax case by 28 December 2023?
 0x98d6e90bdbd7446cce02721164d459800d73ffda,No,Will Verizon offer a combined $10 streaming bundle with Netflix and Max by 19 November 2023?
 0x99cffa474afc1a5809ae54cb0edd3b0266e6eccd,No,Will the Web Summit appoint a new CEO by 27 October 2023?
 0x9a869451c797b7ff5b76b3f66f8056abf56b5333,No,Will Kevin McCarthy be reinstated as US House Speaker by 18 October 2023?
 0x9aa3620fe2ec09bd98e74f4aa2d8d6be844c05b4,Yes,Will Tesla start supporting third-party apps by 23 October 2023?
+0x9abd48be2e07ab27202ee7d6b17013d4867c3afb,Yes,Will the US seize more illegal e-cigarettes on 6 January 2024?
 0x9ae6047d3b781000138435c015e4f8aa67f8f006,Yes,Will Alibaba Cloud recover from its service outage by 4 December 2023?
 0x9b28d4e8a1cbeec2b54025114f92b18c59647670,Yes,Will the iPhone 15 Pro overheating issue be fixed by 6 October 2023?
 0x9b7b3e8d212aa6c70962e483a68c459c4c0b780f,No,Will there be a ceasefire in the Israel-Hamas conflict by 9 November 2023?
 0x9b9583e62978707e2b1ff5a35002e68ae3c1f15a,Yes,Will Samsung SDI's deal to supply EV batteries to Hyundai Motor be officially confirmed by 29 October 2023?
+0x9bacc284cda728242ac6911b82230533bdbbc4b5,Yes,Will the Powerball lottery's jackpot exceed $700 million on 4 January 2024?
 0x9be1cf6f17f3951520b3072e6f7b6adc456b5a74,Yes,"Will the release of 'Alan Wake II' be delayed until after August 25, 2023?"
+0x9bf56d7ef09a3d7c9c7cc7223828b42047f19a3f,Yes,Will Google Drive implement the announced changes by 8 December 2023?
 0x9c1b36a636d7636a0cfdd614a83730b464597b65,Yes,Will China's President Xi Jinping conclude his visit to the United States on or by 24 November 2023?
 0x9c44f09cf6b2f03720c064628715d16192ac2971,Yes,Will the Liverpool Football Club demand consequences for a false VAR decision by 6 October 2023?
+0x9cbbfc88ba78ec31d612a926e6388013cb05ee76,Yes,Will Amazon Prime Video begin showing ads by 5 January 2024?
 0x9d13267b36fdfce3c6a4b69da88eec67b5e64b03,No,Will GTA 6 be released on or before 26 October 2023?
 0x9d3ebb45f87d3dce0f7a1310bcf5936f228ef16a,Yes,Will a new innovation for cooling windowless rooms be announced on or before 3 August 2023?
 0x9dccb1df1e6cbb736db0817a55fddba20e584e10,Yes,Will there be a significant protest in London related to Gaza on 11 November 2023?
 0x9df3d629541b0b276d70da9bf95ea0ce1857fe2b,No,Will there be any disciplinary action taken against the Colorado funeral home for improperly storing human remains by 12 October 2023?
+0x9dfc14ae1466cd1af19693121eb42541928de2e3,Yes,Will Jeremy Renner star in a new Marvel film by 7 January 2024?
 0x9e2fdae14f9ead926cab5f471561ffdb1bcb3db6,Yes,Will Hurricane Lee hit coastal New England by 18 September 2023?
 0x9e51c33cc292d0a36a642b4bd5776b991a6da505,Yes,"Will California experience a tropical storm driven by Hurricane Hilary by August 24, 2023?"
 0x9e53e4685df8f1a1bf160c0dea1317ed0de79412,No,Will Hasbro release any new Star Wars toys on 18 August 2023?
+0x9e7613c5d0cb5f711115752c3ac5bc03851d2a8f,Yes,Will the Supreme Court allow the Biden administration to cut the razor wire barriers Texas has erected along the Rio Grande on 9 January 2024?
+0x9e796cc043724b66e8a0e5f1a8986737e49350d5,Yes,Will Wisconsin University reverse its decision on limiting diversity roles by 23 December 2023?
 0x9e7f934e303677da7a7eb792f720e7376bfcbf70,Yes,Will all festivalgoers have left the Burning Man festival site in Nevada by 10 September 2023?
+0x9e9ac1ee6fab38baab9bc9faa7d5336eef98cbdc,No,Will there be a new constitution in Chad by 29 December 2023?
 0x9ea36090414d92a4d8d70b5b86a140d59a207f0d,No,Will the SpaceX Starship rocket complete a successful test flight without explosion by 25 November 2023?
 0x9f135d0bac9a851034e7b3e7513c6ed1c7576353,No,Will the European Commission probe into China's electric vehicle subsidies conclude by 20 September 2023?
+0x9f325f898ea1271dbef2a6b5b3e3a974d2b411ad,Yes,Will BYD successfully test Level 3 autonomous driving on high-speed roads by 3 January 2024?
 0x9f76a9382206dba4cda4026fa536f70396b1a4ab,No,Will the second generation Apple Vision Pro be launched by 21 November 2023?
+0x9fa46033bbb2438ebb5908e53b9f474c7667236f,Yes,Will the Vivo X100 Pro and X100 smartphones be launched internationally by 21 December 2023?
 0x9fcc8e78f87635ef29a3109bf39b0a5c5178a8f5,No,Will Razer's Cobra Pro gaming mouse sell over 1 million units on 2 August 2023?
 0x9fedb81872d336701da287f7e45b1368ee2b4235,No,Will Spotify add full-length music videos to its app by 2 August 2023?
 0x9ff032bda198fd251fb86ca2cb0e9e3f33e5affb,No,Will Paul McCartney's original Höfner bass guitar be found by 13 September 2023?
 0xa01e81efa2ea6c9a054e93625841e03c5c58d7f9,Yes,Will the first ever Angry Birds cafe in New York be operational on 4 August 2023?
+0xa02e9e2f84a98af4ded550df16018027ce56fe60,Yes,"Will Alex Jones' Twitter account be reinstated by Elon Musk on or by December 18, 2023?"
 0xa0481ecee6974bec4fdaa71cd25ea6f38560bee1,Yes,Will Niantic’s Monster Hunter Now be successfully launched by 9 August 2023?
 0xa07142aee4fe132559f794c308e2ad49434c88c8,Yes,Will the research on the number of people required to start a colony on Mars be completed by 31 August 2023?
 0xa07b86ce047420d1760416179b3f592f36cc740a,No,Will the teenager accused of stabbing another teen to death on a New York City MTA bus be convicted on 12 October 2023?
@@ -773,22 +1006,29 @@ id,currentAnswer,title
 0xa271b16dd5cf16aff09657d2d0aa390eccb6e0f5,No,Will Disney VFX Workers successfully unionize on 2 September 2023?
 0xa2791cd90441731bb21b300a0b31ea57c34ab4cb,Yes,Will David Njoku be able to play for the Cleveland Browns by 5 October 2023?
 0xa288f3dcafcf2e766371c430aaa501539b50dbcd,No,"Will the Marvels movie gross more than its predecessor, Captain Marvel, by 15 November 2023?"
+0xa2b79f3371b2eb9b818889136b74c2ced7c4565a,No,Will the US Congress approve new military funding for Ukraine by 17 December 2023?
+0xa2bbb74258dcbeaf85b61452f7d5c5ea19df340e,No,Will Joe Biden officially announce not running for reelection on 8 December 2023?
 0xa3074c869bd32dd1a99367825c3d777612a1145d,Yes,Will the wildfires in Portugal be contained by 17 August 2023?
 0xa30b2b58e518b9421a745c3d8766171a9f387ccd,Yes,Will Google correct its AI-generated search results related to the benefits of slavery by 31 August 2023?
 0xa31b1af7fb5e3bfe04c881a9fe51faee0020c417,No,Will Amazon face legal consequences for its price-raising algorithms by 12 November 2023?
 0xa325437968df161a0e36587239aa285062eeb65a,No,Will GameStop's NFT wallet be shut down on 20 August 2023?
 0xa3372ba37e7d15f80289a8e1e69ba9a9a6c1a6c8,No,Will Aung San Suu Kyi be released from prison in Myanmar by 13 October 2023?
+0xa33d9a2583fd3adb8a3358d6101bf4cfef87b6e6,Yes,Will Aston Villa become Premier League title contenders by 17 December 2023?
 0xa33da08af4f3f8db29d5fd6f60d6a6482cc6a8c6,No,Will the yield on the 10-year Treasury reach 6% by 31 October 2023?
+0xa352ea3fd363682f062c424cfeac858fd3344b4b,Yes,Will Epic Games win the lawsuit against Google on or by 18 December 2023?
 0xa387474a53e07a217e3c1bc6c9555015be5035e4,Yes,Will Google update its maps to include recent geographical changes by 28 September 2023?
 0xa41939eabd6d6a203e6e0d24e928fc437881a62d,No,Will Spotify officially make lyrics a Premium-Only feature on or by 11 September 2023?
 0xa42b99e9f3a87a1159c84637671a1ab709efad56,Yes,Will there be a significant decrease in global medication supplies by 20 October 2023?
 0xa454966666b639b1b81e23d3f2f8dc56c6b47dcc,No,Will Target or Best Buy announce a significant sale event on 8 August 2023?
+0xa469f054d6c34bbfec988ce89e66c4d33e9af7e8,Yes,Will Erling Haaland recover from his foot injury by 24 December 2023?
 0xa4aacfd2d8b3d73bafb48a1fec07eef7e0715660,No,Will Bitfinex hackers be sentenced by a court on 10 August 2023?
 0xa4eb0a27b599f32328dfd88929b98fd26d7b54fb,No,Will the new MacBook Pro with OLED be released by Apple by 19 November 2023?
 0xa4eb1c74396421661a2c5df0c35cbeae72580be8,No,"Will PayPal's PYUSD stablecoin be used in more than 100 countries by August 24, 2023?"
 0xa51529301adabf252e7246ad4fb160f5c0481174,No,"Will Commander, President Biden's dog, return to the White House by 10 October 2023?"
 0xa5368515975c5a5b2180ce94725940f3330af419,No,Will the Microsoft employees lose their free access to Xbox Game Pass Ultimate by 12 November 2023?
+0xa53ff9817ae5d87bb2763e66462e12dfae4cf790,Yes,Will Mayor Karen Bass publicly address the antisemitic mob incident in Westwood by 18 December 2023?
 0xa558655b54a0d1f1537f6e899c07e226a6f3d170,No,Will the Biden administration successfully resolve the US-Mexico border crisis by 12 October 2023?
+0xa5760d632bdb53a856ea788964ea5240a8e48a35,Yes,Will the New York Times win the copyright infringement lawsuit against OpenAI and Microsoft by 5 January 2024?
 0xa584e69d8887db8fcf604c6c8e91b5878aac7fab,No,Will the EU significantly reduce its dependency on China for lithium-ion batteries by 22nd September 2023?
 0xa5d338a2ceb9def75baa18b29589c1109a3d7976,Yes,Will Hyundai unveil its first high-performance electric car by 24 November 2023?
 0xa6194776c103751baf6d3988af5e237c8f2f5de7,No,Will the Federal Reserve increase its benchmark interest rate by 28 September 2023?
@@ -806,34 +1046,50 @@ id,currentAnswer,title
 0xa740bf6ef7a09df9f4e0dc7ac69426350ce0d317,No,Will Netflix launch its game streaming service in the US by 24 October 2023?
 0xa75bc3e6c155a7518f4ac14e8720db417acf2eef,No,Will the second season of Marvel's 'What If...?' TV show release by 24 November 2023?
 0xa793b4d723f491e8e7e4fe676fcf1d14977e39fc,No,Will Amazon's One palm recognition technology be available in all Whole Foods Market stores in the US on 13 August 2023?
+0xa7a50c50b1f97ddf14f0bcbe1c78f99fdae1dda5,No,Will China continue its ban on export of rare earth processing tech on 29 December 2023?
 0xa7dd33f416747838a900ea6dcd85f13022bce20c,No,Will Snapchat's AI selfie feature 'Dreams' be available to all users by 5 September 2023?
 0xa7e1e7f87e5943d1451a14fa9e79741ef5a2c497,Yes,"Will Danelo Cavalcante, the escaped convict, be captured by 15 September 2023?"
+0xa7f77e2e64a52fb3d6e47acda599d6bd90eb26c9,No,Will Disney resume advertising on X after Elon Musk's comments on 13 December 2023?
+0xa864f26fdc1a909207f48222792df164fce2c252,Yes,Will the Federal Aviation Administration require key flight control design changes on all aircrafts by 7 December 2023?
+0xa880efd4f179c9fd3df2e2d35dc7da5d7b87d6b7,Yes,Will the construction of the Trans Mountain pipeline expansion be further delayed beyond 18 December 2023?
 0xa8a34723ce053ebac069ba218e7773767392ced1,No,Will Nintendo Switch 2 be released on 14 October 2023?
 0xa9489f1b558ebcc3d178b77fd491bcd2fb1d6a09,Yes,Will the Right-to-Repair Car Law be successfully implemented in Massachusetts by 30 August 2023?
 0xa99ba771509c36cb1532e128b48f4f1a5ca330ae,No,"Will Bitcoin's value exceed $40,000 by 2 November 2023?"
+0xaa0dd07236799b84786dc2938e007cd056f74524,No,Will Inter Miami win their first match of the 2024 season on 1 January 2024?
 0xaa12ab113c9bf79743d1e45d323dde7b9c502722,Yes,Will the number of Olas (prev Autonolas) services exceed 200 across all chains by 10 Nov 2023?
+0xaa7e3c3131942913b6c614311e42f8e22c820851,Yes,Will the Kamal Adwan Hospital in Gaza still be under Hamas control on 27 December 2023?
 0xaa81c1ebcad8b5c23db9b975412a468f2ee42752,No,Will Arsenal maintain their second position in the league on 20 November 2023?
 0xaa8fb7ff40a31b97a97dfaaeb544f61abb431e5c,No,Will the cyclone disaster in Brazil cause more than 50 deaths by 10 September 2023?
+0xaab928f8fc3666c6f84e90a1c13ba349d3eca085,Yes,Will the Washington state man charged in 4 murders be convicted by 26 December 2023?
 0xab0e3cd20ae065f1c6e5731b549866104c6e5db6,No,Will Mark Zuckerberg and Elon Musk publicly reconcile their differences on or before 23 August 2023?
+0xab5aa8f363ddeb47d1f7d187fd8b3760d3b27dff,Yes,Will Tokyo Electric Power's massive Kashiwazaki-Kariwa power plant restart operations by 4 January 2024?
 0xab7a6ad35026dbd3ff2fc3af5e8d109fba269273,No,Will Artiphon's Chorda be rated as the top music gadget by 6 August 2023?
+0xabfc68c2ce676b8aebcd992545924859ffb69d3b,Yes,Will Barcelona win their next La Liga game by 5 December 2023?
+0xac22bc80465e074e2962e960d634c4d2e707047c,Yes,Will the US Postal Service increase the price of Forever first-class stamp for the fifth time before 13 December 2023?
+0xac43cfdcada5f27e9993dab25c7c553c47d907b7,Yes,Will UPenn's president resign on or before 16 December 2023?
 0xac6b2eb6ff33712d13074c4f318aeb2b8cc1fff3,Yes,Will WeWork file for bankruptcy by 6 November 2023?
 0xac717f445e1c7b36d845a26ca3704280513cb40c,No,Will the James Webb Space Telescope release another commemorative image on 5 August 2023?
 0xac7cf10219b36b0309bdf9f3b120a0f819c031ae,No,Will Ford reach a new labor agreement with the United Auto Workers union by 29 September 2023?
 0xac9e65d9e4467b664cc66d11b67d6a671248d746,No,"Will the Linux Kernel-Community announce a new long-term support plan by September 25, 2023?"
+0xaca18292ccf7d6fd16fec28064fcc8f06623f429,No,"Will any further territorial disputes between the Philippines and China arise on or by December 18, 2023?"
 0xacc3aae47f7fea4d0b9f27dedd2b1b5132c3e27a,No,Will the Middle East mega-deal being pursued by the Biden administration be sealed by 23rd September 2023?
 0xace824d33f2a9bed8cdc291f9d984e3400296ebc,No,"Will the first Cybertruck deliveries by Tesla happen on or before October 28, 2023?"
 0xacf1457af77a049937eab8fa14f221dec2fd2958,No,Will Nevada begin mining for lithium by 13 October 2023?
 0xaddf734888f6fc2bbeeb261a33c2b09c5c03a472,No,Will Apple release a new update for the iMac by 20 August 2023?
 0xade28a454cc81627b9dbff7b0e1903face917311,No,"Will the US pass an 'assault rifle' ban by November 4, 2023?"
+0xae2f0f17dd268ee912ad53410e7a34ce5410af82,No,Will Tesla recall more vehicles over safety concerns by 1st January 2024?
 0xae830828733f6520a3104475e2a663d9ae713d97,No,Will the special counsel release the content of Donald Trump’s Twitter DMs by 21 August 2023?
 0xaea300ef3412a990be748572e51432d9d941be8b,Yes,Will the verdict for the Canadian man accused of killing a Muslim family be delivered by 23 November 2023?
+0xaebf57b735e170e1047203347809855a6f3305ab,No,"Will the UN climate talks (COP28) result in a signed agreement by December 10, 2023?"
 0xaefa6230c43c3fbdbc1369aa57b150ba25917a17,No,Will the UE Epicboom speaker model be discontinued on 11 September 2023?
 0xaf57aad36e03ecb97e379a967ca512fbc52ed484,No,Will Mounjaro's new weight-loss drug be approved by the FDA by 21 October 2023?
 0xaf679ea1967f9a786d22789fda1f82d320f3383e,Yes,Will the fire at the chemical plant near Houston be extinguished by 13 November 2023?
 0xaf75e37c9b244039906d8f81a67ea788b4200a7c,No,Will there be a volcanic eruption in Iceland by 17 November 2023?
 0xafa85b10f3c8fe0c6878745169c8ab4b94676da1,No,Will Adobe announce a new product in memory of Dr. John Warnock on 30 August 2023?
+0xafabb885f2e1f7df75fc94c58b9dad2c5d778237,No,Will the Epic v. Google lawsuit be resolved by 5 December 2023?
 0xb015cd02805c740c13fa230d0b22f54a180e961f,No,Will a new season of The Walking Dead be announced on or before 1 September 2023?
 0xb01e7b6872b159f2fbd93f570c71aa043d08b326,Yes,Will Ronna McDaniel continue to be the Republican National Committee (RNC) chairwoman on 20 November 2023?
+0xb040562909ff01f45ad9ce5f65e937ea08aa7102,Yes,Will Chelsea improve their performance and move out of the bottom half of the Premier League by 18 December 2023?
 0xb09dd46ad0aff9ad2b55c55be9077f17e27d828d,No,Will Andrew Cuomo announce his run for NYC Mayor by 1 December 2023?
 0xb0cbed8a63a135ef4cd822dbe6e54313b06b0851,No,Will the US program for child migrants be reinstated by 18 September 2023?
 0xb0d35f7dcd3916b8bf46742fb1065fc17be2365b,No,Will Microsoft launch a legal action against Google for unfair practices leading to its dominance as a search engine by 7 October 2023?
@@ -843,14 +1099,20 @@ id,currentAnswer,title
 0xb131eebf930fc0369973e199da0059fbf87fabda,No,Will Hollywood writers agree to the producers' proposals before 2 September 2023?
 0xb1363c127e3f8f551c614b5e004c2ffd994b2e53,Yes,Will Johnny Depp's film as Luis XV be released by 28 September 2023?
 0xb166c6fee6923ea1a6c284d77d926bff366acb50,No,Will Spotify add full-length music videos to its app by 10 August 2023?
+0xb1727f43973845e0a6a1a8d7ca2b48f4259adc17,No,Will Garmin reduce the price of the Venu 3 series on 11 December 2023?
+0xb19139bc57386e433ca5d59909a0eef1fed0aa95,Yes,Will 'Aquaman 2' reach $100M in box office sales by 3 January 2024?
 0xb1b303b0dfca6fd1f32c3bbff0dc717787e6adfd,No,"Will the Hollywood strikes end on or before August 5, 2023?"
 0xb1d6bfca5c0fb10803bd41deb13395161f8032aa,No,Will the Jujutsu Kaisen's second season end by 4 September 2023?
 0xb20b2a6de9ad81f96349ae4467c60c72ca774a3f,No,"Will the Australian government reach a free trade agreement with the European Union by November 4, 2023?"
 0xb24d1da8de13109d876b77d41ac3b12fc1b16270,No,Will the Canadian air cargo startup Ribbit successfully test pilotless flights for deliveries in remote areas of Canada by 5 August 2023?
+0xb266516102f4ee946c0958ee76dd6761212f92a1,No,Will the JN.1 Covid variant be declared a 'variant of concern' by WHO on 28 December 2023?
 0xb2f69979fa44e0a92d87316960a863f61d83d56e,Yes,Will Metro Bank successfully secure its future with a deal with investors by 14 October 2023?
+0xb2ff2bee40db85ef4468e92a7e3e8d59258b041b,Yes,Will Google start payout to eligible users by 28 December 2023?
 0xb30d454d1b88b76c4a51e53cfbb0e480c879c537,No,Will Russia be reinstated to the United Nations Human Rights Council on 15 October 2023?
 0xb33553c92510bdffee0d91c732483b5741edc61e,No,Will the NBA 2K24 New Gen game be released by 30 August 2023?
+0xb33b149fd945d2b68d9a6e23ae7da5f0bf664d2a,No,Will the podcast industry recover from its crisis before 29th December 2023?
 0xb34194c6388cc696162a4a029e6f7eea241357a7,No,"Will Mark Zuckerberg be held in contempt of Congress by August 10, 2023?"
+0xb354a536bed870f716550375a4e952f557f8986d,Yes,Will the demolition of the home where four Idaho college students were slain begin on 22 December 2023?
 0xb36c25a0ebd4eba486b4be33e892beaf0d4febf3,Yes,"Will Amazon invest more than 4,000 million in the artificial intelligence company Anthropic by 30th September 2023?"
 0xb3dfd9b37ecb0bcca4a5180348d2c69c9b8f78b4,No,Will Zoom update its terms of service again on 21 August 2023?
 0xb3f789619d05743273c535381c2e9beaab162adb,No,Will the Aston Martin Valhalla supercar be released by 1 October 2023?
@@ -862,25 +1124,34 @@ id,currentAnswer,title
 0xb5372416a8e7aa4e5a4a55d4a01aca29d5dc315c,Yes,Will SpaceX launch another batch of Starlink satellites on 24 September 2023?
 0xb546c72ea586873e1f199cf39380ba3b16b8ae21,No,Will Russian state officials completely stop using Apple devices for official state use by 2 August 2023?
 0xb5569f6acd595eb82a28a06f711e8291d753835d,No,Will Mukesh Ambani's succession plan be fully implemented by 8 September 2023?
+0xb5665ac471638aece7c240376a2eff153362824c,No,Will Juventus retain its top position in Serie A on 15 December 2023?
+0xb568af9c9314757f8e5c781f0a5512e489fb540b,Yes,Will the US-Mexico rail crossings be closed again due to migration issues before 1 January 2024?
 0xb5857036d75cdd8e839781c0dc01e73280bc495f,No,Will the Department of Justice win the antitrust case against Google by 23 August 2023?
 0xb5f0fc5f73482babef0390bbad282b4901378e59,No,Will Ted Pick officially take over as CEO of Morgan Stanley on 3 November 2023?
 0xb640887a7f600ff923a4a8c49bbcddbd929bfebe,No,Will any legal action be taken against President Joe Biden by 18 October 2023 related to the handling of classified files?
 0xb6781563e53b13dafee336ea59ee8b4e671d02a7,No,Will Sam Altman start a new AI company by 25 November 2023?
 0xb698cb89329c7e90c172ce4eb95cc3525c75c6e3,Yes,Will Luis Rubiales apologize for his actions towards Jenni Hermoso on or before 2 September 2023?
 0xb6b3f5d012cc9c2502d493feaf93cc1bfe9a042a,Yes,Will Sydney lift its total fire ban by 23 September 2023?
+0xb6b6fb8fbf7ce6c75b4fc705021d3d8585d40c5e,Yes,Will the court documents revealing the identities of Jeffrey Epstein's associates be released by 28 December 2023?
 0xb6d6a9dbee6cb99d1a013b9749155582c78160b3,No,Will the Global South accept Joe Biden's offer at the G20 meeting by 14 September 2023?
 0xb7026e29a581fe60e906ec6f78f98d1db6a1b117,Yes,Will Microsoft's AI-infused Copilot for Microsoft 365 be sold for $30 per user on 8 August 2023?
+0xb70b52b2787f1b079df4774f1637a6fa1c2b85c4,Yes,Will Rafael Nadal win the Brisbane International on 9 January 2024?
 0xb70f4ffbcd8dcfa3612803221e27da531205256c,No,Will OpenAI's ChatGPT face a major security breach on or by 11 August 2023?
 0xb72f0060e7b95a7b0a7a882e16b55a8e79120b5d,No,Will the court make a decision on Jamie Foxx's sexual assault case by 2 December 2023?
 0xb74d1379de20772698bf6638a3fc471e764cd313,No,"Will Elon Musk's service formerly known as Twitter remove the option to block other users by August 30, 2023?"
 0xb780aa5a9076b162a5cbb5b7458a5bd97d84cea0,No,Will the Hollywood strikes end on or before 11 August 2023?
+0xb78805566dd0fc679b6bb1baa53ba954c7a3da24,Yes,Will Donald Trump win the 2024 elections in California?
 0xb79978f5d38a633434cdb4181561db1f58066cb5,No,Will the investigation into the Gaza hospital explosion be concluded by 25 October 2023?
 0xb80e56a41095c1b4d4bcf53eb428d854d6f6b077,No,Will Iran lift the lifetime ban on weightlifter Mostafa Rajai by 8 September 2023?
 0xb8174b8cb595aeb67af30c696a1187e22ece8890,Yes,Will Virgin Galactic successfully conduct its first ever space tourist flight by 24 August 2023?
+0xb83ba9df1fe5264e31f2b4a21d729758029b6b38,Yes,Will Google face another privacy lawsuit over 'incognito mode' by 7 January 2024?
 0xb86126246f26ec36cb6ba8d836c0b0e064d1e8b5,No,Will the global sea surface temperature break another record on 11 August 2023?
 0xb88036fbe9bd6265585a071261df986be6f6c1d7,No,Will Ivanka Trump testify in Donald Trump's civil trial by 3 November 2023?
+0xb8867fa0b4138cdb9bbe25ba7e794220ef79a787,Yes,Will the European Central Bank cut interest rates due to falling inflation by 23 December 2023?
 0xb893d9fa0aebf6e4d62f353698ee09f6df9d950a,No,"Will Samsung's 'Food' app have over 200,000 recipes by 5 September 2023?"
+0xb8b593b8e83b0e422f305890ac169b62bfe129a5,Yes,Will Ukraine's IT exports exceed $7 billion by the end of 2023?
 0xb8e83b3579690d7bf03d07043c756e8c5bace467,No,Will the Samsung Galaxy S24 Ultra be released in the Czech Republic on 14 October 2023?
+0xb8f330485422bab9cc72b226551b7cb1298a3ca9,No,Will Prince Harry win the hacking case against Mirror Group Newspapers on 23 December 2023?
 0xb9225b355e16faaec4eb01c05349aba57b1466da,No,Will Sandro Tonali be cleared of the betting investigation by Italian authorities on or before 25 October 2023?
 0xb92eefff307c4f376fed5ef0a311f76244607e00,No,Will Philip Paxson's family win their lawsuit against Google by 28 September 2023?
 0xb94dada02c1e66e79af6768dedaa8181236f4128,No,"Will 'Aditya-L1', India's first mission to the Sun, successfully launch on 7 September 2023?"
@@ -892,19 +1163,26 @@ id,currentAnswer,title
 0xb9ef2947fe6b7a587d261f4c570d931fbc42a0e9,Yes,Will the IT systems at MGM hotels in Las Vegas recover from the cyberattack by 16 September 2023?
 0xba121596b9520d81daa5a1b82d93be90cfd4e4d6,No,Will the manhunt for convicted murderer Danelo Cavalcante end on or before 10 September 2023?
 0xba26e77fdc0afa544a73824519110c18df274322,No,Will the rumored Apple Watch X with a dramatic redesign be launched by 23 August 2023?
+0xbac7e232f7c0cfad6046ce35c1ba31661c4ac0b8,No,Will Juventus maintain their top position in Serie A on 18 December 2023?
 0xbad90b5c033a00562508ddc7c1326b927c6a2dab,Yes,Will Jenna Ellis receive a sentence for her felony charge in the Georgia election case by 31 October 2023?
 0xbb3608e462d79adeaf2f5c5451a2d5e54bead406,No,Will Desmond Mills Jr. testify in the state trial in connection with Tyre Nichols' death by 12 November 2023?
 0xbb7ca3ec1e6f84b90b7741659a1415f578b44d82,Yes,Will Salif Keïta continue to support Mali's coup leaders on 5 September 2023?
 0xbb914526af07e64eea6eb4a9c32b02a8a7cc12d4,Yes,Will the Netherlands maintain its top position in the Nations League Group A1 as of 3 November 2023?
 0xbbde7efcf51900f1f4f8626bd71848a1ab5a43d7,No,Will Robotaxis successfully expand to 24/7 service in San Francisco by 20 August 2023?
 0xbc75a40f60bb3278cc9d701e45d7b624599c750b,No,Will Spotify make lyrics a Premium-only feature by 10 September 2023?
+0xbcb44b6bdcceea755287d3f6846366ff508402d4,Yes,"Will the Nothing Phone 2a be officially released by January 8, 2024?"
 0xbd2a3a3b5efdf25e95356aa2aac2e34c17b05710,No,Will Societe Generale's shares recover by 22 September 2023 after dropping more than 6%?
+0xbd7d2bd66743754a597fcc9a043acafdcbc7a82b,Yes,Will Javier Milei's giant deregulation 'Omnibus' bill be passed by the Argentine Congress on 4 January 2024?
 0xbdc1018e8adb29f4ce52387de9fd5c9211b76f1e,No,"Will Hurricane Lee hit the East Coast by September 15, 2023?"
 0xbe080dd4087fbfd1508eef1666b2aa7a705f5873,No,Will Checkers and Rally's AI Spanish ordering system be implemented in all their restaurants by 24 August 2023?
+0xbe2040969036f4f90e8f75d850a9490b459315e0,No,Will there be a significant snowfall in the major Northeast cities of the United States on 11 December 2023?
+0xbe6a7173f1b4bd8c51b64f18808ba6b4c233b4ad,Yes,"Will the New Jersey health system recover from the cyber attack and resume normal operations by December 8, 2023?"
 0xbe8fb8a07ff8224e3bd42d534aa845236ef7b537,No,Will the Netherlands and Canada succeed in their case against Syria's government at the United Nations' highest court by 18 October 2023?
 0xbea5b52ade1457803c8c5a3049cafad8520dcd66,No,Will Senator Mitt Romney officially announce his candidacy for the 2024 United States Presidential election by 18 September 2023?
 0xbf10477d94c1d9af7607b247b6f48ffdcc88cfa3,No,Will John Riccitiello return to Unity by 19 October 2023?
+0xbf166f1eb1bb0d0edfc1842a40913dfb4f1a0ece,No,"Will France's ban on single-use, disposable electronic cigarettes be implemented by 12 December 2023?"
 0xbf2122c2c3366bbe4ca9a90656a4f62453b385f5,Yes,Will MrBeast remain the most subscribed YouTuber by 16 August 2023?
+0xbf4a42c017dd9b29896f95a2fc72858f18343fe0,Yes,Will Mohamed Salah score in the Liverpool game on 8 January 2024?
 0xbf7e47ed12df2a0ef4b384d9c55cab903f06e8f6,No,Will the small passenger plane crash in Brazil’s Amazon rainforest be investigated and the cause determined by 21 September 2023?
 0xbf84f51df51532a0c51417805c5f7d004cad73ae,No,Will the suspect accused of killing a woman and boarding a flight to Kenya be found and arrested by 10 November 2023?
 0xbf8630393021ab38e0d59537a10ad669dfa038f8,No,Will any of the four inmates who escaped from a Georgia detention center on 16 October 2023 be recaptured by 25 October 2023?
@@ -913,14 +1191,22 @@ id,currentAnswer,title
 0xbfd380f486a5d0811a840a9babd275759fa6959b,Yes,Will Turkey officially declare the explosion near parliament as a terrorist attack by 5 October 2023?
 0xbfd715faf6e2cba2cf06134be46aec5aaaee37d8,No,Will the number of American adults who have received the updated COVID-19 vaccine reach 50 million by 21 November 2023?
 0xbfd748c1e82f8937e6e0137dc774e1b25cd1c039,No,Will the Illinois man who pled guilty to trying to burn down a planned abortion clinic be sentenced by 26 September 2023?
+0xbff124c275c96ba0d04bd029064e522444f1829e,Yes,Will the new Oreo cookies be sold out in stores on 30th December 2023?
+0xbff8a8274d7e3610defbde5115280974d5b81f94,No,"Will the annual SantaCon charity pub crawl in New York City take place on December 18, 2023?"
 0xc00be2653040ae440d761997e49edf5d889c598c,No,Will Spotify's new AI 'DJ' feature be available in more than 100 countries by 17 August 2023?
 0xc024a2a0eb57479836e949d65c54caeae26cba00,No,Will Chelsea sign Napoli's Victor Osimhen by 4 December 2023?
+0xc0655d30276d7189bf26854b4e357e0c07811fac,No,Will the Israeli troops withdraw from central Gaza by 6 January 2024?
 0xc0a468fef6720b13d7e45a90e536e994538c759a,No,Will Reddit be legally forced to reveal the identities of users who discussed torrenting on 15 August 2023?
 0xc0b36d0cad387b448795cf2dbae746b08eae2b2c,No,Will Meta's Threads app reach 150 million users by 1 November 2023?
+0xc0df82be9b66d2713ec7c9dde73074427c68b037,Yes,Will astronomers detect another quirk in mysterious fast radio bursts by 23 December 2023?
 0xc0f55719e632d1a02a98fd71da0ba705f84fa8a6,No,Will the Las Vegas Grand Prix proceed without further disruptions on 25 November 2023?
+0xc147104572c32a445d1acb3c88f339d3db0a41f0,Yes,Will there be another huge Christmas sale at Walmart on 18 December 2023?
 0xc18886b254142b0c241de5e4214c2e571ae124ec,Yes,Will Arm Holdings Plc's value remain above $54.5 billion by 19th September 2023 following its IPO?
+0xc18b1b1d6f84b4dbedab28db9116d5d1fa221a98,Yes,Will the driver who rammed a van in Joe Biden's security detail motorcade be convicted by 26 December 2023?
 0xc18d6f05f162409040fa5f0bb470e54650f2fc9d,No,Will the government shutdown in the US begin by 25 September 2023?
+0xc1984916b1b2aab99f48778ce1d2fddc8a2f5bba,Yes,"Will a magnitude 1.7 or higher earthquake occur in Queens, New York on 8 January 2024?"
 0xc1dc139e400c81af267e3671f2996b7d0ea05c8f,No,Will Hunter Biden be subpoenaed in Joe Biden impeachment inquiry on or by 7th November 2023?
+0xc1e1c75d8ef7c4c3e1e18b06d56ecbe0f8cbd704,No,Will Liz Cheney announce a third-party run for US president by 18 December 2023?
 0xc20bec31870ed2d907f16b5b605418d6468fbd48,No,Will Alex Chriss take over as PayPal's new CEO by 20 August 2023?
 0xc20c18103696d554f42dc5086eaeaa3df919c848,No,Will Ivanka Trump be implicated in the New York fraud case by 14 November 2023?
 0xc2318dc6276503c6947bfd07b1bb82022a1d70d8,No,Will WhatsApp's AI-generated stickers be fully launched by 21 August 2023?
@@ -930,6 +1216,7 @@ id,currentAnswer,title
 0xc29a2a9c869f8e1424dc66922d89bf187c500e32,No,Will Twitter win the lawsuit against the four unknown entities for 'unlawful data scraping' by 6 August 2023?
 0xc2c76a1185f2c5eb3655f39b4ce17df36ec98b2c,No,Will Turkish President Recep Tayyip Erdogan meet with Russian President Vladimir Putin again by 23 September 2023?
 0xc2fe539894372902b3e452680837d66f86758aa7,No,Will Japan resolve its seafood trade issues by 28 August 2023?
+0xc357ab3c1a4239c8a3cf70a9bbd3d76366e39e89,No,Will the Disney Plus and Hulu combined app be officially released by 15 December 2023?
 0xc35cc7fb48069003fc5f0990caf94f1a60206c65,Yes,Will Microsoft charge businesses $30 per user for its 365 AI Copilot on 2 August 2023?
 0xc3aa905871816548b389285998b3c8f4ad62dcf7,No,Will Wattpad WEBTOON Studios release a new platform feature on 7 August 2023?
 0xc3ac79679fcad70b5c8f2944f78cf3e062b82fa4,Yes,Will the Pope resume his regular meetings on 2 December 2023 after his flu?
@@ -939,19 +1226,23 @@ id,currentAnswer,title
 0xc43e9513e824e30ccdc0a2150ca2f009fe7fa0aa,No,Will the SpaceX rocket safely return the four astronauts from orbit by 2 September 2023?
 0xc450ff1ab009f5013a7afe7393054394f16f36c2,No,Will the trial to determine what damages Rudy Giuliani will have to pay for defaming two former Georgia election workers conclude by 27 September 2023?
 0xc481613171d2c33cf938690db88adbf6befd31fb,No,Will Hunter Biden appear in person for arraignment on gun charges on 26 September 2023?
+0xc487f0c79c6596bbe170de8d3310b80a5d4be356,No,Will SpaceX launch another South Korean spy satellite from California by 11th December 2023?
 0xc49a7a81a58d9abf3067c0948239cdaf013fa6d5,No,Will the Xbox 360 store close before 24 August 2023?
 0xc4d971426984c5577bd7d02fe0a39d003a8e5f15,No,Will the EU formally sanction any social media companies for failing to tackle Russian propaganda by 11 September 2023?
 0xc55a6aa8af0dc8b2b6395fbbe5896b2fe8ed495d,No,Will there be a rematch between Logan Paul and Dillon Danis on 20 October 2023?
 0xc568d41cdc135cfefd79f2aef945731d244c87d1,Yes,Will the wildfires in Portugal be fully extinguished on or by 19 August 2023?
+0xc5760f6440eb54c4d3aa01c1f542dc708b24820c,Yes,Will the UK warship be present in Guyana on 1 January 2024 amid tensions with Venezuela?
 0xc638f6413559b7fc7ac4f8da51112e054ed55701,No,Will there be another successful birth of a Sumatran rhinoceros in Indonesia's national park by 9 October 2023?
 0xc6a6630dfea248135c3ff949e9126a5d8a99f862,No,Will Boston College reinstate the swimming and diving program by 28 September 2023?
 0xc6de408ec264ebd31629dccff054621c34addcc8,No,Will Spotify add full-length music videos to its app by 4 August 2023?
 0xc7149a81014f45ebbf5df65add61816fc83ae545,No,Will cryptocurrency exchange Binance complete the sale of its Russia business by 1 October 2023?
+0xc73a2000a178dbba4240fa137c52ee32fb40f245,Yes,"Will Hunter Biden be pardoned by President Joe Biden on or before December 21, 2023?"
 0xc76f2d9d4ca4b684abf64b9133de124082bcff9e,No,Will the killer of the retired Vermont university dean be found by 17 October 2023?
 0xc8023244e88303dea9d9c13748d720c96b18fe01,No,Will Greta Thunberg be convicted of the public order offense charge in the UK by 25 October 2023?
 0xc8274e0626aca2619050b956e48be12c08ea52cc,Yes,Will Manchester City maintain its position at the top of the Premier League on 10 November 2023?
 0xc865c51c3df36397a9343c3c7acc3f941a793000,Yes,Will the 2023 All-in-One Raspberry Pi and Arduino Developer Bundle be sold out by 2 August 2023?
 0xc88037296a59bf926e2895a3bbf8d85f0bd99f1a,No,Will there be another human case of West Nile virus reported in Pittsburgh by 8 October 2023?
+0xc8a29ace51e371b28e0e17733e08f55a9ed4d0a6,No,Will Donald Trump be disqualified from the 2024 presidential ballot in any additional states by 8 January 2024?
 0xc8a770216535bac59b87352653350df3aa1f1dc8,Yes,Will the US dollar continue to rebound on 16 September 2023?
 0xc8c9cb816732b7ad7d8a94f490b6bf256d1052e1,No,Will the James Webb Space Telescope release a new image to commemorate its second anniversary on 18 August 2023?
 0xc8d0d67a4dcce7b818447083f6e14e5ddb3ecb08,Yes,Will Microsoft's AI-infused Copilot for Microsoft 365 have more than 1 million users by 15 August 2023?
@@ -960,12 +1251,17 @@ id,currentAnswer,title
 0xc946f08c3dddf85abcd809148d0891d02e991aac,Yes,Will there be another record-breaking heatwave in August 2023?
 0xc95990f13bd861431b5b3de7154c4990c1e0bfde,No,Will the four inmates who escaped from Bibb County Detention Center be recaptured by 24 October 2023?
 0xc99093d49b61892594f533775bad00264f4323b8,No,Will a new president for the Spanish Football Federation be elected by 15 September 2023?
+0xc9c97aafb6741bc154dfe895ee68e791b49cd9bd,No,Will the US Supreme Court give a verdict on Trump's election-interference case on 22 December 2023?
 0xc9e08f62815bc72cffd3db167a6c3ef820041715,No,"Will Justice Clarence Thomas repay the unredeemed portion of his $267,230 loan by 31 October 2023?"
 0xc9fc383453b8283bbf8d573b69b2ae62f78254cb,No,Will Mostafa Rajai's lifetime ban by Iran's weightlifting federation be overturned by 4 September 2023?
 0xca0ad658a68a260863ef6d51bd7a2c26581f7871,No,Will there be a ceasefire in the Israel-Hamas conflict by 6 November 2023?
+0xcab0121bbddb866dbddd4e11fc0eef3b2a42dccd,Yes,Will the Nothing Phone 2a be released in the mid-range market by 24 December 2023?
+0xcb2df5b1897e77d0abd37991910c189ecd43d71f,Yes,Will Elon Musk's social media platform X still be operational on 9 December 2023?
+0xcb67a47444aa417efd2c7c8167fc0c77a5e3f1aa,No,Will the Israel-Hamas truce still be in effect on 7 December 2023?
 0xcb6e9ceec9bd520899de3ba67954a8791ce6c37a,No,Will a new CEO for Unity be announced on 18 October 2023?
 0xcb7553f81f26afcca195e878a6f364406b8d8fcb,Yes,Will Travis Kelce confirm his relationship with Taylor Swift on or by 28 November 2023?
 0xcb952cc003a34907111cdc12ca0bb2099352127e,No,Will Microsoft release Windows 12 on or by 8 November 2023?
+0xcbec1d4d0b62b3c9003483281cab7cc0b048fd21,No,Will Donald Trump testify at his civil fraud trial by 18th December 2023?
 0xcbf1a74b8c2ae5bd7e665bb3769aa4cf546d2d9d,No,Will 'The Super Mario Bros. Movie' become the most popular rented movie on Peacock on 9 August 2023?
 0xcc2106ed07dbfbdc886b63c420418655c561b241,No,Will Max Verstappen join Mercedes on or by 20 September 2023?
 0xcc74888444d3b5bd2e9011002dbeff6e3a589fd0,Yes,Will Kevin Salazar be officially charged with the killing of the LA deputy by 23 September 2023?
@@ -978,7 +1274,10 @@ id,currentAnswer,title
 0xcd64234e953404b0dba8203a29cf9334a2c24d2c,Yes,"Will Artiphon's new instrument, the Chorda, be available for purchase on 7 August 2023?"
 0xcd940a871d10e2a05f3557663d590ee1a2e2c835,Yes,Will the US and China reach a significant agreement to ease their military and economic tensions on 22 November 2023?
 0xcdad1a4c9e7674c5e89106b674360863c0da8188,Yes,Will the German GDP contract by 0.6% by 4 October 2023?
+0xcdb338d58d32a9ea07fa63b80bef019411ae6ec1,No,Will the emergency aid package for Ukraine and Israel be approved by the Senate Republicans by 16th December 2023?
 0xcdbff88edb7d63ff0a9271d03ad3a68fa9f2d1db,No,Will California experience another tropical storm similar to Hurricane Hilary on 27 August 2023?
+0xce026e5ce151b61f3333f1b69135472bcf1f3a5a,Yes,Will the condition of novelist Hanif Kureishi improve to regain the use of his arms and legs on 3 January 2024?
+0xce2a0bf4b7a5cbf18174d0dbc5029f753dd6c00a,Yes,Will Romelu Lukaku score a goal in his next match by 19 December 2023?
 0xce60fe44aa930e698b74d46b371d72d07731c850,No,Will Spotify add full-length music videos to its app by 11 August 2023?
 0xced8c43d5015ba620f87379ed6a9bccb5840d1d1,No,Will Google reveal details of its deal with Spotify by 16 November 2023?
 0xcef65a2eaded1136f22f764e78b933c40430de10,Yes,Will Samsung and Google's spatial audio standard rivaling Dolby Atmos be launched by 24 November 2023?
@@ -988,13 +1287,17 @@ id,currentAnswer,title
 0xcfc78c7a0828a02798d6c7b8c74720731686d633,No,Will Lamborghini release its new all-electric concept car inspired by spaceships by 25 August 2023?
 0xd00d991878623737abc4bcaa2abff0be083df53b,No,Will Verizon complete its major upgrade to rural 5G by 22 August 2023?
 0xd01619117355354665b9946a72e16f8b305e2f78,No,Will Alves Dani receive a nine-year prison term on 3 December 2023?
+0xd030aac4720cfcf5ac51929cd505faf5f81ac9e9,Yes,Will the merger between Warner Bros. Discovery and Paramount be finalized by 27 December 2023?
 0xd06e312ce66cb498decb17b7756eec70a33d6698,No,Will Amazon's Amp radio streaming platform surpass 10 million users by 12 August 2023?
 0xd0ad031793d3f95bf0b7cb58ba40cd02afb809ac,Yes,Will Erik ten Hag still be Manchester United's manager on 10 November 2023?
 0xd0b9dfe59d5eba41fce60253152cf8d91a6eaf82,No,Will the NOAA report a new heatwave on 1 September 2023?
 0xd0bb3b42aab3618d48d82bf6b6f94858d31dafaa,No,Will the film 'Foe' be nominated for an Oscar by 31 August 2023?
 0xd0d5bb2e3fd58cbcde831c2323b668f60a2e9ddf,Yes,Will Israeli crossings with Gaza remain open on 2 October 2023?
+0xd0dfb31e79fc628e68ae5909a466f6886d7a1cca,Yes,Will Moody's further cut China's credit outlook on 23 December 2023?
 0xd14372c94a7e4b69880e8d4a9fe6a3a8c0a9f2f7,No,Will Mötley Crüe release new songs by 27 September 2023?
 0xd1455927cffa35d6cc72f7f1ec93c857d00c3854,No,Will Travis King be convicted of the charges against him by 27 October 2023?
+0xd1558a685c6ef6519afb244dd386816726e71163,Yes,Will the FDA approve another gene therapy for sickle cell disease by 18 December 2023?
+0xd15e6203a33cf5cd04bed1398a31a57417cae809,No,Will Emma Raducanu win her first tennis match after her return by 7 January 2024?
 0xd164584f918c9769cc23e8ad3dbaf8090b725c7d,No,Will the foreign student arrested in Norway on suspicion of espionage be convicted on or by 15 September 2023?
 0xd1712225a65fbde1c3518ed4446782faa5c37744,No,"Will the GoPro's desktop video editing app be launched for macOS by November 15, 2023?"
 0xd1c436b8beccba948b2c050f9f1be5330e634e1f,No,Will the impeachment inquiry into Joe Biden be concluded by 2 November 2023?
@@ -1002,41 +1305,61 @@ id,currentAnswer,title
 0xd20e12df4acdb9e527e35e477334734284788da4,No,"Will there be a breakthrough in the Cairo Peace Summit regarding the Gaza situation by October 29, 2023?"
 0xd23cf117ceb4d41d2e98bbb9e7273be2abbd9cd1,No,Will Scarlett Johansson win her legal action against the AI app for cloning her voice by 8 November 2023?
 0xd279609efe53c9babd6a50dfcca3bbdaa90f865c,No,Will there be any developments in the lawsuit against Barclays over ex-CEO's ties to Jeffrey Epstein on 11 November 2023?
+0xd28ed1f80e40342fb6c44b74ac734e5d7312b950,Yes,Will the US join the EU in the fight to regulate AI by 2023-12-31?
 0xd29a6e3f5642298395b50ca8c6560947aa1e5f0a,No,Will there be a major earthquake (5.0 or higher on the Richter Scale) in West Texas on or before 14 November 2023?
 0xd2de84a5e170b06a5f77fa4bee171bd65e9f9bbb,No,Will the AquaSonic Black Series toothbrush be discounted to $30 or less on 6 September 2023?
+0xd3819659680f737c3e9b57be7f188697e9db202a,No,"Will Pope Francis make another significant policy change to the Vatican's stance on same-sex relationships by December 29, 2023?"
+0xd386a2997285ae6a2bb3736f87d93e712bc0c75d,Yes,Will Microsoft release a new AI-related product on 8 January 2024?
 0xd3892e2c938494cab3d8dfbbd69fe206705d36a2,No,Will Bruce Springsteen resume his shows by 3 October 2023?
+0xd3bbc4bf672c042da6b1127843a9dc4a97a9c2bf,Yes,Will the HP Pavilion laptop maintain its discounted price under $800 on 18 December 2023?
 0xd3cbe744cfad97254fdde4efbcb200d8f07acaa2,No,Will US jobless benefits applications rise above the eight-month low by 28 October 2023?
 0xd40305cd6cd84b2d2a4485266ae68e8bb7f8c925,Yes,"Will the number of migrants apprehended in the Arizona Border Sector exceed 150,000 by 8 November 2023?"
 0xd425760fa1a520d03a4fbaf6ff268f5b593150d4,No,Will the new undersea internet cable connecting several Pacific islands be completed by 2 October 2023?
 0xd42adfe4300b75fbeb4269d817c5eac3b77dbdf8,No,Will Arsenal remain second in the Premier League standings by 21 November 2023?
+0xd4b4dc19465b277fb4106a9e7c5e0e26478b2a5c,No,Will Claudine Gay resign as the President of Harvard University on or before 18 December 2023?
+0xd4c213c77829f11d5eea819d689d07dfd84eeb00,No,Will former New Jersey Gov. Chris Christie be booed for his claims about Trump on 13 December 2023?
 0xd537fbe1311d37319b34c00d9ff2776ebe5d3dde,No,Will the 'Titan' Tragedy investigation be officially closed by 17 August 2023?
 0xd5593345c5af1bc44b30f9ebc4fedf86a4f53f2d,Yes,Will the trial for the €5 daily fee for tourists in Venice be approved by 16 September 2023?
+0xd5693e261471a038ddfa129052634b4d21fcce3c,No,Will the U.S. military be able to recover the final missing crew member from the Osprey aircraft crash off southern Japan by 19 December 2023?
+0xd572a8713f8f58e6c9d4179c435b727af097ced3,No,Will the United States Postal Service apply a fifth price hike for Forever first-class stamp by 16 December 2023?
 0xd57b9c96da54146218762e1b3466515d0eab09ef,Yes,Will General Motors resolve its United Auto Workers strike by 2 November 2023?
 0xd57e170b351e8d39db78145d95f00aa9aecef866,Yes,"Will the Israeli Prime Minister Benjamin Netanyahu remain in office by October 31, 2023?"
+0xd5b6994b47847bce5ad4b3e2799473336aa2293b,Yes,"Will US job openings increase by 18 December 2023, compared to the level in October 2023?"
+0xd5ee51ec947d29c074b68219fc26b217ffcf9f28,No,Will the Israeli military cease its war against Hamas in Gaza on 11 December 2023?
 0xd61933d280b841020bc723631755205f30bc169a,Yes,Will the lifetime subscription to Curiosity Stream remain over 50% off on 6 August 2023?
 0xd67008b62e7e030d21b39b05681615ac0af5e99c,No,Will Spotify add full-length music videos to its app by 9 August 2023?
+0xd68b0de1167cc3b82891188bed403e91e783f20b,Yes,Will LG reveal its new 98-inch QNED Mini LED TV model at CES 2024 on 4 January 2024?
 0xd6f660eb622a9540ce8fabd188fe9fc47a8d7585,Yes,Will the number of services in the Olas (prev Autonolas) ecosystem exceed 180 by the end of week 42?
+0xd6f8ee53656e215545302c68d67596f045345daf,Yes,Will the GDP growth rate of Singapore exceed 2.8% in the first quarter of 2024?
 0xd7352d0c829e9e3ebd6d635e9770cc90c3097cbc,No,Will there be a formal impeachment inquiry into President Joe Biden by 17 September 2023?
 0xd7434b2f871d9aca70a9c0e32a539a775ab81aeb,No,Will Jujutsu Kaisen's second season air its finale on 1 September 2023?
+0xd75dcac6f180e80f72b513f305b1f3876b955167,No,Will Virgin Atlantic conduct another transatlantic flight using 100% green fuel on 6 December 2023?
+0xd7712d7787d9196aaed4fa87f2d18d2ba40de1ec,No,"Will LG's 2024 OLED TVs with a focus on AI processing be released by January 9, 2024?"
+0xd7a461759c13ac0f60da5aa7877678f54d4ea5f5,Yes,Will Evernote limit its plan for free users to 50 notes and one notebook by 8th December 2023?
 0xd7bbf9284d8352a81a82f30ed384735c8337e364,No,Will Samsung's 'Galaxy AI' feature that translates phone calls in real time be officially released by 15 November 2023?
 0xd805a89d17484ab76d1ebde8ed5004232ce1f3b8,Yes,Will the inflation rate in Zimbabwe decrease after the presidential and parliamentary elections on 2 September 2023?
 0xd83443791e7d8c0c1934f34b6f19efd3e832a9d4,No,Will Leicester City win a major match during their Asia tour on or by 11 August 2023?
 0xd841dff71140c8dd8f3f53aafb150b8ad14a455f,Yes,Will the G7 AI code of conduct for companies be agreed upon by 4 November 2023?
+0xd843b8af93bf3a5bdfda1a3a524db0ef7f15c4c5,Yes,Will the investigations into the fire incident at a bar in Austria be concluded by 7 January 2024?
 0xd844325e4592ae70216826a5d8c1f84416e59fa4,Yes,Will Tweetdeck require a paid subscription by 28 August 2023?
 0xd85cc8b6b3ebeb6842b344be0597263fbfc927eb,Yes,Will the perpetrators of the wildfires in Greece be brought to justice by 31 August 2023?
 0xd882fc96f8489eb262534ad2aabe823c308721ab,No,Will the Walt Disney Company announce a new major acquisition on 21 October 2023?
 0xd8ed2fc755c5ba0990b293737178abb2e9c068b0,No,Will the suspect sought for the murder at Boston's Logan International Airport be found in Kenya by 12 November 2023?
 0xd939402543a29d55f9b1bf4f89b898032291c26e,No,Will Instagram release an iPad app on 14 October 2023?
+0xd94ed0a38fe117d37170e266635466ffb206b001,Yes,"Will gas prices decrease in the United States by January 6, 2024?"
 0xd98013ad48bb20d53c3802902856a9b6fbafb52f,No,Will Arctic sea ice reach a new lowest level by 27 August 2023?
 0xd98e296a7e957f20354c8bbe2b05811ac4157071,No,Will the ex-Utah county clerk be convicted for mishandling 2020 and 2022 ballots by 11 November 2023?
 0xd9a6bc092b3a1c9a753afde5cf04038c46a264ef,Yes,Will the $219 WiiM Pro Plus audio streamer be launched in the market by 20 August 2023?
 0xd9c36d078849892640bbb1ad33f1df823a56ed62,Yes,"Will Japan, Britain and Italy officially choose Britain as the headquarters for their fighter program by 26 September 2023?"
 0xd9dee0a952f858a79ba076a7e167e7bd2755eb4e,No,Will the Cairo Peace Summit on the Gaza conflict lead to an immediate ceasefire by 30 October 2023?
 0xd9e762d29e77178854958d5ba39f11d28d5b49ed,No,Will Target and Best Buy announce their own sales event on 17 August 2023?
+0xd9e8d664270bb56bb29dad0bc4f6da9c24519b7d,Yes,"Will the federal investigation against Harvard, Penn, and MIT commence by December 18, 2023?"
+0xd9e96d3263dfcb4037264631812838ad23d7ef03,No,Will the U.S. Supreme Court issue a decision on the Purdue Pharma bankruptcy settlement by 11 December 2023?
 0xda3b21be90a6e78853e8fd8d4b901ca556208d28,No,Will Tampa surpass Miami in terms of population by 12 August 2023?
 0xda3e5ec64c4118bf7274fd1e74312efb7ff599c6,Yes,Will the Bitcoin price drop below $28.5K by 11 October 2023?
 0xda571c89ac68ee842ca239101f6ba5a549725da9,No,"Will a missile strike in the city of Kharkiv, Ukraine, occur on 31 October 2023?"
 0xda6753a6b0771c825aebc186e6b347b77ffbe422,No,Will GameStop's NFT wallet be completely shut down by 22 August 2023?
+0xda7057c42dce6e745559d640873c7a36f7173d14,Yes,Will Shein's IPO face legal complications due to allegations of forced labor in its supply chain on 7 December 2023?
 0xdaa8a7554c6c3b696465c3564c081b53936e7b59,Yes,Will the surgical tool left in a woman's abdomen in New Zealand be removed by 11 September 2023?
 0xdabcf13c1aa1ca809d5cd5da76e65cb1c8b2880d,No,Will the patient from the world's first complete eye transplant regain sight by 17 November 2023?
 0xdb14bb5862e3788573fbc9a4bf7e853b573260fe,No,Will the Samsung Galaxy S23 FE be released by 11 October 2023?
@@ -1044,6 +1367,7 @@ id,currentAnswer,title
 0xdb160162b56939e51c6f677a8f295ce380f7a9aa,Yes,"Will the U.S. and China restore military contact by 23 November 2023, following the meeting between President Biden and Xi Jinping?"
 0xdb30c6116b0e4dc68d1df3d92e695620549a2d22,No,Will the Maui wildfires death toll exceed 200 by 26 August 2023?
 0xdb4adbc51082b41838057b9daa760508d999f99c,No,Will Digital Eclipse release another interactive documentary on 7 September 2023?
+0xdb5d0b876a8d1a8f3bcf3142dce4c5731fbc2d54,No,Will Liz Cheney announce her third-party US presidential run by 17 December 2023?
 0xdb6c3aed8dd494a84b631b505bcdd60f42da7cbb,No,Will AMD announce a new AI chip that competes with Nvidia's leading GPU on 19 October 2023?
 0xdb7375743517e0da8ab2a07d8d2bd1a4e66ba014,Yes,Will Republican Jeff Landry win the Louisiana gubernatorial election by 20 October 2023?
 0xdba2cc2531dec4bb1e3cebf81ca5465c6ecfc1db,Yes,Will RFK Jr. officially launch his 2024 presidential campaign by 19 October 2023?
@@ -1051,6 +1375,7 @@ id,currentAnswer,title
 0xdbf37337c362f9c2323f15c7e6e59c39c25f8fdb,No,Will Joe Biden and Eric Adams have a publicized meeting on 27 September 2023?
 0xdc61e8648c32c8e1e2d6836dabcc420c1dc47914,No,Will General Motors successfully negotiate with the striking auto workers by 27 October 2023?
 0xdce5978497283291eab1c52faed34277ba63e175,No,Will autonomous vehicles make up more than 10% of the cars on San Francisco streets by 23 August 2023?
+0xdcf958a543053f5fe0b3661aeb452127f898f3ab,Yes,Will the Trans Mountain pipeline expansion project in Canada be delayed on or by 21 December 2023?
 0xdd01b83b69731cc6e46f0639990874774874e623,No,Will Medicare cover injectable weight-loss drugs by 12 August 2023?
 0xdd0d95ccbd45b230c9f899d811e5e474b963f944,No,Will Canada induce any sanctions against India due to the murder of a Sikh leader by 27 September 2023?
 0xdd16e49b747769b2cf8d931d2f19fec5da1975a6,No,Will NASA lose contact with Voyager 2 again on or before 16 August 2023?
@@ -1063,6 +1388,7 @@ id,currentAnswer,title
 0xded33d8475c7ac92fb20a92bb8a15a8e0bff9222,No,Will Estonia successfully launch its instrument probe to sample Venus' atmosphere on 27 September 2023?
 0xdf1344a7081a23d3b92ff759a539112527a5dd06,No,Will there be a resolution to the Guatemala conflict mediated by the OAS by 13 October 2023?
 0xdf1572cdbc0786da4180ecec89703b5b2a5bf8c3,No,Will the United Kingdom implement its plans to ease banking and insurance rules by 4 October 2023?
+0xdf38ef0c1756f5eae75a4b26886183f4abee5d2d,Yes,Will Liz Cheney run for the US presidential election as a third-party candidate by 28 December 2023?
 0xdf5688327b02ed7c08f6da741c84ff890b66e492,No,Will the Supreme Court agree to hear Apple's appeal of the Epic Games' anti-trust case on 2 August 2023?
 0xdf5c946f62709dfc18fa0c405bf5c407768d391c,No,Will Google successfully launch its AI tool 'Genesis' that can generate news articles by 12 August 2023?
 0xdf80f716ed1ede4e0e6668c3e251253c090fc5e5,No,Will Spotify ban AI-made music by 30 September 2023?
@@ -1078,17 +1404,23 @@ id,currentAnswer,title
 0xe03ee1b96854fe62e436680134e5c39bebb570ba,No,"Will the Davis Cup remain in Spain on December 1, 2023?"
 0xe083d5e9192c83475724368f9f4e4e2f96179a35,No,Will Meta's Threads reach 1 billion users by 10 August 2023?
 0xe0e453b72337d1f8316af96417fa7c27355035a5,No,"Will Netflix have filled the $900,000 AI job position by 8 August 2023?"
+0xe14d56da58ff8ff182eef16d0dcd742d827ccc39,Yes,Will scientists successfully achieve the fusion energy experiment by 27th December 2023?
 0xe14dfaf91842a01eae48eae9333d836f33525735,No,Will China's retaliation against Japan for releasing treated nuclear water from the Fukushima nuclear plant escalate by 30 August 2023?
+0xe1510e78aad11e645194f6bf01bb04aedf78a039,Yes,Will Tiger Woods win a PGA Tour event by 27 December 2023?
 0xe15f3ecb1888bdb90bf20a0b8bc4bea0b3c607e2,No,Will Florida Judge Jeffrey Ashton be found guilty of child abuse charges on or by 25 October 2023?
 0xe1622fb02a179f8e6d6524791e2e26f02a4ac545,No,"Will the FDA take action against CVS, Walgreens, and other companies over unapproved eye products on or before 19 September 2023?"
 0xe1e68caa4afad1b7329385091c44384928af78ba,Yes,Will KFC fully exit from Russia by 29 September 2023?
 0xe241d6d0484b4a3560148c8bb999f639a8782867,No,Will SoftBank's Arm reach a market cap of $60 billion by 20 September 2023?
 0xe2772bd4a48e08a00ea240dcd03ac40f4228a9cf,No,Will the Conor Benn-Chris Eubank Jr fight be scheduled by 18 October 2023?
 0xe2972ee0ce53d605b6683836db55d488d7f15957,No,Will Wynn Resorts in Las Vegas face a strike by 20 November 2023?
+0xe2d2c5ecee8f24b73b6f459488b95c0ec662b7ef,Yes,Will the Beverly Hills Police charge the arrested man for alleged hate crime and assault with a deadly weapon on 18 December 2023?
 0xe2daa32abbf8b2e8a56dc36ee42c3e66e572b0f3,No,Will Biden veto the bid to reverse 'Buy America' EV charging waiver by 16 November 2023?
+0xe2fc417418ffdf74f494d41a8b3ad6318eaecc36,No,Will the House of the Dragon season 2 release date be officially announced by 11 December 2023?
 0xe312543b709268abba0b7935b32f41d077b8998d,Yes,Will the Los Angeles' busy Interstate 10 reopen before 22 November 2023 after the massive fire?
 0xe31564bbf6707437d51f259a1a6fe780272284ab,Yes,Will there be any new outbreaks of mpox in Congo reported on 3 December 2023?
+0xe34f4c815711eccf95d89195c6b37be5aa1c1734,No,Will Nikki Haley win the GOP nomination against Trump by 18 December 2023?
 0xe35915f15e7af8c4ca99e695d29c0b08ff585c65,No,Will Paul McCartney's original Höfner bass guitar be found by 9 September 2023?
+0xe362c2d2d724f48b53b2b5eb828485de8e0490ce,No,Will Activision Blizzard launch its own Android game store by 8 December 2023?
 0xe36b4e292b478e78f209b529ccc8e18effb158d5,Yes,Will Microsoft's 365 AI Copilot be charged at $30 per user on 13 August 2023?
 0xe43d5cdd0f76de37710a53d9620a7afd0d40b8b4,Yes,Will there be any new sightings of Russian General Sergei Surovikin by 10 September 2023?
 0xe4cf694a01d387a964f65da9af747f11621df9e4,No,Will Nvidia and AMD launch Arm PC chips by 2 November 2023?
@@ -1101,16 +1433,24 @@ id,currentAnswer,title
 0xe63e2490a2af121f6a778cc9573d80eb2e8d21dd,Yes,Will there be new repatriation flights from Israel to Australia by 20 October 2023?
 0xe644911bea0a899554905d1b5eb297b77fd29c95,No,Will Alan Wake II be released by 24 August 2023?
 0xe67ec874de37a82c46e7ac99f6a8945ac82773cb,No,Will the listeria outbreak linked to recalled fruit be contained on or by 29 November 2023?
+0xe688c6be19dc9b400d105832aa129d8ba3b5b583,No,Will Disney resolve the gender-based pay discrimination lawsuit by 18 December 2023?
 0xe6b1ba23fdb26e5abd752111c32516e23e1b5ceb,Yes,Will the G7 AI code of conduct be agreed upon by 7 November 2023?
 0xe6f745dd39d2257f858868169709e3122781831f,No,Will Amazon restart its periodicals program by 12th September 2023?
 0xe77c10ffa74a62c68efe72dfb7bc49c91784e802,No,Will Intel find another company to acquire by 21 August 2023?
 0xe7d443638db2c9d66d0d88b5c1579fb8fc340ebd,Yes,"Will LeBron James score more than 40,000 points in his NBA career by 29 November 2023?"
+0xe7ed88ba1ed3c526526dd2e91b9c14a99e0a714a,No,"Will X, formally known as Twitter, go bankrupt under Elon Musk by 12 December 2023?"
+0xe820126af5f75b8034c057688cb1d6559507e191,No,Will the FDA approve a new medication to combat the emerging China Virus by 8 December 2023?
 0xe835ad809a3360108f673f8dc43920fd370f615a,No,Will the Nagorno-Karabakh self-proclaimed republic be officially dissolved by 3 October 2023?
+0xe83be3908c8bc38f861e369a5d06b5bd9aea5f3b,Yes,Will Draymond Green's suspension from NBA be lifted by 22 December 2023?
 0xe85f464d7e02d5834b804dbf17967faedfcd9328,No,"Will another first-gen iPhone sell for over $200,000 by 6 August 2023?"
 0xe88dacf9511837c59203b33fff553f9032d82fb7,Yes,Will the US Supreme Court rule in favor of Coinbase in the arbitration dispute by 11 November 2023?
 0xe8ade29fca11244d23372a092b9966009d480822,No,Will the Homeland Security Secretary Alejandro Mayorkas be impeached by the US House of Representatives by 22 November 2023?
+0xe8b77ae4623d91a7f267f28aa88c9f343c57ff5a,Yes,Will the FDA approve another gene therapy for sickle cell disease by 16 December 2023?
+0xe8d5405f1635ac62ab2f631e64b3069e7916a54b,IND,Who will win the second test match between india and west-indies?
+0xe8e3fb5863114742e71f063be225261b27cafd05,No,Will the final season of Stranger Things make its Netflix debut on or before 18 December 2023?
 0xe90601f1cf1dd358145465e18694af663c1856c3,Yes,Will the Minnesota lawsuit to keep Trump off the 2024 ballot be dismissed by 11 November 2023?
 0xe9299f87dc75814defa966fc63c47a95b0e41a36,No,Will the man suspected of sexually assaulting a journalist on live TV in Spain be convicted on or before 19 September 2023?
+0xe94a351622ea85f1eec5185018843efb673d80bf,Yes,Will the US House of Representatives vote to expel New York Republican George Santos by 8 December 2023?
 0xe94f8d531f6f2606bf2f30fec5aae5943d7bfafe,No,Will Duane Davis be convicted for the murder of Tupac Shakur on or by 5 October 2023?
 0xe953495d071d66e0b56cb4b36b7fd3af08c3e2d9,Yes,Will the winner of the $1.6 billion Mega Millions jackpot remain anonymous until 4 October 2023?
 0xe96422246043ee9c2a93943ec76c8ecbe4a5206f,Yes,Will the United Auto Workers' strike against General Motors end by 5 November 2023?
@@ -1122,11 +1462,14 @@ id,currentAnswer,title
 0xe9e75e551546002fb1f2dcaa29693a1f0b28a7ca,No,Will the annual cost of owning a car drop below $12K by 5 September 2023?
 0xe9f4e1c2893765b8502bbc91eb268d704c13228a,Yes,Will the Dow recover from its 400-point loss by 8 October 2023?
 0xea83eb018afd01528c9fbe4d98e8d2aae290b2a3,No,Will the Canadian cannabis market recover from its struggles by 26 October 2023?
+0xea8652e21f21e99e0ebd3d04cd3b047a3ea8a533,No,Will Harvard President Claudine Gay resign from her position on 18th December 2023?
 0xea9f413cbc18cb9ef3a04121f6d89db8960e1829,No,Will General Motors' self-driving cars be deemed safe by regulators by 24 October 2023?
 0xeafc0ae1cc76edea6a9885c492879c29b03a7e7c,Yes,Will the comet newly-discovered on 7th September 2023 pass Earth by 14 September 2023?
+0xeb1aaf354e0c14170f8325f45af132e4872a471e,No,Will SpaceX launch another South Korean spy satellite by 10 December 2023?
 0xeb91c23b536d7b057522f04bc3b604d88dfdfedb,No,Will Donald Trump be the GOP presidential nominee by 20 November 2023?
 0xebc7c700333d217230ae4947fcffafb4814effb4,No,Will Poland's Law and Justice party regain power by 21 October 2023?
 0xebdbff5dc410b3781e2d446ffafffda7bdaf97cd,Yes,Will the Disney Royal collections be available for purchase after the World Princess Week by 29 August 2023?
+0xebe2f46361a7192285b22be2e7a625257bc17959,No,"Will former President Alfredo Cristiani be arrested on or by 29 December 2023, due to the alleged cover-up of the 1981 El Mozote massacre?"
 0xec304630ab71b92cddea0637a6b692ba57dd0376,No,Will India impose new taxes on diesel vehicles on or before 20 September 2023?
 0xec4781169d28997c8a67b98b31f350416b6c4549,Yes,Will Bitfinex hackers have pleaded guilty for stealing billions in cryptocurrency by 23 August 2023?
 0xec8945d9c5e6cf7908c08b452db20a3517c035c2,No,Will Pope Francis dismiss any other US bishops by 18 November 2023?
@@ -1137,14 +1480,19 @@ id,currentAnswer,title
 0xed505eb0ecc5b1e924f06e496ac7c177bb4fbb52,No,Will Elon Musk's @Music Twitter account be the most followed on the platform by 18 August 2023?
 0xed756d3300b1b5046ab05b623156201854bccd3e,No,Will Israel and Hamas reach a ceasefire agreement by 12 October 2023?
 0xedacba97d259bbaaaedca1422fefe6e35807cb9d,Yes,"Will Pope Francis appoint a new bishop for Tyler, Texas by 20 November 2023?"
+0xede33b310a16d57343c121491edb18fe5921beab,No,Will the proposed $64 billion aid to Ukraine be passed by 16 December 2023?
 0xee062891c7590a2cefe4f2166ecdb10ea126061e,No,Will Kevin McCarthy be replaced as House Speaker by 8 October 2023?
 0xee44bb2442b616f7b153a0158a536d921bf929ce,No,Will the Austrian honeymooners missing in Greece be found alive on or by 14 September 2023?
+0xee55269da59a5f3e397a26566abc1713a815bf5d,No,Will Hideo Kojima's Death Stranding movie be officially announced by a partner studio by 22 December 2023?
+0xee5d2016eb6644a8327252d4b4e1383b28808cd4,No,Will the Minnesota state flag design be officially adopted by 29 December 2023?
 0xee646cfa33afdd33f87127886e9d2931a3c320cc,Yes,Will the North Korea successfully launch a satellite by 29 November 2023?
 0xee78daa11da589e3a2c29103e00e631e6c77d415,Yes,Will WhatsApp have AI-generated stickers on 20 August 2023?
 0xee8ffed8a517dcaba43b3cac1a0e601aed0ca084,No,Will Avi Loeb's claim of discovering alien technology be proven incorrect by 16 August 2023?
 0xeea893632678a54c212fb3bd81115303e4cd887e,Yes,Will Sony release another model of its true wireless earbuds series on or before 4 August 2023?
 0xeebc288a51cfc71b3b696cc66689d270393da606,No,Will Niantic’s Monster Hunter Now reach the top 5 in the App Store charts on 10 August 2023?
+0xeede054ac9e1c12f3cf565c65d6fbcd9716ca34c,Yes,Will the Federal Reserve start cutting rates by 5 January 2024?
 0xef14e1ed6a3f4d4ef25ecf722b3752fd0df2cbb2,Yes,Will the nationwide curfew in Sierra Leone be lifted by 4 December 2023?
+0xef2026b8c080310c12fed1fae140054d0df6e4fd,No,Will the Samsung Galaxy S24 be released by 18 December 2023?
 0xef256329ab33ae4fa257eb678da4f0bd4527faa3,No,Will the sci-fi drama 'Invasion' release its season 3 on 28 August 2023?
 0xef79ea132bdca1713a0c4cc95868000777551959,No,Will Russia be reinstated to the United Nations Human Rights Council by 18 October 2023?
 0xefb6749e000bbb66ae922f843d9b6f63a5b0cfc7,No,Will Ken Pillonel release a new project related to Apple products on 12 August 2023?
@@ -1152,11 +1500,14 @@ id,currentAnswer,title
 0xefee5895fbfe26d20f3d897ff7b9fb0597123521,Yes,Will Florida schools reopen after the flooding by 26 November 2023?
 0xeffbc6624b10449e7efed0043349ee276eb66d27,No,Will 'The Super Mario Bros. Movie' be the most rented film on Peacock on 16 August 2023?
 0xf01217655192237aa704160859f7af33365ddc38,No,Will Bitcoin exceed its three-month high on 2 November 2023?
+0xf02827279d12d43dfb53320161c3c996b15d53b9,No,Will the investigation of Matthew Perry's death confirm that it was caused by the acute effects of ketamine on 23 December 2023?
 0xf0926e1ca9e016af08ea37ce3154b10e478aac32,No,Will Canada withdraw about 40 diplomatic staff from India by 8 October 2023?
 0xf0938ddcb8b222ac37c7b50af6bc8c22e5c0b84d,Yes,Will Amazon Prime offer another air fryer deal on 11 August 2023?
 0xf0ac06aa378490dfc82ffc021a3d12dc6d0f173c,Yes,Will the Spanish government announce further investments for the 2030 World Cup organization before 9 October 2023?
 0xf0b36192e96b23f3e894337b2b4e007431cce2f4,Yes,"Will the missing 9-year-old girl, Charlotte Sena, be found by 6 October 2023?"
+0xf0b88ab73f59268bcf73c048b6d00ccd08f1506a,No,Will there be another significant Pliosaur discovery from Dorset's Jurassic Coast by 18 December 2023?
 0xf0c3da18f4d3253d4b78d2fd70dff73148c8552c,No,Will the redesigned 2025 Toyota Camry be launched as a hybrid-only model by 24 November 2023?
+0xf0d44791cee6b42aa13d7333f6f19cc84a00f9d3,Yes,Will Eddie Jones begin as Japan head coach at the start of January 2024?
 0xf0ea2e8bc692e85988c6e8b13dcd78ef7831ab25,No,Will Elizabeth Holmes be released from prison on or before 17 August 2023?
 0xf0f88d728fd35fe226617e9e420910464ad29063,Yes,Will the AI Pin launched by Humane be commercially available by 18 November 2023?
 0xf11844502b32280ac864744286bbf375e02d5464,No,Will the Indian government legalize same-sex marriage by 24 October 2023?
@@ -1167,8 +1518,12 @@ id,currentAnswer,title
 0xf21e6f68ef8f3ca42fda2ae9995fa9d4a194199c,Yes,Will Chinese Premier Li Qiang attend the G20 summit on 9 September 2023?
 0xf225dd393805aa218fd55b4e7e0882fbb057f690,No,Will the Alabama high school band director be cleared of all charges by 24 September 2023?
 0xf25686f03d24a68cc29104a5fc83512151695fd8,No,Will Netflix's Terminator anime be released on 18 November 2023?
+0xf2a0436990bf487e2586aed1cb91e29179377b6c,No,Will the Israel-Hamas truce be extended on 5 December 2023?
 0xf2b5200fc62611ea50924a591f503fa1cea50e10,No,Will India resume visa services for Canadian citizens by 26 September 2023?
+0xf2cbe432006b5dc16c00df90ce440f6ad7b5b061,Yes,Will the UNLV campus shooting suspect be identified as a previous applicant for a job at the university by 14 December 2023?
+0xf2f9588d8a2a5e7ae06f99fa7b71bf7527485d96,No,Will the 'perfect solar system' found by researchers contribute to the discovery of alien life by 6 December 2023?
 0xf309939c05bc554f5ea182e504b2c796c64187be,Yes,Will Duolingo's new Music platform be available to users by 16 October 2023?
+0xf35a61af431962a8ea7a73f66101787f576b346c,No,Will the case of Epic v. Google be settled by 9 December 2023?
 0xf37123b4ca9cbe44efd8c1be78c8a114cd1d5c84,Yes,"Will Felix Herrera Garcia, the husband of the Bronx day care owner, be extradited from Mexico by 1 October 2023?"
 0xf379c5e1f08aba82c658c369b18f193f149bafb0,No,Will Artiphon's Chorda 'band in a box' sell over 5000 units by 6 August 2023?
 0xf3c89ea2502cb01184a01612dc6ed16aebd20792,No,Will the James Webb space telescope discover another active supermassive black hole on or by 14 August 2023?
@@ -1178,11 +1533,18 @@ id,currentAnswer,title
 0xf4b94b563866ec470bb9086ef14b1895bc549eba,Yes,Will the public carrying of firearms in Albuquerque remain banned by 16 September 2023?
 0xf4db2677ab4a80f6046e6faeed2939e0279de984,No,Will Argentina's Central Bank be shut down by 2 December 2023?
 0xf4e3d3244ef5af0117367fd720b6e6c759b42375,Yes,Will the Biden administration grant temporary legal status to Venezuelans in the U.S. by 27 September 2023?
+0xf4f2e5a28ce7dedd401b36bf978495cde5fa2a34,Yes,Will there be any reported accidents involving Tesla Cybertruck on or before 4 January 2024?
+0xf510a525e85e0b5ffa27de986152397e591b97ca,Yes,Will Liz Cheney have formally announced a third-party US presidential run by 22 December 2023?
 0xf56b310e6eed4d54c04a1f004251ef917ab0bd6e,No,Will General Motors finalize their deal with United Auto Workers ending the strike by 9 November 2023?
+0xf57b356b368d3059207176439730c6e79941e80f,No,Will the Car Connectivity Consortium introduce a new digital key logo by 18th December 2023?
 0xf5b3ed7d612ed654a0bf0e1ba29b489426ff3a30,No,Will Republican Senate Minority Leader Mitch McConnell announce his retirement on 9 September 2023?
+0xf61d59d1888d206abe9b806c7c9f3cdeb2bae71b,No,Will the US Supreme Court limit access to a key abortion drug by 23 December 2023?
 0xf61fd27a23c145a2361759da08f748075975ffe4,Yes,Will Francis Ngannou maintain his ranking as the number 10 heavyweight by the WBC on 22 November 2023?
+0xf63ecca9202ced4314a82e9c5378d924c3bfaefa,Yes,Will AMD surpass 20 percent of the overall desktop graphics card market by 7 January 2024?
 0xf655b0683fedd5a85c604fdf252f4b83040c9952,No,Will the trial of Donald Trump for an alleged illegal conspiracy to overturn the 2020 election start on 24 November 2023?
 0xf66aa0ab775d5822112abba87c38c9f3615799e5,No,Will there be another aftershock in Morocco on 19 September 2023?
+0xf689a5ae73e12715ede839cab22ac3922c2f33cf,Yes,Will Liverpool win against Newcastle in the Premier League match on 6 January 2024?
+0xf6942a94326b418a7abfed07dffa9d408cba3a36,No,Will Manchester City secure the top spot in the Premier League by 7 December 2023?
 0xf6b5d9f276c5fbf9b7e02138b75615fd06994811,No,Will Japan successfully land on the Moon by 11 September 2023?
 0xf6c29c5f26fcaa207d4c0af6a348db731b3d9efa,Yes,Will there be another wildfire in Canada on 16 August 2023?
 0xf6fb7ae84beeaee6a362296e3d068493f7f426c0,Yes,Will the victims of the Australian military helicopter crash be identified by 14 August 2023?
@@ -1201,13 +1563,17 @@ id,currentAnswer,title
 0xf954e5cd79ad281ca0a879b6f82ef8160fba779d,Yes,Will the 16 alleged Gambino mafia members be charged in the US and Italy by 16 November 2023?
 0xf9a9d371672b4d7e196e943b3b688bf002c717e4,No,Will Blizzard release a new patch for Diablo IV by 9 August 2023?
 0xf9f0a7e65beb74365b3fe068ac0fb7032f8b0db2,No,Will Joe Biden be cleared in the special counsel investigation by 19 October 2023?
+0xfa8009d167cabbd8defb735ef491d0bc78459cc9,Yes,Will Arsenal lead the Premier League on 6th January 2024?
 0xfa861fd7bec47a2fce43fc6ff5835c1294691f7a,Yes,Will the U.S. government avoid a shutdown by 17 November 2023?
+0xfabae61b46d4d9a9bd1021ccccdc6bcc893ed63f,No,Will Texas lawmaker John Whitmire be officially inaugurated as Houston's next mayor by 18 December 2023?
 0xfad715446b3ad0e7540b23cda9e9e1590f02ade2,No,Will a significant hurricane event occur due to the combination of unusually warm ocean temperatures and El Niño on or before 7 October 2023?
+0xfb63eabbfb7d66385d91a1e71728fc7c1292c3a3,No,Will Harvard's President Claudine Gay resign from her position by 18 December 2023?
 0xfbbbd0b0e8d561861cb338a8dc29ba4bad0a3d67,Yes,Will General Motors and the United Auto Workers finalize their tentative deal by 8 November 2023?
 0xfbc18f7ec52bc10d798a11a10cda6c0a1eee0edc,Yes,Will the Israeli government reach an agreement for the release of Gaza hostages by 28 November 2023?
 0xfbd01a1b1cf66465cc5919b1bfea1c5d4ae935ba,No,Will the source of the leak of 1.1 million gallons of crude oil in the Gulf of Mexico be identified by 28 November 2023?
 0xfc5d43c11efae23990d7f2a1fc5d795ba9f52c89,No,Will Charles Martinet voice Mario in any game released by 26 August 2023?
 0xfca0f697d34fcf4cf105c34ac72ce0b92805ff94,No,Will Amazon have a new Senior Vice President of Devices and Services by 27 August 2023?
+0xfcc71adc91454c3dce4c56a616a45593fe45f736,No,Will the Texas Supreme Court lift the temporary block on emergency abortions on 17 December 2023?
 0xfd6cf661d3a58b3ababc0eea3ea2df7b63a2fea1,No,Will Apple launch the next version of the Vision Pro by 25 October 2023?
 0xfd7de1f543bfc7765b7fc275bd3fca7c02cba831,Yes,Will the United Auto Workers at General Motors' Flint assembly approve a new labor deal by 17 November 2023?
 0xfd80143381b6942d947ccb2b1b764e18ae1b62e1,No,Will Delta Air Lines implement the proposed changes to its loyalty program by 3 October 2023?
@@ -1217,6 +1583,7 @@ id,currentAnswer,title
 0xfe0dc21c8cfb4b4344f52c487dc751911065aa1d,No,Will the sixth season of 'The Crown' be released on Netflix by 22 October 2023?
 0xfe420a78b82af804e48ac3e9e64e0642b334e002,No,"Will the Netflix anime 'Blue Eye Samurai' get renewed for a second season by November 10, 2023?"
 0xfe47fdc76a4bdd72835e7f4e9a0a7ba1cadbc6d1,Yes,Will Dmitry Utkin be confirmed among the victims of the plane crash by 3 September 2023?
+0xfe6a471cabf28af50b0ada711c712dc5334a0e18,No,Will Harvard President Claudine Gay resign by 18th December 2023?
 0xfe88e20def10edb36e702a68d459b86f8f77615b,No,Will the Texas Rangers win their second World Series title by 11 November 2023?
 0xfe8eb25744cd592b43eaf7087ccfe536d4f034d9,No,Will Greta Thunberg be released from detention on 23 October 2023?
 0xfec22f19e7ecee4858a7bab3689c9208ed0a9ae8,No,Will Foxconn face penalties as a result of the investigation by the Chinese authorities by 1 November 2023?
