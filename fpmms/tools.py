@@ -22,6 +22,7 @@ import os.path
 import re
 import sys
 import time
+import random
 from dataclasses import dataclass
 from enum import Enum
 from io import StringIO
@@ -55,7 +56,7 @@ from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-CONTRACTS_PATH = "contracts"
+CONTRACTS_PATH = "../contracts"
 MECH_TO_INFO = {
     # this block number is when the creator had its first tx ever, and after this mech's creation
     "0xff82123dfb52ab75c417195c5fdb87630145ae81": ("old_mech_abi.json", 28911547),
@@ -86,7 +87,8 @@ DEFAULT_FILENAME = "tools.csv"
 RE_RPC_FILTER_ERROR = r"Filter with id: '\d+' does not exist."
 ABI_ERROR = "The event signature did not match the provided ABI"
 SLEEP = 0.5
-N_IPFS_RETRIES = 5
+HTTP_TIMEOUT = 60
+N_IPFS_RETRIES = 2
 N_RPC_RETRIES = 100
 RPC_POLL_INTERVAL = 0.05
 IPFS_POLL_INTERVAL = 0.05
@@ -178,14 +180,12 @@ class PredictionResponse:
     p_no: float
     confidence: float
     info_utility: float
-    # prompt: Optional[str]
     vote: Optional[str]
     win_probability: Optional[float]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's prediction ignoring extra keys."""
         try:
-            # self.prompt = kwargs.pop('prompt', None)
             self.p_yes = float(kwargs.pop("p_yes"))
             self.p_no = float(kwargs.pop("p_no"))
             self.confidence = float(kwargs.pop("confidence"))
@@ -199,6 +199,7 @@ class PredictionResponse:
                 "confidence": self.confidence, 
                 "info_utility": self.info_utility
             }
+        
             for name, prob in probabilities.items():
                 if not 0 <= prob <= 1:
                     raise ValueError(f"{name} probability is out of bounds: {prob}")
@@ -234,25 +235,35 @@ class MechResponse:
     request_id: int
     deliver_block: Optional[int]
     result: Optional[PredictionResponse]
-    error: str
+    error: Optional[str]
+    error_message: Optional[str]
     prompt_response: Optional[str]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
-        self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
-        self.error = kwargs.pop("error", "Unknown")
-        self.result = kwargs.pop("result", None)
-        self.prompt_response = kwargs.pop("prompt", None)
+        self.error_message = None
+        try:
+            self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+            self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
+            self.error = kwargs.pop("error", "Unknown")
+            self.result = kwargs.pop("result", None)
+            self.prompt_response = kwargs.pop(PROMPT_FIELD, None)
 
-        if isinstance(self.result, str):
-            kwargs = json.loads(self.result)
-            # kwargs["prompt"] = self.prompt
-            self.result = PredictionResponse(**kwargs)
+            if isinstance(self.result, str):
+                kwargs = json.loads(self.result)
+                self.result = PredictionResponse(**kwargs)
+
+        except Exception as e:
+            self.error = str(True)
+            self.error_message = str(e)
+            self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+            self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
+            self.result = kwargs.pop("result", None)
+            self.prompt_response = kwargs.pop(PROMPT_FIELD, None)
 
 
 EVENT_TO_MECH_STRUCT = {
-    MechEventName.REQUEST: MechRequest,
+    # MechEventName.REQUEST: MechRequest,
     MechEventName.DELIVER: MechResponse,
 }
 
@@ -394,10 +405,10 @@ def create_session() -> requests.Session:
     return session
 
 
-def request(session: requests.Session, url: str) -> Optional[requests.Response]:
+def request(session: requests.Session, url: str, timeout: int = HTTP_TIMEOUT) -> Optional[requests.Response]:
     """Perform a request with a session."""
     try:
-        response = session.get(url)
+        response = session.get(url, timeout=timeout)
         response.raise_for_status()
     except requests.exceptions.HTTPError as exc:
         tqdm.write(f"HTTP error occurred: {exc}.")
@@ -594,8 +605,8 @@ def pipeline_step(
         contents = []
         with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
             futures = []
-            for i in range(0, len(parsed), 100):
-                futures.append(executor.submit(get_contents, session, parsed[i:i+100], event_name))
+            for i in range(0, len(parsed), 1000):
+                futures.append(executor.submit(get_contents, session, parsed[i:i+1000], event_name))
 
             for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Contents"):
                 current_mech_contents = future.result()
@@ -653,12 +664,12 @@ def store_progress(
         tools.to_csv(filename, index=False, escapechar="\\")
 
 
-def etl(rpc: str, filename: Optional[str] = None, full_contents : bool = False) -> pd.DataFrame:
+def etl(rpc: List[str], filename: Optional[str] = None, full_contents : bool = False) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
-    w3 = Web3(HTTPProvider(rpc))
+    w3s = [Web3(HTTPProvider(r)) for r in rpc]
     session = create_session()
     event_to_transformer = {
-        MechEventName.REQUEST: transform_request,
+        # MechEventName.REQUEST: transform_request,
         MechEventName.DELIVER: transform_deliver,
     }
     mech_to_info = {
@@ -672,7 +683,7 @@ def etl(rpc: str, filename: Optional[str] = None, full_contents : bool = False) 
 
     latest_block = LATEST_BLOCK
     if latest_block is None:
-        latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
+        latest_block = w3s[0].eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
     next_start_block = to_block = None
 
@@ -680,19 +691,23 @@ def etl(rpc: str, filename: Optional[str] = None, full_contents : bool = False) 
     for event_name, transformer in event_to_transformer.items():
 
         if next_start_block is None:
-            next_start_block = get_earliest_block(event_name)
+            next_start_block_base = get_earliest_block(event_name)
 
         # Loop through mech addresses in mech_to_info
         events = []
         for address, (abi, earliest_block) in mech_to_info.items():
-            if next_start_block == 0:
+            if next_start_block_base == 0:
                 next_start_block = earliest_block
+            else:
+                next_start_block = next_start_block_base
+        
+            print(f"Searching for {event_name.value} events for mech {address} from block {next_start_block} to {latest_block}.")
 
             # parallelize the fetching of events
             with ThreadPoolExecutor(max_workers=10) as executor:
                 futures = []
                 for i in range(next_start_block, latest_block, BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE):
-                    futures.append(executor.submit(get_events, w3, event_name.value, address, abi, i, min(i + BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE, latest_block)))
+                    futures.append(executor.submit(get_events, random.choice(w3s), event_name.value, address, abi, i, min(i + BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE, latest_block)))
 
                 for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Events"):
                     current_mech_events = future.result()
@@ -703,8 +718,8 @@ def etl(rpc: str, filename: Optional[str] = None, full_contents : bool = False) 
         contents = []
         with ThreadPoolExecutor(max_workers=10) as executor:
             futures = []
-            for i in range(0, len(parsed), 100):
-                futures.append(executor.submit(get_contents, session, parsed[i:i+100], event_name))
+            for i in range(0, len(parsed), 1000):
+                futures.append(executor.submit(get_contents, session, parsed[i:i+1000], event_name))
 
             for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Contents"):
                 current_mech_contents = future.result()
@@ -743,7 +758,6 @@ def etl(rpc: str, filename: Optional[str] = None, full_contents : bool = False) 
 if __name__ == "__main__":
     # rpc_ = parse_args()
     # etl(rpc_, DEFAULT_FILENAME)
-
     tools = etl(
         rpc = 'https://lb.nodies.app/v1/406d8dcc043f4cb3959ed7d6673d311a',
         filename=DEFAULT_FILENAME,
