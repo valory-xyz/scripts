@@ -22,6 +22,7 @@ import os.path
 import re
 import sys
 import time
+import random
 from dataclasses import dataclass
 from enum import Enum
 from io import StringIO
@@ -53,8 +54,9 @@ from urllib3.exceptions import (
 from web3 import Web3, HTTPProvider
 from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-CONTRACTS_PATH = "contracts"
+CONTRACTS_PATH = "../contracts"
 MECH_TO_INFO = {
     # this block number is when the creator had its first tx ever, and after this mech's creation
     "0xff82123dfb52ab75c417195c5fdb87630145ae81": ("old_mech_abi.json", 28911547),
@@ -85,7 +87,8 @@ DEFAULT_FILENAME = "tools.csv"
 RE_RPC_FILTER_ERROR = r"Filter with id: '\d+' does not exist."
 ABI_ERROR = "The event signature did not match the provided ABI"
 SLEEP = 0.5
-N_IPFS_RETRIES = 5
+HTTP_TIMEOUT = 60
+N_IPFS_RETRIES = 2
 N_RPC_RETRIES = 100
 RPC_POLL_INTERVAL = 0.05
 IPFS_POLL_INTERVAL = 0.05
@@ -105,6 +108,7 @@ IRRELEVANT_TOOLS = [
 # this is how frequently we will keep a snapshot of the progress so far in terms of blocks' batches
 # for example, the value 1 means that for every `BLOCKS_CHUNK_SIZE` blocks that we search, we also store the snapshot
 SNAPSHOT_RATE = 10
+NUM_WORKERS = 10
 
 
 class MechEventName(Enum):
@@ -156,7 +160,7 @@ class MechRequest:
 
     request_id: Optional[int]
     request_block: Optional[int]
-    prompt: Optional[str]
+    prompt_request: Optional[str]
     tool: Optional[str]
     nonce: Optional[str]
 
@@ -164,9 +168,7 @@ class MechRequest:
         """Initialize the request ignoring extra keys."""
         self.request_id = int(kwargs.pop(REQUEST_ID, 0))
         self.request_block = int(kwargs.pop(BLOCK_FIELD, 0))
-        self.prompt = re.sub(
-            " +", " ", kwargs.pop(PROMPT_FIELD, "").replace(os.linesep, "")
-        )
+        self.prompt_request = kwargs.pop(PROMPT_FIELD, None)
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
 
@@ -174,7 +176,6 @@ class MechRequest:
 @dataclass(init=False)
 class PredictionResponse:
     """A response of a prediction."""
-
     p_yes: float
     p_no: float
     confidence: float
@@ -184,24 +185,35 @@ class PredictionResponse:
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's prediction ignoring extra keys."""
-        self.p_yes = float(kwargs.pop("p_yes"))
-        self.p_no = float(kwargs.pop("p_no"))
-        self.confidence = float(kwargs.pop("confidence"))
-        self.info_utility = float(kwargs.pop("info_utility"))
-        self.win_probability = 0
+        try:
+            self.p_yes = float(kwargs.pop("p_yes"))
+            self.p_no = float(kwargs.pop("p_no"))
+            self.confidence = float(kwargs.pop("confidence"))
+            self.info_utility = float(kwargs.pop("info_utility"))
+            self.win_probability = 0
 
-        # all the fields are probabilities; run checks on whether the current prediction response is valid or not.
-        probabilities = (
-            getattr(self, field) for field in set(self.__annotations__) - {"vote"}
-        )
-        if (
-            any(not (0 <= prob <= 1) for prob in probabilities)
-            or self.p_yes + self.p_no != 1
-        ):
-            raise ValueError("Invalid prediction response initialization.")
+            # Validate probabilities
+            probabilities = {
+                "p_yes": self.p_yes, 
+                "p_no": self.p_no, 
+                "confidence": self.confidence, 
+                "info_utility": self.info_utility
+            }
+        
+            for name, prob in probabilities.items():
+                if not 0 <= prob <= 1:
+                    raise ValueError(f"{name} probability is out of bounds: {prob}")
 
-        self.vote = self.get_vote()
-        self.win_probability = self.get_win_probability()
+            if self.p_yes + self.p_no != 1:
+                raise ValueError(f"Sum of p_yes and p_no is not 1: {self.p_yes} + {self.p_no}")
+
+            self.vote = self.get_vote()
+            self.win_probability = self.get_win_probability()
+
+        except KeyError as e:
+            raise KeyError(f"Missing key in PredictionResponse: {e}")
+        except ValueError as e:
+            raise ValueError(f"Invalid value in PredictionResponse: {e}")
 
     def get_vote(self) -> Optional[str]:
         """Return the vote."""
@@ -223,21 +235,35 @@ class MechResponse:
     request_id: int
     deliver_block: Optional[int]
     result: Optional[PredictionResponse]
-    error: str
+    error: Optional[str]
+    error_message: Optional[str]
+    prompt_response: Optional[str]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
-        self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-        self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
-        self.error = kwargs.pop("error", "Unknown")
-        self.result = kwargs.pop("result", None)
+        self.error_message = None
+        try:
+            self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+            self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
+            self.error = kwargs.pop("error", "Unknown")
+            self.result = kwargs.pop("result", None)
+            self.prompt_response = kwargs.pop(PROMPT_FIELD, None)
 
-        if isinstance(self.result, str):
-            self.result = PredictionResponse(**json.loads(self.result))
+            if isinstance(self.result, str):
+                kwargs = json.loads(self.result)
+                self.result = PredictionResponse(**kwargs)
+
+        except Exception as e:
+            self.error = str(True)
+            self.error_message = str(e)
+            self.request_id = int(kwargs.pop(REQUEST_ID, 0))
+            self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
+            self.result = kwargs.pop("result", None)
+            self.prompt_response = kwargs.pop(PROMPT_FIELD, None)
 
 
 EVENT_TO_MECH_STRUCT = {
-    MechEventName.REQUEST: MechRequest,
+    # MechEventName.REQUEST: MechRequest,
     MechEventName.DELIVER: MechResponse,
 }
 
@@ -379,10 +405,10 @@ def create_session() -> requests.Session:
     return session
 
 
-def request(session: requests.Session, url: str) -> Optional[requests.Response]:
+def request(session: requests.Session, url: str, timeout: int = HTTP_TIMEOUT) -> Optional[requests.Response]:
     """Perform a request with a session."""
     try:
-        response = session.get(url)
+        response = session.get(url, timeout=timeout)
         response.raise_for_status()
     except requests.exceptions.HTTPError as exc:
         tqdm.write(f"HTTP error occurred: {exc}.")
@@ -474,7 +500,13 @@ def get_contents(
 
 
 def clean(df: pd.DataFrame) -> pd.DataFrame:
-    """Clean up a dataframe, i.e., drop na and duplicates."""
+    # Convert unhashable types (like lists, dict) to a hashable form (like string)
+    for col in df.columns:
+        if isinstance(df[col].iloc[0], list):
+            df[col] = df[col].apply(lambda x: str(x))
+        if isinstance(df[col].iloc[0], dict):
+            df[col] = df[col].apply(lambda x: str(x))
+    
     cleaned = df.dropna().drop_duplicates()
     cleaned[REQUEST_ID_FIELD] = cleaned[REQUEST_ID_FIELD].astype("str")
     return cleaned
@@ -485,12 +517,25 @@ def transform_request(contents: pd.DataFrame) -> pd.DataFrame:
     return clean(contents)
 
 
-def transform_deliver(contents: pd.DataFrame) -> pd.DataFrame:
+def transform_deliver(contents: pd.DataFrame, full_contents=False) -> pd.DataFrame:
     """Transform the delivers dataframe."""
     unpacked_result = pd.json_normalize(contents.result)
-    contents = pd.concat((contents, unpacked_result), axis=1)
-    return clean(contents.drop(columns=["result", "error"]))
+    # # drop result column if it exists
+    if "result" in unpacked_result.columns:
+        unpacked_result.drop(columns=["result"], inplace=True)
 
+    # drop prompt column if it exists
+    if "prompt" in unpacked_result.columns:
+        unpacked_result.drop(columns=["prompt"], inplace=True)
+
+    # rename prompt column to prompt_deliver
+    unpacked_result.rename(columns={"prompt": "prompt_deliver"}, inplace=True)
+    
+    contents = pd.concat((contents, unpacked_result), axis=1)
+    if not full_contents:
+        return clean(contents.drop(columns=["result", "error"]))
+    else:
+        return clean(contents)
 
 def gen_event_filename(event_name: MechEventName) -> str:
     """Generate the filename of an event."""
@@ -534,6 +579,7 @@ def pipeline_step(
     mech_to_info: Dict[ChecksumAddress, Tuple[str, int]],
     stop_block: Optional[int] = None,
     start_block: Optional[int] = None,
+    full_contents: bool = False,
 ):
     """Perform a step of the pipeline, from start block (or default earliest) to stop block."""
     for event_name, transformer in event_to_transformer.items():
@@ -542,21 +588,51 @@ def pipeline_step(
             if start_block is None:
                 start_block = max(earliest_block, get_earliest_block(event_name))
                 stop_block = start_block + SNAPSHOT_RATE * BLOCKS_CHUNK_SIZE
-            current_mech_events = get_events(
-                w3, event_name.value, address, abi, start_block, stop_block
-            )
-            events.extend(current_mech_events)
-        parsed = parse_events(events)
-        contents = get_contents(session, parsed, event_name)
-        if not len(contents.index):
-            raise ValueError(f"No tools' data for {event_name} events found!")
 
-        transformed = transformer(contents)
+            # Parallelize the fetching of events
+            with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
+                futures = []
+                for i in range(start_block, stop_block, BLOCKS_CHUNK_SIZE):
+                    futures.append(executor.submit(get_events, w3, event_name.value, address, abi, i, min(i + BLOCKS_CHUNK_SIZE, stop_block)))
+
+                for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Events"):
+                    current_mech_events = future.result()
+                    events.extend(current_mech_events)
+
+        parsed = parse_events(events)
+
+        # Parallelize the fetching of contents; use tqdm to show progress
+        contents = []
+        with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
+            futures = []
+            for i in range(0, len(parsed), 1000):
+                futures.append(executor.submit(get_contents, session, parsed[i:i+1000], event_name))
+
+            for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Contents"):
+                current_mech_contents = future.result()
+                contents.append(current_mech_contents)
+
+        contents = pd.concat(contents, ignore_index=True)
+        
+        if event_name == MechEventName.REQUEST:
+            transformed = transformer(contents)
+        elif event_name == MechEventName.DELIVER:
+            transformed = transformer(contents, full_contents=full_contents)
+
         events_filename = gen_event_filename(event_name)
         if os.path.exists(events_filename):
             old = pd.read_csv(events_filename)
-            transformed = pd.concat((old, transformed), ignore_index=True)
+
+            # Reset index to avoid index conflicts
+            old.reset_index(drop=True, inplace=True)
+            transformed.reset_index(drop=True, inplace=True)
+
+            # Concatenate DataFrames
+            transformed = pd.concat([old, transformed], ignore_index=True)
+
+            # Drop duplicates if necessary
             transformed.drop_duplicates(inplace=True)
+
         event_to_contents[event_name] = transformed.copy()
 
     return stop_block
@@ -571,16 +647,29 @@ def store_progress(
     if filename:
         for event_name, content in event_to_contents.items():
             event_filename = gen_event_filename(event_name)
-            content.to_csv(event_filename, index=False)
-        tools.to_csv(filename, index=False)
+            if 'error' in content.columns:
+                content.drop(columns=['error'], inplace=True)
+
+            if 'result' in content.columns:
+                content.drop(columns=['result'], inplace=True)
+
+            content.to_csv(event_filename, index=False, escapechar="\\")
+
+        # drop result and error columns
+        if 'result' in tools.columns:
+            tools.drop(columns=['result'], inplace=True)
+        if 'error' in tools.columns:
+            tools.drop(columns=['error'], inplace=True)
+
+        tools.to_csv(filename, index=False, escapechar="\\")
 
 
-def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
+def etl(rpc: List[str], filename: Optional[str] = None, full_contents : bool = False) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
-    w3 = Web3(HTTPProvider(rpc))
+    w3s = [Web3(HTTPProvider(r)) for r in rpc]
     session = create_session()
     event_to_transformer = {
-        MechEventName.REQUEST: transform_request,
+        # MechEventName.REQUEST: transform_request,
         MechEventName.DELIVER: transform_deliver,
     }
     mech_to_info = {
@@ -594,31 +683,83 @@ def etl(rpc: str, filename: Optional[str] = None) -> pd.DataFrame:
 
     latest_block = LATEST_BLOCK
     if latest_block is None:
-        latest_block = w3.eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
+        latest_block = w3s[0].eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
     next_start_block = to_block = None
-    while True:
-        if next_start_block is not None:
-            to_block = next_start_block + SNAPSHOT_RATE * BLOCKS_CHUNK_SIZE
-            to_block = min(to_block, latest_block)
-        to_block = pipeline_step(
-            w3,
-            session,
-            event_to_contents,
-            event_to_transformer,
-            mech_to_info,
-            to_block,
-            next_start_block,
-        )
-        tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
-        store_progress(filename, event_to_contents, tools)
-        next_start_block = to_block
-        if next_start_block == latest_block:
-            break
 
-    return tools
+    # Loop through events in event_to_transformer
+    for event_name, transformer in event_to_transformer.items():
+
+        if next_start_block is None:
+            next_start_block_base = get_earliest_block(event_name)
+
+        # Loop through mech addresses in mech_to_info
+        events = []
+        for address, (abi, earliest_block) in mech_to_info.items():
+            if next_start_block_base == 0:
+                next_start_block = earliest_block
+            else:
+                next_start_block = next_start_block_base
+        
+            print(f"Searching for {event_name.value} events for mech {address} from block {next_start_block} to {latest_block}.")
+
+            # parallelize the fetching of events
+            with ThreadPoolExecutor(max_workers=10) as executor:
+                futures = []
+                for i in range(next_start_block, latest_block, BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE):
+                    futures.append(executor.submit(get_events, random.choice(w3s), event_name.value, address, abi, i, min(i + BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE, latest_block)))
+
+                for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Events"):
+                    current_mech_events = future.result()
+                    events.extend(current_mech_events)
+
+        parsed = parse_events(events)
+
+        contents = []
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            futures = []
+            for i in range(0, len(parsed), 1000):
+                futures.append(executor.submit(get_contents, session, parsed[i:i+1000], event_name))
+
+            for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Contents"):
+                current_mech_contents = future.result()
+                contents.append(current_mech_contents)
+
+        contents = pd.concat(contents, ignore_index=True)
+
+        full_contents = True
+        if event_name == MechEventName.REQUEST:
+            transformed = transformer(contents)
+        elif event_name == MechEventName.DELIVER:
+            transformed = transformer(contents, full_contents=full_contents)
+
+        events_filename = gen_event_filename(event_name)
+
+        if os.path.exists(events_filename):
+            old = pd.read_csv(events_filename)
+
+            # Reset index to avoid index conflicts
+            old.reset_index(drop=True, inplace=True)
+            transformed.reset_index(drop=True, inplace=True)
+
+            # Concatenate DataFrames
+            transformed = pd.concat([old, transformed], ignore_index=True)
+
+            # Drop duplicates if necessary
+            transformed.drop_duplicates(inplace=True)
+
+        event_to_contents[event_name] = transformed.copy()
+
+    # Store progress
+    tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
+    store_progress(filename, event_to_contents, tools)
 
 
 if __name__ == "__main__":
-    rpc_ = parse_args()
-    etl(rpc_, DEFAULT_FILENAME)
+    # rpc_ = parse_args()
+    # etl(rpc_, DEFAULT_FILENAME)
+    tools = etl(
+        rpc = 'https://lb.nodies.app/v1/406d8dcc043f4cb3959ed7d6673d311a',
+        filename=DEFAULT_FILENAME,
+        full_contents=True
+    )
