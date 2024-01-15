@@ -68,6 +68,7 @@ LATEST_BLOCK: Optional[int] = None
 LATEST_BLOCK_NAME: BlockParams = "latest"
 BLOCK_DATA_NUMBER = "number"
 BLOCKS_CHUNK_SIZE = 10_000
+GET_CONTENTS_CHUNK_SIZE = 1000
 REDUCE_FACTOR = 0.25
 EVENT_ARGUMENTS = "args"
 DATA = "data"
@@ -109,6 +110,7 @@ IRRELEVANT_TOOLS = [
 # for example, the value 1 means that for every `BLOCKS_CHUNK_SIZE` blocks that we search, we also store the snapshot
 SNAPSHOT_RATE = 10
 NUM_WORKERS = 10
+MAX_WORKERS = 10
 
 
 class MechEventName(Enum):
@@ -176,6 +178,7 @@ class MechRequest:
 @dataclass(init=False)
 class PredictionResponse:
     """A response of a prediction."""
+
     p_yes: float
     p_no: float
     confidence: float
@@ -194,18 +197,20 @@ class PredictionResponse:
 
             # Validate probabilities
             probabilities = {
-                "p_yes": self.p_yes, 
-                "p_no": self.p_no, 
-                "confidence": self.confidence, 
-                "info_utility": self.info_utility
+                "p_yes": self.p_yes,
+                "p_no": self.p_no,
+                "confidence": self.confidence,
+                "info_utility": self.info_utility,
             }
-        
+
             for name, prob in probabilities.items():
                 if not 0 <= prob <= 1:
                     raise ValueError(f"{name} probability is out of bounds: {prob}")
 
             if self.p_yes + self.p_no != 1:
-                raise ValueError(f"Sum of p_yes and p_no is not 1: {self.p_yes} + {self.p_no}")
+                raise ValueError(
+                    f"Sum of p_yes and p_no is not 1: {self.p_yes} + {self.p_no}"
+                )
 
             self.vote = self.get_vote()
             self.win_probability = self.get_win_probability()
@@ -405,7 +410,9 @@ def create_session() -> requests.Session:
     return session
 
 
-def request(session: requests.Session, url: str, timeout: int = HTTP_TIMEOUT) -> Optional[requests.Response]:
+def request(
+    session: requests.Session, url: str, timeout: int = HTTP_TIMEOUT
+) -> Optional[requests.Response]:
     """Perform a request with a session."""
     try:
         response = session.get(url, timeout=timeout)
@@ -500,13 +507,13 @@ def get_contents(
 
 
 def clean(df: pd.DataFrame) -> pd.DataFrame:
-    # Convert unhashable types (like lists, dict) to a hashable form (like string)
+    """Clean up a dataframe, i.e., convert unhashable types (like lists, dict) to a hashable form (like string), drop na and duplicates."""
     for col in df.columns:
         if isinstance(df[col].iloc[0], list):
             df[col] = df[col].apply(lambda x: str(x))
         if isinstance(df[col].iloc[0], dict):
             df[col] = df[col].apply(lambda x: str(x))
-    
+
     cleaned = df.dropna().drop_duplicates()
     cleaned[REQUEST_ID_FIELD] = cleaned[REQUEST_ID_FIELD].astype("str")
     return cleaned
@@ -530,12 +537,13 @@ def transform_deliver(contents: pd.DataFrame, full_contents=False) -> pd.DataFra
 
     # rename prompt column to prompt_deliver
     unpacked_result.rename(columns={"prompt": "prompt_deliver"}, inplace=True)
-    
+
     contents = pd.concat((contents, unpacked_result), axis=1)
     if not full_contents:
         return clean(contents.drop(columns=["result", "error"]))
     else:
         return clean(contents)
+
 
 def gen_event_filename(event_name: MechEventName) -> str:
     """Generate the filename of an event."""
@@ -593,9 +601,23 @@ def pipeline_step(
             with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
                 futures = []
                 for i in range(start_block, stop_block, BLOCKS_CHUNK_SIZE):
-                    futures.append(executor.submit(get_events, w3, event_name.value, address, abi, i, min(i + BLOCKS_CHUNK_SIZE, stop_block)))
+                    futures.append(
+                        executor.submit(
+                            get_events,
+                            w3,
+                            event_name.value,
+                            address,
+                            abi,
+                            i,
+                            min(i + BLOCKS_CHUNK_SIZE, stop_block),
+                        )
+                    )
 
-                for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Events"):
+                for future in tqdm(
+                    as_completed(futures),
+                    total=len(futures),
+                    desc=f"Fetching {event_name.value} Events",
+                ):
                     current_mech_events = future.result()
                     events.extend(current_mech_events)
 
@@ -605,15 +627,26 @@ def pipeline_step(
         contents = []
         with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
             futures = []
-            for i in range(0, len(parsed), 1000):
-                futures.append(executor.submit(get_contents, session, parsed[i:i+1000], event_name))
+            for i in range(0, len(parsed), GET_CONTENTS_CHUNK_SIZE):
+                futures.append(
+                    executor.submit(
+                        get_contents,
+                        session,
+                        parsed[i : i + GET_CONTENTS_CHUNK_SIZE],
+                        event_name,
+                    )
+                )
 
-            for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Contents"):
+            for future in tqdm(
+                as_completed(futures),
+                total=len(futures),
+                desc=f"Fetching {event_name.value} Contents",
+            ):
                 current_mech_contents = future.result()
                 contents.append(current_mech_contents)
 
         contents = pd.concat(contents, ignore_index=True)
-        
+
         if event_name == MechEventName.REQUEST:
             transformed = transformer(contents)
         elif event_name == MechEventName.DELIVER:
@@ -647,24 +680,26 @@ def store_progress(
     if filename:
         for event_name, content in event_to_contents.items():
             event_filename = gen_event_filename(event_name)
-            if 'error' in content.columns:
-                content.drop(columns=['error'], inplace=True)
+            if "error" in content.columns:
+                content.drop(columns=["error"], inplace=True)
 
-            if 'result' in content.columns:
-                content.drop(columns=['result'], inplace=True)
+            if "result" in content.columns:
+                content.drop(columns=["result"], inplace=True)
 
             content.to_csv(event_filename, index=False, escapechar="\\")
 
         # drop result and error columns
-        if 'result' in tools.columns:
-            tools.drop(columns=['result'], inplace=True)
-        if 'error' in tools.columns:
-            tools.drop(columns=['error'], inplace=True)
+        if "result" in tools.columns:
+            tools.drop(columns=["result"], inplace=True)
+        if "error" in tools.columns:
+            tools.drop(columns=["error"], inplace=True)
 
         tools.to_csv(filename, index=False, escapechar="\\")
 
 
-def etl(rpc: List[str], filename: Optional[str] = None, full_contents : bool = False) -> pd.DataFrame:
+def etl(
+    rpc: List[str], filename: Optional[str] = None, full_contents: bool = False
+) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
     w3s = [Web3(HTTPProvider(r)) for r in rpc]
     session = create_session()
@@ -689,7 +724,6 @@ def etl(rpc: List[str], filename: Optional[str] = None, full_contents : bool = F
 
     # Loop through events in event_to_transformer
     for event_name, transformer in event_to_transformer.items():
-
         if next_start_block is None:
             next_start_block_base = get_earliest_block(event_name)
 
@@ -700,28 +734,57 @@ def etl(rpc: List[str], filename: Optional[str] = None, full_contents : bool = F
                 next_start_block = earliest_block
             else:
                 next_start_block = next_start_block_base
-        
-            print(f"Searching for {event_name.value} events for mech {address} from block {next_start_block} to {latest_block}.")
+
+            print(
+                f"Searching for {event_name.value} events for mech {address} from block {next_start_block} to {latest_block}."
+            )
 
             # parallelize the fetching of events
-            with ThreadPoolExecutor(max_workers=10) as executor:
+            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
                 futures = []
-                for i in range(next_start_block, latest_block, BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE):
-                    futures.append(executor.submit(get_events, random.choice(w3s), event_name.value, address, abi, i, min(i + BLOCKS_CHUNK_SIZE*SNAPSHOT_RATE, latest_block)))
+                for i in range(
+                    next_start_block, latest_block, BLOCKS_CHUNK_SIZE * SNAPSHOT_RATE
+                ):
+                    futures.append(
+                        executor.submit(
+                            get_events,
+                            random.choice(w3s),
+                            event_name.value,
+                            address,
+                            abi,
+                            i,
+                            min(i + BLOCKS_CHUNK_SIZE * SNAPSHOT_RATE, latest_block),
+                        )
+                    )
 
-                for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Events"):
+                for future in tqdm(
+                    as_completed(futures),
+                    total=len(futures),
+                    desc=f"Fetching {event_name.value} Events",
+                ):
                     current_mech_events = future.result()
                     events.extend(current_mech_events)
 
         parsed = parse_events(events)
 
         contents = []
-        with ThreadPoolExecutor(max_workers=10) as executor:
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = []
-            for i in range(0, len(parsed), 1000):
-                futures.append(executor.submit(get_contents, session, parsed[i:i+1000], event_name))
+            for i in range(0, len(parsed), GET_CONTENTS_CHUNK_SIZE):
+                futures.append(
+                    executor.submit(
+                        get_contents,
+                        session,
+                        parsed[i : i + GET_CONTENTS_CHUNK_SIZE],
+                        event_name,
+                    )
+                )
 
-            for future in tqdm(as_completed(futures), total=len(futures), desc=f"Fetching {event_name.value} Contents"):
+            for future in tqdm(
+                as_completed(futures),
+                total=len(futures),
+                desc=f"Fetching {event_name.value} Contents",
+            ):
                 current_mech_contents = future.result()
                 contents.append(current_mech_contents)
 
@@ -756,10 +819,9 @@ def etl(rpc: List[str], filename: Optional[str] = None, full_contents : bool = F
 
 
 if __name__ == "__main__":
-    # rpc_ = parse_args()
-    # etl(rpc_, DEFAULT_FILENAME)
+    rpc_ = parse_args()
     tools = etl(
-        rpc = 'https://lb.nodies.app/v1/406d8dcc043f4cb3959ed7d6673d311a',
+        rpc=rpc_,
         filename=DEFAULT_FILENAME,
-        full_contents=True
+        full_contents=True,
     )
