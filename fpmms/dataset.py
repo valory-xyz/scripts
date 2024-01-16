@@ -34,6 +34,7 @@ from tools import etl as tools_etl, DEFAULT_FILENAME as TOOLS_FILENAME
 DEFAULT_FILENAME = "dataset.csv"
 TOOL_PROMPT_REQUEST = "prompt_request"
 
+
 def parse_args() -> Union[str, Tuple[str, str]]:
     """Parse the arguments and return the markets and tools filenames."""
     if len(sys.argv) == 2:

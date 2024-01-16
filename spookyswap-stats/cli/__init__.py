@@ -24,11 +24,27 @@ from argparse import ArgumentParser
 
 def create_parser() -> ArgumentParser:
     """Creates the script's argument parser."""
-    parser = ArgumentParser(description='A tool that provides summative statistics for SpookySwap.')
-    parser.add_argument('start_date', type=int, help="The start date in Unix format.")
-    parser.add_argument('-e', '--end_date', type=int, default=None,
-                        help="The end date in Unix format. Defaults to now.")
-    parser.add_argument('pool_ids', nargs="+", type=str, help="The pool ids for which the statistics will be fetched.")
-    parser.add_argument('interval', type=int, help="The interval to use to fetch the historical data in Unix.")
+    parser = ArgumentParser(
+        description="A tool that provides summative statistics for SpookySwap."
+    )
+    parser.add_argument("start_date", type=int, help="The start date in Unix format.")
+    parser.add_argument(
+        "-e",
+        "--end_date",
+        type=int,
+        default=None,
+        help="The end date in Unix format. Defaults to now.",
+    )
+    parser.add_argument(
+        "pool_ids",
+        nargs="+",
+        type=str,
+        help="The pool ids for which the statistics will be fetched.",
+    )
+    parser.add_argument(
+        "interval",
+        type=int,
+        help="The interval to use to fetch the historical data in Unix.",
+    )
 
     return parser
