@@ -821,7 +821,6 @@ def etl(
 
 
 if __name__ == "__main__":
-
     RPCs = [
         "https://lb.nodies.app/v1/406d8dcc043f4cb3959ed7d6673d311a",
     ]

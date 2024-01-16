@@ -106,4 +106,3 @@ OUTPUT_FORMAT
      or lead to obtain the same set of results.
 * Output only the JSON object. Do not include any other contents in your response.
 """
-

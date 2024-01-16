@@ -43,7 +43,6 @@ PROMPT_TEMPLATE = (
 
 @dataclass
 class MechResponse(MechResponseBase):
-
     title: str
 
     def __init__(self, **kwargs: Any) -> None:
@@ -52,7 +51,9 @@ class MechResponse(MechResponseBase):
         self.title = kwargs.pop("title", "")
 
 
-def load_unique_questions(prev_results: Optional[pd.DataFrame], n_samples: int) -> pd.Series:
+def load_unique_questions(
+    prev_results: Optional[pd.DataFrame], n_samples: int
+) -> pd.Series:
     """Load the FPMM data for the experiment, sample a random subset with unique questions, and return them."""
     fpmms = pd.read_csv(FPMMS_PATH)
     titles: pd.Series = fpmms["title"].drop_duplicates()
@@ -93,7 +94,9 @@ def get_raw_responses(questions: pd.Series) -> Iterator[MechResponse]:
             yield mech_response
 
 
-def update_data(prev_results: pd.DataFrame, experiment_data: pd.DataFrame) -> pd.DataFrame:
+def update_data(
+    prev_results: pd.DataFrame, experiment_data: pd.DataFrame
+) -> pd.DataFrame:
     """Update the experiment data."""
     if prev_results is not None:
         prev_results.dropna(subset="result", inplace=True)
