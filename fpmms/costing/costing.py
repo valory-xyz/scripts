@@ -1,9 +1,9 @@
 import tiktoken
 import anthropic
 from typing import Optional
-from .prompts import prediction_request
-from .prompts import prediction_request_sme
-from .prompts import prediction_request_claude
+from mech.tools.prediction_request import prediction_request
+from mech.tools.prediction_request_sme import prediction_request_sme
+from mech.tools.prediction_request_claude import prediction_request_claude
 
 
 class TokenCounter:
@@ -195,3 +195,13 @@ class CostCounter:
         )
 
         return self.final_cost
+
+
+if __name__ == "__main__":
+    # Example usage
+    tool = "prediction-offline-sme"
+    prediciton_prompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. Human: Hello, who are you?"
+    final_response = "I am an AI created by OpenAI. How can I help you today?"
+    cost_counter = CostCounter(tool, prediciton_prompt, final_response)
+    cost_counter.run()
+    print(cost_counter.final_cost)
