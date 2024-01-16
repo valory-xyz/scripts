@@ -38,6 +38,7 @@ from typing import (
 
 import pandas as pd
 import requests
+from json.decoder import JSONDecodeError
 from eth_typing import ChecksumAddress
 from eth_utils import to_checksum_address
 from requests.adapters import HTTPAdapter
@@ -56,7 +57,7 @@ from web3.exceptions import MismatchedABI
 from web3.types import BlockParams
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-CONTRACTS_PATH = "../contracts"
+CONTRACTS_PATH = "contracts"
 MECH_TO_INFO = {
     # this block number is when the creator had its first tx ever, and after this mech's creation
     "0xff82123dfb52ab75c417195c5fdb87630145ae81": ("old_mech_abi.json", 28911547),
@@ -68,7 +69,6 @@ LATEST_BLOCK: Optional[int] = None
 LATEST_BLOCK_NAME: BlockParams = "latest"
 BLOCK_DATA_NUMBER = "number"
 BLOCKS_CHUNK_SIZE = 10_000
-GET_CONTENTS_CHUNK_SIZE = 1000
 REDUCE_FACTOR = 0.25
 EVENT_ARGUMENTS = "args"
 DATA = "data"
@@ -110,7 +110,7 @@ IRRELEVANT_TOOLS = [
 # for example, the value 1 means that for every `BLOCKS_CHUNK_SIZE` blocks that we search, we also store the snapshot
 SNAPSHOT_RATE = 10
 NUM_WORKERS = 10
-MAX_WORKERS = 10
+GET_CONTENTS_BATCH_SIZE = 1000
 
 
 class MechEventName(Enum):
@@ -246,29 +246,37 @@ class MechResponse:
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
-        self.error_message = None
-        try:
-            self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-            self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
-            self.error = kwargs.pop("error", "Unknown")
-            self.result = kwargs.pop("result", None)
-            self.prompt_response = kwargs.pop(PROMPT_FIELD, None)
+        self.error = kwargs.get("error", None)
+        self.request_id = int(kwargs.get(REQUEST_ID, 0))
+        self.deliver_block = int(kwargs.get(BLOCK_FIELD, 0))
+        self.result = kwargs.get("result", None)
+        self.prompt_response = kwargs.get(PROMPT_FIELD, None)
 
-            if isinstance(self.result, str):
-                kwargs = json.loads(self.result)
-                self.result = PredictionResponse(**kwargs)
+        if self.result != "Invalid response":
+            self.error_message = kwargs.get("error_message", None)
 
-        except Exception as e:
+            try:
+                if isinstance(self.result, str):
+                    kwargs = json.loads(self.result)
+                    self.result = PredictionResponse(**kwargs)
+                    self.error = str(False)
+
+            except JSONDecodeError:
+                self.error_message = "Response parsing error"
+                self.error = str(True)
+
+            except Exception as e:
+                self.error_message = str(e)
+                self.error = str(True)
+
+        else:
+            self.error_message = "Invalid response from tool"
             self.error = str(True)
-            self.error_message = str(e)
-            self.request_id = int(kwargs.pop(REQUEST_ID, 0))
-            self.deliver_block = int(kwargs.pop(BLOCK_FIELD, 0))
-            self.result = kwargs.pop("result", None)
-            self.prompt_response = kwargs.pop(PROMPT_FIELD, None)
+            self.result = None
 
 
 EVENT_TO_MECH_STRUCT = {
-    # MechEventName.REQUEST: MechRequest,
+    MechEventName.REQUEST: MechRequest,
     MechEventName.DELIVER: MechResponse,
 }
 
@@ -507,14 +515,8 @@ def get_contents(
 
 
 def clean(df: pd.DataFrame) -> pd.DataFrame:
-    """Clean up a dataframe, i.e., convert unhashable types (like lists, dict) to a hashable form (like string), drop na and duplicates."""
-    for col in df.columns:
-        if isinstance(df[col].iloc[0], list):
-            df[col] = df[col].apply(lambda x: str(x))
-        if isinstance(df[col].iloc[0], dict):
-            df[col] = df[col].apply(lambda x: str(x))
-
-    cleaned = df.dropna().drop_duplicates()
+    """Clean the dataframe."""
+    cleaned = df.drop_duplicates()
     cleaned[REQUEST_ID_FIELD] = cleaned[REQUEST_ID_FIELD].astype("str")
     return cleaned
 
@@ -537,12 +539,15 @@ def transform_deliver(contents: pd.DataFrame, full_contents=False) -> pd.DataFra
 
     # rename prompt column to prompt_deliver
     unpacked_result.rename(columns={"prompt": "prompt_deliver"}, inplace=True)
-
     contents = pd.concat((contents, unpacked_result), axis=1)
-    if not full_contents:
-        return clean(contents.drop(columns=["result", "error"]))
-    else:
-        return clean(contents)
+
+    if "result" in contents.columns:
+        contents.drop(columns=["result"], inplace=True)
+
+    if "prompt" in contents.columns:
+        contents.drop(columns=["prompt"], inplace=True)
+
+    return clean(contents)
 
 
 def gen_event_filename(event_name: MechEventName) -> str:
@@ -627,13 +632,10 @@ def pipeline_step(
         contents = []
         with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
             futures = []
-            for i in range(0, len(parsed), GET_CONTENTS_CHUNK_SIZE):
+            for i in range(0, len(parsed), 1000):
                 futures.append(
                     executor.submit(
-                        get_contents,
-                        session,
-                        parsed[i : i + GET_CONTENTS_CHUNK_SIZE],
-                        event_name,
+                        get_contents, session, parsed[i : i + 1000], event_name
                     )
                 )
 
@@ -698,13 +700,13 @@ def store_progress(
 
 
 def etl(
-    rpc: List[str], filename: Optional[str] = None, full_contents: bool = False
+    rpcs: List[str], filename: Optional[str] = None, full_contents: bool = True
 ) -> pd.DataFrame:
     """Fetch from on-chain events, process, store and return the tools' results on all the questions as a Dataframe."""
-    w3s = [Web3(HTTPProvider(r)) for r in rpc]
+    w3s = [Web3(HTTPProvider(r)) for r in rpcs]
     session = create_session()
     event_to_transformer = {
-        # MechEventName.REQUEST: transform_request,
+        MechEventName.REQUEST: transform_request,
         MechEventName.DELIVER: transform_deliver,
     }
     mech_to_info = {
@@ -720,7 +722,7 @@ def etl(
     if latest_block is None:
         latest_block = w3s[0].eth.get_block(LATEST_BLOCK_NAME)[BLOCK_DATA_NUMBER]
 
-    next_start_block = to_block = None
+    next_start_block = None
 
     # Loop through events in event_to_transformer
     for event_name, transformer in event_to_transformer.items():
@@ -740,7 +742,7 @@ def etl(
             )
 
             # parallelize the fetching of events
-            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
                 futures = []
                 for i in range(
                     next_start_block, latest_block, BLOCKS_CHUNK_SIZE * SNAPSHOT_RATE
@@ -768,14 +770,14 @@ def etl(
         parsed = parse_events(events)
 
         contents = []
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
             futures = []
-            for i in range(0, len(parsed), GET_CONTENTS_CHUNK_SIZE):
+            for i in range(0, len(parsed), GET_CONTENTS_BATCH_SIZE):
                 futures.append(
                     executor.submit(
                         get_contents,
                         session,
-                        parsed[i : i + GET_CONTENTS_CHUNK_SIZE],
+                        parsed[i : i + GET_CONTENTS_BATCH_SIZE],
                         event_name,
                     )
                 )
@@ -819,9 +821,9 @@ def etl(
 
 
 if __name__ == "__main__":
-    rpc_ = parse_args()
-    tools = etl(
-        rpc=rpc_,
-        filename=DEFAULT_FILENAME,
-        full_contents=True,
-    )
+
+    RPCs = [
+        "https://lb.nodies.app/v1/406d8dcc043f4cb3959ed7d6673d311a",
+    ]
+
+    tools = etl(rpcs=RPCs, filename=DEFAULT_FILENAME, full_contents=True)

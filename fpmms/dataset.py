@@ -53,6 +53,9 @@ def generate(filename: Optional[str] = None) -> pd.DataFrame:
     args = parse_args()
 
     if isinstance(args, str):
+        args = [args]
+
+    if isinstance(args, str):
         dfs = markets_etl(MARKETS_FILENAME), tools_etl(args, TOOLS_FILENAME)
     else:
         dfs = tuple(pd.read_csv(filename) for filename in args)
