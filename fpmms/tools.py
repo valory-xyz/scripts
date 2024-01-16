@@ -819,6 +819,8 @@ def etl(
     tools = pd.merge(*event_to_contents.values(), on=REQUEST_ID_FIELD)
     store_progress(filename, event_to_contents, tools)
 
+    return tools
+
 
 if __name__ == "__main__":
     RPCs = [
