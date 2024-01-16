@@ -3,6 +3,9 @@ name = "fpmms-experiments"
 version = "0.1.0"
 description = "Experiments with FPMMs, tools and predictions."
 authors = ["Adamantios Zaras"]
+packages = [
+    { include = "costing", from = "./" },
+]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
