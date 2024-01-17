@@ -693,8 +693,6 @@ def store_progress(
         # drop result and error columns
         if "result" in tools.columns:
             tools.drop(columns=["result"], inplace=True)
-        if "error" in tools.columns:
-            tools.drop(columns=["error"], inplace=True)
 
         tools.to_csv(filename, index=False, escapechar="\\")
 

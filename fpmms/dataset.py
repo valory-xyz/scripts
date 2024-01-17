@@ -75,7 +75,7 @@ def generate(filename: Optional[str] = None) -> pd.DataFrame:
     dataset = pd.merge(*dfs, on=TITLE_FIELD)
 
     if filename:
-        dataset.to_csv(filename, index=False)
+        dataset.to_csv(filename, index=False, escapechar="\\")
 
     return dataset
 
