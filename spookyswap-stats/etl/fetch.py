@@ -33,7 +33,10 @@ from etl.tools import gen_unix_timestamps, sec_to_unit
 
 class RetriesExceeded(Exception):
     """Exception to raise when retries are exceeded during data-fetching."""
-    def __init__(self, msg='Maximum retries were exceeded while trying to fetch the data!'):
+
+    def __init__(
+        self, msg="Maximum retries were exceeded while trying to fetch the data!"
+    ):
         super().__init__(msg)
 
 
@@ -49,6 +52,7 @@ def hacky_retry(func: Callable, n_retries: int = 3) -> Callable:
     :param n_retries: the maximum allowed number of retries.
     :return: The request method with the hacky retry strategy applied.
     """
+
     @functools.wraps(func)
     def wrapper_hacky_retry(*args, **kwargs) -> SubgraphResponseType:
         """The wrapper for the hacky retry.
@@ -74,7 +78,9 @@ def hacky_retry(func: Callable, n_retries: int = 3) -> Callable:
 
 
 @hacky_retry
-def make_request(url: str, query_fn: Callable[..., str], *query_args) -> SubgraphResponseType:
+def make_request(
+    url: str, query_fn: Callable[..., str], *query_args
+) -> SubgraphResponseType:
     """Make a request to a subgraph.
 
     Args:
@@ -85,30 +91,36 @@ def make_request(url: str, query_fn: Callable[..., str], *query_args) -> Subgrap
     Returns:
         a response dictionary.
     """
-    r = requests.post(url, json={'query': query_fn(*query_args)})
+    r = requests.post(url, json={"query": query_fn(*query_args)})
 
     if r.status_code == 200:
         res = r.json()
 
-        if 'errors' in res.keys():
-            message = res['errors'][0]['message']
-            location = res['errors'][0]['locations'][0]
-            line = location['line']
-            column = location['column']
+        if "errors" in res.keys():
+            message = res["errors"][0]["message"]
+            location = res["errors"][0]["locations"][0]
+            line = location["line"]
+            column = location["column"]
 
-            raise ValueError(f'The given query is not correct.\nError in line {line}, column {column}: {message}')
+            raise ValueError(
+                f"The given query is not correct.\nError in line {line}, column {column}: {message}"
+            )
 
-        elif 'data' not in res.keys():
-            raise ValueError(f'Unknown error encountered!\nRaw response: \n{res}')
+        elif "data" not in res.keys():
+            raise ValueError(f"Unknown error encountered!\nRaw response: \n{res}")
 
     else:
-        raise ConnectionError('Something went wrong while trying to communicate with the subgraph '
-                              f'(Error: {r.status_code})!\n{r.text}')
+        raise ConnectionError(
+            "Something went wrong while trying to communicate with the subgraph "
+            f"(Error: {r.status_code})!\n{r.text}"
+        )
 
-    return res['data']
+    return res["data"]
 
 
-def get_pairs_hist(pair_ids: List[str], start: int, interval_in_unix: int, end: int) -> ResponseItemType:
+def get_pairs_hist(
+    pair_ids: List[str], start: int, interval_in_unix: int, end: int
+) -> ResponseItemType:
     """Get historical data for the given pools.
 
     :param pair_ids: the ids of the pairs to fetch.
@@ -122,25 +134,36 @@ def get_pairs_hist(pair_ids: List[str], start: int, interval_in_unix: int, end: 
     n_iter = int((end - start) / interval_in_unix)
     interval_unit = sec_to_unit(interval_in_unix)
 
-    for timestamp in tqdm(timestamps_generator, total=n_iter, desc='Fetching historical data', unit=interval_unit):
+    for timestamp in tqdm(
+        timestamps_generator,
+        total=n_iter,
+        desc="Fetching historical data",
+        unit=interval_unit,
+    ):
         # Fetch block.
-        res = make_request(FANTOM_BLOCKS_SUBGRAPH_URL, block_from_timestamp_q, timestamp)
-        fetched_block = res['blocks'][0]
+        res = make_request(
+            FANTOM_BLOCKS_SUBGRAPH_URL, block_from_timestamp_q, timestamp
+        )
+        fetched_block = res["blocks"][0]
 
         # Fetch ETH price for block.
-        res = make_request(SPOOKY_SUBGRAPH_URL, eth_price_usd_q, *(BUNDLE_ID, fetched_block['number']))
-        eth_price = float(res['bundles'][0]['ethPrice'])
+        res = make_request(
+            SPOOKY_SUBGRAPH_URL, eth_price_usd_q, *(BUNDLE_ID, fetched_block["number"])
+        )
+        eth_price = float(res["bundles"][0]["ethPrice"])
 
         # Fetch top n pool data for block.
-        res = make_request(SPOOKY_SUBGRAPH_URL, pairs_q, *(fetched_block['number'], pair_ids))
+        res = make_request(
+            SPOOKY_SUBGRAPH_URL, pairs_q, *(fetched_block["number"], pair_ids)
+        )
 
         # Add extra fields to the pairs.
-        for i in range(len(res['pairs'])):
-            res['pairs'][i]['for_timestamp'] = timestamp
-            res['pairs'][i]['block_number'] = fetched_block['number']
-            res['pairs'][i]['block_timestamp'] = fetched_block['timestamp']
-            res['pairs'][i]['eth_price'] = str(eth_price)
+        for i in range(len(res["pairs"])):
+            res["pairs"][i]["for_timestamp"] = timestamp
+            res["pairs"][i]["block_number"] = fetched_block["number"]
+            res["pairs"][i]["block_timestamp"] = fetched_block["timestamp"]
+            res["pairs"][i]["eth_price"] = str(eth_price)
 
-        pairs_hist.extend(res['pairs'])
+        pairs_hist.extend(res["pairs"])
 
     return pairs_hist

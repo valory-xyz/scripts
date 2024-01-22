@@ -24,7 +24,9 @@ from typing import Optional, Iterator
 from config.general import DAY_IN_UNIX, HOUR_IN_UNIX, MINUTE_IN_UNIX
 
 
-def gen_unix_timestamps(start: int, interval_in_unix: int, end: Optional[int] = None) -> Iterator[int]:
+def gen_unix_timestamps(
+    start: int, interval_in_unix: int, end: Optional[int] = None
+) -> Iterator[int]:
     """Generate the Unix timestamps from start to end with the given interval.
 
     :param start: the start date for the generated timestamps.

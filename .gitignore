@@ -210,4 +210,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+.ruff_cache/
+.DS_Store
 
+fpmms/nbs/data/

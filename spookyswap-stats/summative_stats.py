@@ -29,5 +29,5 @@ def start() -> None:
     export_transform_store(**vars(args))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     start()

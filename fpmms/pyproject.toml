@@ -3,6 +3,9 @@ name = "fpmms-experiments"
 version = "0.1.0"
 description = "Experiments with FPMMs, tools and predictions."
 authors = ["Adamantios Zaras"]
+packages = [
+    { include = "costing", from = "./" },
+]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
@@ -18,6 +21,8 @@ anthropic = "^0.9.0"
 openai = "^1.7.2"
 spacy = "^3.7.2"
 pyarrow = "^14.0.2"
+ruff = "^0.1.13"
+huggingface-hub = "^0.20.2"
 
 [tool.poetry.dev-dependencies]
 

@@ -23,17 +23,16 @@ It assumes the correct order of these filenames for simplicity of implementation
 import sys
 import warnings
 from typing import Tuple, Optional, Union
-
 import pandas as pd
-
 from markets import (
     etl as markets_etl,
     TITLE_FIELD,
     DEFAULT_FILENAME as MARKETS_FILENAME,
 )
-from tools import etl as tools_etl, PROMPT_FIELD, DEFAULT_FILENAME as TOOLS_FILENAME
+from tools import etl as tools_etl, DEFAULT_FILENAME as TOOLS_FILENAME
 
 DEFAULT_FILENAME = "dataset.csv"
+TOOL_PROMPT_REQUEST = "prompt_request"
 
 
 def parse_args() -> Union[str, Tuple[str, str]]:
@@ -51,8 +50,10 @@ def parse_args() -> Union[str, Tuple[str, str]]:
 def generate(filename: Optional[str] = None) -> pd.DataFrame:
     """Generate the dataset."""
     args = parse_args()
+    print(f"Generating the dataset from {args}...")
 
     if isinstance(args, str):
+        args = [args]
         dfs = markets_etl(MARKETS_FILENAME), tools_etl(args, TOOLS_FILENAME)
     else:
         dfs = tuple(pd.read_csv(filename) for filename in args)
@@ -67,14 +68,14 @@ def generate(filename: Optional[str] = None) -> pd.DataFrame:
         # as some questions might contain something that looks like a regex
         with warnings.catch_warnings():
             warnings.simplefilter(action="ignore", category=UserWarning)
-            prompt_contains_title = tools[PROMPT_FIELD].str.contains(fpmms_title)
+            prompt_contains_title = tools[TOOL_PROMPT_REQUEST].str.contains(fpmms_title)
 
         tools.loc[prompt_contains_title, TITLE_FIELD] = fpmms_title
 
     dataset = pd.merge(*dfs, on=TITLE_FIELD)
 
     if filename:
-        dataset.to_csv(filename, index=False)
+        dataset.to_csv(filename, index=False, escapechar="\\")
 
     return dataset
 
