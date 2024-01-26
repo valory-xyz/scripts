@@ -39,3 +39,7 @@ Description: This notebook outlines how the dataset is built and evaluates the t
 Location: fpmms/nbs/costing_analysis.ipynb
 Description: This notebook provides an analysis of the costs associated with running different tools within the project.
 
+3. Traders Profitability Analysis:
+Location: fpmms/nbs/profitability_analysis.ipynb
+Description: This notebook provided analysis on profitability of the traders. Before running the notebbok, you could either run `profitability.py` script or get the required data by running `0. download_data.ipynb`
+
