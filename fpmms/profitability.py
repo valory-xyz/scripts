@@ -43,7 +43,9 @@ IRRELEVANT_TOOLS = [
 ]
 QUERY_BATCH_SIZE = 1000
 DUST_THRESHOLD = 10000000000000
-INVALID_ANSWER_HEX = "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+INVALID_ANSWER_HEX = (
+    "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+)
 INVALID_ANSWER = -1
 FPMM_CREATOR = "0x89c5cc945dd550bcffb72fe42bff002429f46fec"
 DEFAULT_FROM_DATE = "1970-01-01T00:00:00"
@@ -327,9 +329,10 @@ def convert_hex_to_int(x: Union[str, float]) -> Union[int, float]:
     elif isinstance(x, str):
         if x == INVALID_ANSWER_HEX:
             return -1
-        else: 
+        else:
             return int(x, 16)
-        
+
+
 def wei_to_unit(wei: int) -> float:
     """Converts wei to currency unit."""
     return wei / 10**18
@@ -427,10 +430,7 @@ def prepare_profitalibity_data(rpc: str):
     assert "trader_address" in fpmmTrades.columns, "trader_address column not found"
 
     # lowercase and strip creator_address
-    fpmmTrades["trader_address"] = (
-        fpmmTrades["trader_address"].str.lower().str.strip()
-    )
-
+    fpmmTrades["trader_address"] = fpmmTrades["trader_address"].str.lower().str.strip()
 
     return fpmmTrades, tools
 
@@ -448,7 +448,9 @@ def determine_market_status(trade, current_answer):
     return MarketState.CLOSED
 
 
-def analyse_trader(trader_address: str, fpmmTrades: pd.DataFrame, tools: pd.DataFrame) -> pd.DataFrame:
+def analyse_trader(
+    trader_address: str, fpmmTrades: pd.DataFrame, tools: pd.DataFrame
+) -> pd.DataFrame:
     """Analyse a trader's trades"""
     # Filter trades and tools for the given trader
     trades = fpmmTrades[fpmmTrades["trader_address"] == trader_address]
@@ -470,7 +472,9 @@ def analyse_trader(trader_address: str, fpmmTrades: pd.DataFrame, tools: pd.Data
     for i, trade in tqdm(trades.iterrows(), total=len(trades), desc="Analysing trades"):
         try:
             # Parsing and computing shared values
-            creation_timestamp_utc = datetime.datetime.fromtimestamp(trade["creationTimestamp"], tz=datetime.timezone.utc)
+            creation_timestamp_utc = datetime.datetime.fromtimestamp(
+                trade["creationTimestamp"], tz=datetime.timezone.utc
+            )
             collateral_amount = wei_to_unit(float(trade["collateralAmount"]))
             fee_amount = wei_to_unit(float(trade["feeAmount"]))
             outcome_tokens_traded = wei_to_unit(float(trade["outcomeTokensTraded"]))
@@ -483,10 +487,12 @@ def analyse_trader(trader_address: str, fpmmTrades: pd.DataFrame, tools: pd.Data
 
             # Skip non-closed markets
             if market_status != MarketState.CLOSED:
-                print(f"Skipping trade {i} because market is not closed. Market Status: {market_status}")
+                print(
+                    f"Skipping trade {i} because market is not closed. Market Status: {market_status}"
+                )
                 continue
             current_answer = convert_hex_to_int(current_answer)
-            
+
             # Compute invalidity
             is_invalid = current_answer == INVALID_ANSWER
 
@@ -499,8 +505,15 @@ def analyse_trader(trader_address: str, fpmmTrades: pd.DataFrame, tools: pd.Data
                 winner_trade = True
 
             # Compute mech calls
-            num_mech_calls = tools_usage["prompt_request"].apply(lambda x: trade["title"] in x).sum()
-            net_earnings = earnings - fee_amount - (num_mech_calls * DEFAULT_MECH_FEE) - collateral_amount
+            num_mech_calls = (
+                tools_usage["prompt_request"].apply(lambda x: trade["title"] in x).sum()
+            )
+            net_earnings = (
+                earnings
+                - fee_amount
+                - (num_mech_calls * DEFAULT_MECH_FEE)
+                - collateral_amount
+            )
 
             # Assign values to DataFrame
             trades_df.loc[i] = {
@@ -522,7 +535,7 @@ def analyse_trader(trader_address: str, fpmmTrades: pd.DataFrame, tools: pd.Data
                 "num_mech_calls": num_mech_calls,
                 "mech_fee_amount": num_mech_calls * DEFAULT_MECH_FEE,
                 "net_earnings": net_earnings,
-                "roi": net_earnings / collateral_amount
+                "roi": net_earnings / collateral_amount,
             }
 
         except Exception as e:
@@ -540,9 +553,7 @@ def analyse_all_traders(trades: pd.DataFrame, tools: pd.DataFrame) -> pd.DataFra
         total=len(trades["trader_address"].unique()),
         desc="Analysing creators",
     ):
-        all_traders.append(
-            analyse_trader(trader, trades, tools)
-        )
+        all_traders.append(analyse_trader(trader, trades, tools))
 
     # concat all creators
     all_creators_df = pd.concat(all_traders)
@@ -557,28 +568,38 @@ def summary_analyse(df):
         return pd.DataFrame(columns=SUMMARY_STATS_DF_COLS)
 
     # Group by trader_address
-    grouped = df.groupby('trader_address')
+    grouped = df.groupby("trader_address")
 
     # Create summary DataFrame
     summary_df = grouped.agg(
-        num_trades=('trader_address', 'size'),
-        num_winning_trades=('winning_trade', lambda x: float((x).sum())),
-        num_redeemed=('redeemed', lambda x: float(x.sum())),
-        total_investment=('collateral_amount', 'sum'),
-        total_trade_fees=('trade_fee_amount', 'sum'),
-        num_mech_calls=('num_mech_calls', 'sum'),
-        total_mech_fees=('mech_fee_amount', 'sum'),
-        total_earnings=('earnings', 'sum'),
-        total_redeemed_amount=('redeemed_amount', 'sum'),
-        total_net_earnings=('net_earnings', 'sum')
+        num_trades=("trader_address", "size"),
+        num_winning_trades=("winning_trade", lambda x: float((x).sum())),
+        num_redeemed=("redeemed", lambda x: float(x.sum())),
+        total_investment=("collateral_amount", "sum"),
+        total_trade_fees=("trade_fee_amount", "sum"),
+        num_mech_calls=("num_mech_calls", "sum"),
+        total_mech_fees=("mech_fee_amount", "sum"),
+        total_earnings=("earnings", "sum"),
+        total_redeemed_amount=("redeemed_amount", "sum"),
+        total_net_earnings=("net_earnings", "sum"),
     )
 
     # Calculating additional columns
-    summary_df['total_roi'] = summary_df['total_net_earnings'] / summary_df['total_investment']
-    summary_df['mean_mech_calls_per_trade'] = summary_df['num_mech_calls'] / summary_df['num_trades']
-    summary_df['mean_mech_fee_amount_per_trade'] = summary_df['total_mech_fees'] / summary_df['num_trades']
-    summary_df['total_net_earnings_wo_mech_fees'] = summary_df['total_net_earnings'] + summary_df['total_mech_fees']
-    summary_df['total_roi_wo_mech_fees'] = summary_df['total_net_earnings_wo_mech_fees'] / summary_df['total_investment']
+    summary_df["total_roi"] = (
+        summary_df["total_net_earnings"] / summary_df["total_investment"]
+    )
+    summary_df["mean_mech_calls_per_trade"] = (
+        summary_df["num_mech_calls"] / summary_df["num_trades"]
+    )
+    summary_df["mean_mech_fee_amount_per_trade"] = (
+        summary_df["total_mech_fees"] / summary_df["num_trades"]
+    )
+    summary_df["total_net_earnings_wo_mech_fees"] = (
+        summary_df["total_net_earnings"] + summary_df["total_mech_fees"]
+    )
+    summary_df["total_roi_wo_mech_fees"] = (
+        summary_df["total_net_earnings_wo_mech_fees"] / summary_df["total_investment"]
+    )
 
     # Resetting index to include trader_address
     summary_df.reset_index(inplace=True)
