@@ -348,16 +348,11 @@ def _is_redeemed(user_json: dict[str, Any], fpmmTrade: dict[str, Any]) -> bool:
         position_condition_ids = position["position"]["conditionIds"]
         balance = int(position["balance"])
 
-        if condition_id in position_condition_ids and balance == outcomes_tokens_traded:
+        if condition_id in position_condition_ids:
+            if balance == 0:
+                return True
+            # return early
             return False
-
-    for position in user_positions:
-        position_condition_ids = position["position"]["conditionIds"]
-        balance = int(position["balance"])
-
-        if condition_id in position_condition_ids and balance == 0:
-            return True
-
     return False
 
 
