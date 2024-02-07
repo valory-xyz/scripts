@@ -165,6 +165,7 @@ class MechRequest:
     prompt_request: Optional[str]
     tool: Optional[str]
     nonce: Optional[str]
+    trader_address: Optional[str]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the request ignoring extra keys."""
@@ -173,6 +174,7 @@ class MechRequest:
         self.prompt_request = kwargs.pop(PROMPT_FIELD, None)
         self.tool = kwargs.pop("tool", None)
         self.nonce = kwargs.pop("nonce", None)
+        self.trader_address = kwargs.pop("sender", None)
 
 
 @dataclass(init=False)
@@ -243,6 +245,7 @@ class MechResponse:
     error: Optional[str]
     error_message: Optional[str]
     prompt_response: Optional[str]
+    mech_address: Optional[str]
 
     def __init__(self, **kwargs: Any) -> None:
         """Initialize the mech's response ignoring extra keys."""
@@ -251,6 +254,7 @@ class MechResponse:
         self.deliver_block = int(kwargs.get(BLOCK_FIELD, 0))
         self.result = kwargs.get("result", None)
         self.prompt_response = kwargs.get(PROMPT_FIELD, None)
+        self.mech_address = kwargs.get("sender", None)
 
         if self.result != "Invalid response":
             self.error_message = kwargs.get("error_message", None)
@@ -476,6 +480,7 @@ def parse_ipfs_tools_content(
     struct = EVENT_TO_MECH_STRUCT.get(event_name)
     raw_content[REQUEST_ID] = str(event.requestId)
     raw_content[BLOCK_FIELD] = str(event.for_block)
+    raw_content["sender"] = str(event.sender)
 
     try:
         mech_response = struct(**raw_content)
