@@ -43,3 +43,6 @@ Description: This notebook provides an analysis of the costs associated with run
 Location: fpmms/nbs/profitability_analysis.ipynb
 Description: This notebook provided analysis on profitability of the traders. Before running the notebbok, you could either run `profitability.py` script or get the required data by running `0. download_data.ipynb`
 
+4. Market Resolution Evaluation
+Location: fpmms/nbs/evaluating_ground_truth.ipynb
+Description: This notebook evalaute the accuracy of LLM-based market resolution.
